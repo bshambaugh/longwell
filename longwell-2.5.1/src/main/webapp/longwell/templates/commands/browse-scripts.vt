@@ -1,0 +1,10 @@
+#inject("common-scripts")
+<script src="$resourcePath/scripts/commands/browse.js" type="text/javascript"></script>
+<script src="$resourcePath/scripts/components/view.js" type="text/javascript"></script>
+<script src="$resourcePath/scripts/components/sorting-controls.js" type="text/javascript"></script>
+<script src="$resourcePath/scripts/components/facets.js" type="text/javascript"></script>
+<script src="$resourcePath/scripts/components/facet-body.js" type="text/javascript"></script>
+<script src="$resourcePath/scripts/components/tags.js" type="text/javascript"></script>
+<script src="$resourcePath/scripts/panes/views-pane.js" type="text/javascript"></script>
+
+<script src="$resourcePath/content/panes/timeline/timeline-api.js" type="text/javascript"></script>

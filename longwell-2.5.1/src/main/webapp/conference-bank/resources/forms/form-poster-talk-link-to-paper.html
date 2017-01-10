@@ -1,0 +1,44 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="../styles/forms/styles.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/forms/forms.css" type="text/css" />
+  <script type="text/javascript">
+  <!--
+    function fillData(data) {
+      Form.initializeTextBox(data, "paper-url", "paper-url-textbox");
+    }
+    function processForm(uri, types) {
+      Form.addPrefix("conf", "http://simile.mit.edu/2005/11/ontologies/conference#");
+      
+      Form.appendURIAndTypes(uri, types);
+      Form.appendTextProperty("conf:paper-url", "paper-url-textbox");
+      Form.appendLine(".");
+    }
+  -->
+  </script>
+  <script type="text/javascript" src="../scripts/forms/form.js"/>
+  <script type="text/javascript" src="../scripts/utilities/http.js"/>
+  <title>Form - Poster Talk Link To Paper</title>
+</head>
+<body onload="Form.onLoad();">
+<table>
+<tr>
+<td width="100%">
+  <div class="form-section">
+    <div class="form-section-title">Link To Paper</div>
+    <div class="form-section-body">
+      <div class="labeled-field">
+        Paper's URL:
+        <input type="text" id="paper-url-textbox" />
+      </div>
+    </div>
+  </div>
+</td>
+<td>
+  <div id="form-controls"></div>
+</td>
+</tr>
+</table>
+</body>
+</html>

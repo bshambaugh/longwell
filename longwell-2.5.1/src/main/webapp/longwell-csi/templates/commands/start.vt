@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>SIMILE Longwell</title>
+        
+        <link rel="stylesheet" href="$resourcePath/styles/common.css" type="text/css"/>
+        <link rel="stylesheet" href="$resourcePath/styles/page.css" type="text/css"/>
+        <link rel="stylesheet" href="$resourcePath/styles/fresnel.css" type="text/css"/>
+        <link rel="stylesheet" href="$resourcePath/styles/menu.css" type="text/css"/>
+        <link rel="stylesheet" href="$resourcePath/styles/view.css" type="text/css"/>
+        <script type="text/javascript" src="$resourcePath/scripts/common.js"></script>
+        
+        <!-- Longwell-CSI -->
+        <script type="text/javascript" src="$resourcePath/api/longwell-api.js"></script>
+        <script type="text/javascript" src="$utilities.escape($url.changeCommandQuery("api", "call=configuration").toURLString())"></script>
+
+        <!--+
+            | Longwell's default scripts and styles will be inserted right here.
+            | You can override them by including your own scripts and styles
+            | after this point.
+            +-->
+
+        <script type="text/javascript">
+
+            function onLoad() {
+                                           
+                Longwell.Configuration.ui.viewPanel.startingPoints = [
+                    {   
+                        title:          "Types",
+                        propertyURI:    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                        forward:        true
+                    }
+                ];
+			
+                longwell = Longwell.create(
+                    document.getElementById("control-panel"),
+                    document.getElementById("browse-panel"),
+                    document.getElementById("view-panel")
+                );
+                
+				longwell.toBrowsingPage = function() {
+					document.getElementById("this-page-link").style.display = "block";
+					document.getElementById("browse-panel").style.display = "block";
+					document.getElementById("browse-panel-bottom").style.display = "block";
+					document.getElementById("bottom").style.display = "none";
+				}
+				
+				longwell.toFrontPage = function() {
+					document.getElementById("this-page-link").style.display = "none";
+					document.getElementById("browse-panel").style.display = "none";
+					document.getElementById("browse-panel-bottom").style.display = "none";
+					document.getElementById("bottom").style.display = "block";
+				}
+
+				Longwell.DOM.registerEvent(document.getElementById("this-page-link"), "mouseover",
+                    function() {
+                        document.getElementById("this-page-link").href =
+                            Longwell.Configuration.contextPath + 
+                            Longwell.Configuration.profileID +
+                            "?longwell-state=" + encodeURIComponent(longwell.toJSON().toJSONString());
+                    }
+                );
+            }
+        </script>
+
+        <style>
+            #control-panel {
+				text-align:     left;
+                padding:        0.5em;
+                background:     #f8f8f8;
+                border-top:     1px solid #ddd;
+                border-bottom:  1px solid #ddd;
+            }
+            
+            #browse-panel {
+                padding:        0.5em;
+                background:     #eee;
+                border:         1px solid #ddd;
+                z-index:        100;
+				min-width:      15em;
+            }
+
+            #browse-panel-bottom {
+				display: none;
+            	text-align: center;
+            	padding: 3em 1em 1em 1em;
+            }
+			
+			#browse-panel-bottom img.logo {
+            	padding: 2px;
+            	border: 1px solid #ccc;
+            	background-color: #fff;
+            }
+			
+            #view-panel {
+                padding:    2em;
+                margin:     0 auto;
+            }
+            
+        </style>
+    </head>
+    
+    <body onload="onLoad();">
+                
+        <div id="top">
+            <a href="." style="display: none; float: right; margin: 0.5em;" id="this-page-link">Link to This Page</a>
+            #set($profileURL = $url.changeQuery(""))
+            $profileURL.getQuery().removeOtherParameters()
+            <!--div class="path"><a href="$contextPath">Home</a> &raquo; <span>Browsing</span></div-->
+            <h1><a href="http://simile.mit.edu/longwell/" alt="Powered by SIMILE Longwell" style="float: left; padding-right: 10px;"><img src="http://simile.mit.edu/longwell/images/logo.gif" style="height: 36px; width: 36px;"/></a><a href="$profileURL.toURLString()">Longwell</a></h1>		
+            <h2>A Semantic Web Browser</h2>
+        </div>		
+
+		<table width="100%" cellpadding="0" cellspacing="0">
+            <tr valign="top">
+                <td align="center">
+                    <div id="control-panel"></div>
+                    <div id="view-panel"></div>
+                </td>
+                <td>
+                    <div id="browse-panel"></div>
+					<div id="browse-panel-bottom"><a href="http://simile.mit.edu/" title="The SIMILE Project"><img class="logo" src="$resourcePath/images/simile_logo.png"/></a></div>    
+                </td>
+            </tr>
+        </table>
+    
+		<div id="bottom"><a href="http://simile.mit.edu/" title="The SIMILE Project"><img class="logo" src="$resourcePath/images/simile_logo.png"/></a></div>    
+	
+	</body>
+    
+</html>

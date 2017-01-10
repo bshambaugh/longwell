@@ -1,0 +1,5 @@
+<div id="top">
+    <!--div class="path"><a href="$contextPath">Home</a> &raquo; <span>Browsing</span></div-->
+    <h1><a href="$profileURL.toURLString()">Longwell</a></h1>
+    <h2>A Semantic Web Browser</h2>
+</div>

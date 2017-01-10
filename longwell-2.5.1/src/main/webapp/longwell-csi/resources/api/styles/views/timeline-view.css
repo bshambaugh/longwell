@@ -1,0 +1,55 @@
+div.longwell-timelineView-header {
+    margin-bottom:  2em;
+    clear:          none;
+}
+
+div.longwell-timelineView-header-notConfigured {
+    background:     #FFFFE0;
+    padding:        1em;
+}
+
+.longwell-timelineView-header .item-count {
+    font-size:      200%;
+    font-weight:    bold;
+}
+
+div.longwell-timelineView-footer {
+    margin-top:     1em;
+}
+
+div.longwell-timelineView-colorPanel {
+    border:         1px solid #99B3CC;
+    padding:        1em;
+}
+
+div.longwell-timelineView-colorLegend {
+}
+
+.longwell-timelineView-colorLegend .entry {
+    float:          left;
+    width:          10em;
+    padding:        0.25em;
+    padding-left:   30px;
+    height:         28px;
+}
+
+div.longwell-timelineView-timeline {
+    border:         1px solid #99B3CC;
+    width:          100%;
+    clear:          both;
+    font-family:    Trebuchet MS, Helvetica, Arial, sans serif;
+    font-size:      8pt;
+}
+
+div.longwell-timelineView-errorMessage {
+    border:     1px solid #99B3CC;
+    padding:    10em;
+    text-align: center;
+    clear:      both;
+}
+
+div.longwell-timelineView-resizer {
+    height:     10px;
+    background: #eee url(../../images/down-arrow.png) center center no-repeat;
+    cursor:     n-resize;
+}

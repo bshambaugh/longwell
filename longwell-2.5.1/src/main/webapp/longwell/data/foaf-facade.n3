@@ -1,0 +1,26 @@
+@prefix rdf:			<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:		<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc:			<http://purl.org/dc/elements/1.1/> .
+@prefix flair:		<http://simile.mit.edu/2005/04/flair#> .
+@prefix facade:		<http://simile.mit.edu/2005/04/flair/facades#> .
+
+@prefix foaf:		<http://xmlns.com/foaf/0.1/> .
+
+facade:foaf-1_0
+	rdf:type		flair:Facade ;
+	rdf:type		flair:QueryBasedFacade ;
+
+	rdfs:label		"Facade for FOAF Items"@en ;
+	dc:description	"A facade for browsing FOAF items"@en ;
+
+	flair:shortLabel			"Contacts"@en ;
+	flair:contentDescription	"People, organizations, groups and projects."@en ;
+
+	flair:restriction [
+		flair:predicate		rdf:type ;
+		flair:object		foaf:Person ;
+		flair:object		foaf:Organization ;
+		flair:object		foaf:Group ;
+		flair:object		foaf:Project
+	]
+.

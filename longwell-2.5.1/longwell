@@ -1,0 +1,133 @@
+#!/bin/sh
+
+fail () {
+   cat <<EOF
+ERROR: $1
+Usage: $0 <options>
+  -h for more details
+EOF
+exit 1
+}
+
+usage()
+{
+cat <<EOF
+Usage: $0 [options]
+where [options] include:
+
+  -h print this message and exit
+
+  -c <configuration> the configuration that longwell should start
+     default: longwell
+
+  -p <path> is the paths where longwell will look for configurations
+     default:  ./src/main/webapp/
+
+  -d <database> the directory were the triple store files reside
+     default:  ./src/main/webapp/WEB-INF/database
+
+  -a <action> is what to do, the default is run
+   supported <action>s are:
+    run          Run longwell
+    debug        Run longwell and turn on JVM remote debug
+    profile      Run longwell and turn on JVM profiling with HProf
+    shark        Run longwell and turn on JVM profiling with Apple Shark (MacOSX only)
+    yourkit      Run longwell and turn on JVM profiling with YourKit
+    jmx          Run longwell and turn on JVM monitoring with JMX and JConsole
+    
+  -w <path> is the directory where a longwell webapp will be generated
+
+  -r <rdf> is the directory where the RDF data to load is
+    default: no data is loaded
+EOF
+    exit 0
+}
+
+### Parse the command line args.
+
+ACTION='run'
+MAVEN_OPTS="$LONGWELL_OPTS -Djava.awt.headless=true -Dslf4j=true -Dlog4j.configuration=file:./src/main/webapp/WEB-INF/log4j.properties -Djava.security.auth.login.config=file:./src/main/resources/jaas.config"
+
+add_option () {
+  MAVEN_OPTS="$MAVEN_OPTS $1"
+}
+
+absolute_path () {
+  case $1 in
+    /*) echo $1; ;;
+    *) echo `pwd`/$1; ;;
+  esac
+}
+
+change_prop () {
+  PROPS=target/webapp/WEB-INF/longwell.properties
+  PROPS_TEMP="$PROPS".tmp
+  mv $PROPS $PROPS_TEMP
+  cat $PROPS_TEMP | sed "s/$1/$2/" > $PROPS
+  rm $PROPS_TEMP
+}  
+
+while [ $# -ne 0 ] ; do
+  case "x$1" in
+    x-c) shift; CONF=$1; add_option "-Dlongwell.configuration=$CONF";  shift; ;;
+    x-d) shift; STORE_DIR=$1; add_option "-Dlongwell.store.dir=$STORE_DIR"; shift; ;;
+    x-p) shift; CONF_PATH=`absolute_path $1`; add_option "-Dlongwell.configuration.path=$CONF_PATH"; shift; ;;
+    x-r) shift; DATA=`absolute_path $1`; add_option "-Dlongwell.data=$DATA"; shift; ;;
+    x-w) shift; WEBAPP=`absolute_path $1`; shift; ;;
+    x-a) shift; ACTION="$1"; shift; ;;
+    x-h) usage; ;;
+    *) fail "malformed argument '$1', '$*' remain"; ;;
+  esac
+done
+
+# ----- Verify and Set Required Environment Variables -------------------------
+
+if [ "$JETTY_PORT" = "" ] ; then
+  JETTY_PORT=8080
+fi
+add_option "-Djetty.port=$JETTY_PORT"
+
+if [ "$JAVA_OPTIONS" = "" ] ; then
+  JAVA_OPTIONS="-Xms32M -Xmx256M"
+fi
+add_option "$JAVA_OPTIONS"
+
+# ----- Respond to the action given. ----------------------------------------------------------
+
+case "$ACTION" in
+  run) ;;
+  debug)
+    add_option '-Xdebug -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n'; ;;
+  profile)
+    add_option '-Xrunhprof:heap=all,cpu=samples,thread=y,depth=3'; ;;
+  shark)
+    add_option '-Xrunshark'; ;;
+  yourkit)
+    add_option '-agentlib:yjpagent'; ;;
+  jmx)
+    add_option '-Dcom.sun.management.jmxremote'; ;;
+  *)
+    fail "Unknown action '$ACTION'"; ;;
+esac
+
+if [ "$WEBAPP" != "" ] ; then
+    echo "[INFO] Preparing web application at $WEBAPP"
+    mvn war:exploded
+    if [ "$CONF" != "" ] ; then
+        echo "[INFO] Using configuration '$CONF' from $CONF_PATH"
+        change_prop "longwell.configuration = longwell" "longwell.configuration = $CONF"
+        
+        if [ ! -d target/webapp/$CONF ] ; then
+            cp -r $CONF_PATH/$CONF target/webapp
+        fi
+    fi
+    if [ "$DATA" != "" ] ; then
+        change_prop "#longwell.data=./data" "longwell.data = $DATA"
+    
+    fi
+    mv target/webapp $WEBAPP
+else 
+    export MAVEN_OPTS
+    echo "[INFO] MAVEN_OPTS: '$MAVEN_OPTS'"
+    exec mvn $MAVEN_PARAMS jetty:run
+fi

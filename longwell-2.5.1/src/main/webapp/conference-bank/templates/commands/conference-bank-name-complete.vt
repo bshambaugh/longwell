@@ -1,0 +1,6 @@
+$prefix
+#if ($matches.size() > 0)
+  #foreach ($match in $matches)
+$match.getLabel()|$match.getUri()
+  #end
+#end

@@ -1,0 +1,40 @@
+<div id="lw_facades" class="lw_box">
+	<div class="lw_title">Starting Points</div>
+	
+	<script type="text/javascript">
+		#set($urlWithoutPaging = $url.changeCommand("browse"))
+		$urlWithoutPaging.getQuery().removeParameter("page")
+		var g_urlWithoutPaging = "$urlWithoutPaging.toURLString()";
+	</script>
+	<table class="lw_search" cellspacing="0" cellpadding="0">
+		<tr>
+			<td class="lw_left">&nbsp;</td>
+			<td class="lw_bg"><input onkeyup="freeTextSearch(event)"
+				onfocus="if(this.value=='Type here to search')this.value=''"
+				onblur="if(this.value=='')this.value='Type here to search'"
+				type="text"
+				value="Type here to search"/></td>
+			<td class="lw_right">&nbsp;</td>
+		</tr>
+	</table>
+
+	<ul id="lw_facades_body">
+		#set($facadeCount = 0)
+		#foreach($facade in $facades)
+			#if($facade.getCount() > 0)
+				#set($query = "facadeURI=")
+				#set($query = $query.concat($facade.getURI()).concat("&").concat($facade.getInitialQuery()))
+				#set($facadeURL = $url.changeCommandQuery("browse", $query).toURLString())
+				<li>
+				 <span class="lw_label"><a href="$facadeURL">$facade.getShortLabel()</a></span>
+				 <span class="lw_count">$facade.getCount()</span>
+				 <span class="lw_description">$facade.getContentDescription()</span>
+				</li>
+				#set($facadeCount = $facadeCount + 1)
+			#end
+		#end
+		#if($facadeCount == 0)
+			<li>None of the predefined starting points contains data.</li>
+		#end
+	</ul>
+</div>

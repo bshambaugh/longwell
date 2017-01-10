@@ -1,0 +1,10 @@
+#set($resultIndex = $answer.getIndex())
+#if($resultIndex.size() > 0)
+    <div class="lw_items_index">
+        #foreach($entry in $resultIndex)
+            #set($url2 = $url.dup())
+            $url2.getQuery().setParameter("page", $entry.getPageIndex().toString())
+            <span class="lw_link"><a href="$utilities.escape($url2.toURLString())"><span class="lw_label">$entry.getLabel()</span></a><span class="lw_count">$entry.getCount()</span></span>
+        #end
+    </div>
+#end

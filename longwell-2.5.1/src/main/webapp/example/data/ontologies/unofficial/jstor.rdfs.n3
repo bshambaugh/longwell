@@ -1,0 +1,63 @@
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+@prefix jstor:   <http://simile.mit.edu/2005/03/ontologies/jstor#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix lomEdu:  <http://www.imsproject.org/rdf/imsmd_educationalv1p2#> .
+
+<http://simile.mit.edu/2004/06/ontologies/via#>
+    rdf:type         owl:Ontology ;
+    dc:title         "Ontology for the JStor Metadata" ;
+    dc:creator       "Stefano Mazzocchi" ;
+    dc:publisher     "The SIMILE Project" ;
+    dc:date          "2005-03-08" ;
+    dc:format        "RDFS" .
+
+# -------------- classes ------------------------
+
+jstor:Journal 
+    a	rdfs:Class ;
+    rdfs:label	"Journal"@en ;
+    rdfs:comment "A journal publication"@en .
+
+jstor:Issue
+    a 	rdfs:Class ;
+    rdfs:subClassOf jstor:Journal ;
+    rdfs:label	"Issue"@en ;
+    rdfs:comment "An issue of a particular journal"@en .
+
+jstor:Article
+    a 	rdfs:Class ;
+    rdfs:subClassOf lomEdu:LearningResourceType ;
+    rdfs:label	"Article"@en ;
+    rdfs:comment "An article contained in a journal issue"@en .
+
+jstor:Part 
+    a	rdfs:Class ;
+	rdfs:subClassOf lomEdu:LearningResourceType ;
+    rdfs:label	"Part"@en ;
+    rdfs:comment "A part or section of an article"@en .
+
+jstor:Item 
+    a	rdfs:Class ;
+	rdfs:subClassOf lomEdu:LearningResourceType ;
+    rdfs:label	"Subitem"@en ;
+    rdfs:comment "An editorial item contained into an article section"@en .
+    
+# -------------- properties ------------------------
+
+jstor:contains
+    a   rdfs:Property;
+    rdfs:label  "contains"@en;
+    rdfs:comment "Indicates the relationship of containing some other entity"@en .
+
+jstor:partOf
+    a   rdfs:Property;
+    rdfs:label  "is Part of"@en;
+    rdfs:comment "Indicates the relationship of being part of some other entity"@en .
+
+jstor:sici
+    a   rdfs:Property ;
+    rdfs:label "SICI"@en ;
+    rdfs:comment "Serial Item and Contribution Identifier (ANSI/NISO Z39.56-1996)"@en .
+	

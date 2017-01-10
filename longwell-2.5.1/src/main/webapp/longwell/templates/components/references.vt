@@ -1,0 +1,10 @@
+<div class="lw_blinks">
+  <div class="lw_piece" id="expand-referers-${objectURI}" onclick="expandReferers('$objectURI', '$profile.getID()');">
+    <div><img src="$resourcePath/images/expand.png"/> <span class="lw_link">Show Referers</span></div>
+  </div>
+  <div class="lw_piece" id="collapse-referers-${objectURI}" style="display: none">
+	<div onclick="collapseReferers('$objectURI', '$profile.getID()');">
+	  <img src="$resourcePath/images/collapse.png" /> <span class="lw_link">Hide Referers</span></div>
+    <div id="referers-${objectURI}" class="lw_body"></div>
+  </div>
+</div>

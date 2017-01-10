@@ -1,0 +1,99 @@
+/*
+ * This is the default stylesheet that should be the first of the cascading.
+ *
+ * NOTE: no browser-specific or metadata-specific style information
+ *       should be contained here
+ */
+
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: "georgia", "times", "times new roman", serif;
+    color: #222;
+    background-color: #fff;
+    font-size: 12px;
+    quotes: "\201C" "\201E" "\2018" "\2019";
+}
+
+@media screen {
+  body {
+  }
+}
+
+form {
+	margin: 0px;
+	border: 0px;
+	padding: 0px;
+}
+
+select,input {
+    font-family: "georgia", "times", "times new roman", serif;
+    color: #222;
+    font-size: 12px;
+}
+
+.disabled {
+	color : #aaa ;
+	background-color : #eee ;
+}
+
+a:link {
+    color: #222;
+}
+
+a:visited {
+    color: #666;
+}
+
+a:hover {
+    color: #000;
+}
+
+a:focus {
+}
+
+a:active {
+}
+
+img {
+	border: none;
+}
+
+#top {
+    position: relative;
+    z-index: 2;
+    background-color: #fff;
+}
+#top h1 {
+    font-size: 2em;
+    letter-spacing: 0.1em;
+    padding: 0.4em 0.5em;
+    margin: 0;
+    color: #333;
+    font-weight: normal;
+}
+#top h2 {
+    font-size: 1em;
+    text-transform: none;
+    color: #aaa;
+    font-weight: bold;
+    padding: 0em 1em 0.5em 1em;
+    margin: -1em 0em 0em 0em;
+}
+#top .path {
+    padding: 0.2em 0.3em;
+    background-color: #eee;
+    border-bottom: 1px solid #ccc;
+}
+
+#bottom {
+	text-align: center;
+	padding: 1em 1em 1em 1em;
+	color: #888;
+}
+#bottom img.logo {
+	padding: 2px;
+	border: 1px solid #ccc;
+	background-color: #fff;
+}
+

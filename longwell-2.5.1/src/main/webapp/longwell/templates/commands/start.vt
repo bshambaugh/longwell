@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<!--
+		#set($dataURL = $url.changeCommand("export"))
+		<link rel="alternate" title="RDF Data" href="$dataURL.toURLString()" type="application/n3" />
+		-->
+		<title>#inject("title")</title>
+		
+		#set($profileURL = $url.changeQuery(""))
+		$profileURL.getQuery().removeOtherParameters()
+		
+        <script type="text/javascript">
+        	var g_contextPath = "$contextPath";
+        	var g_resourcePath = "$resourcePath";
+			var g_profileURL = "$profileURL.toURLString()";
+			var g_outerQuery = "$url.getQuery().toURLQueryString()";
+        </script>
+		#inject("start-stylesheets")
+		#inject("start-scripts")
+	</head>
+	<body onmousedown="Menu.onBodyMouseDown(event);">
+		#inject("header")
+		#if ($facades.size() > 0 || $classes.size() > 0)
+            <table id="center" width="100%" cellspacing="0" cellpadding="0">
+              <tr valign="top">
+				#set($tagModel = $profile.getStructuredModel("edu.mit.simile.longwell.TagModel"))
+				#set($tagLabels = $utilities.sort($tagModel.getTagLabels(), $utilities.makeTagComparator()))
+                                #if ($tagLabels.size() > 0)
+					<td nowrap="true">
+						<div id="lw_tags" class="lw_box" 
+							style="width: 20em">
+							<!-- HACK [dfhuynh]: This prevents Firefox from making 
+								the first column taking up 100% of the window's
+								width.
+							-->
+							
+							<div class="lw_title">Browse Data by Tag</div>
+							<div class="lw_filter"><input
+								onkeyup="filterTags(event, 'lw_tags_body')"
+								onfocus="if(this.value=='Type here to filter')this.value=''"
+								onblur="if(this.value=='')this.value='Type here to filter'"
+								type="text"
+								value="Type here to filter"/></div>
+							<div class="lw_body" id="lw_tags_body">
+							#foreach($tagLabel in $tagLabels)
+								#if ($tagModel.countObjects($tagLabel) > 0)
+									#set($tagUrl = $url.changeCommand("browse"))
+									#set($param = "l")
+									#set($param = $param.concat($tagLabel))
+									$tagUrl.getQuery().addRestriction("edu.mit.simile.longwell.query.project.TagProjector", "", "edu.mit.simile.longwell.query.bucket.DistinctValueBucketer", $param)
+									<div class="lw_item"><img class="lw_icon" src="$resourcePath/images/tag.gif"/><a href="$tagUrl.toURLString()">$tagLabel</a> ($tagModel.countObjects($tagLabel))</div>
+								#end
+							#end
+							</div>
+						</div>
+					</td>
+                                #end
+				<td width="100%">#inject("facades")</td>
+				<td nowrap="true">#inject("classes")</td>
+    		  </tr>
+    		</table>
+		#else
+			<div id="lw_content">
+				No typed data found.
+			</div>
+		#end
+		#inject("footer")
+	</body>
+</html>

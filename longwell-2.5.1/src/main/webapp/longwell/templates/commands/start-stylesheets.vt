@@ -1,0 +1,3 @@
+#inject("common-stylesheets")
+<link rel="stylesheet" href="$resourcePath/styles/commands/tag-start.css" type="text/css"/>
+<link rel="stylesheet" href="$resourcePath/styles/components/search-box.css" type="text/css"/>

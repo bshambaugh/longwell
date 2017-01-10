@@ -1,0 +1,159 @@
+#lw_sidebar_facet_progress {
+    padding: 10px 0;
+    margin: 0 0 0 20%;
+}
+
+#lw_sidebar_facet_progress p {
+    margin: 0;
+    padding: 0;
+}
+
+#progress_meter {
+    text-align: left;
+    width: 100px;
+    height: 15px;
+    border: 1px solid #ccc;
+}
+
+.lw_facet_pane {
+    margin: 10px 0 0;
+    padding: 0;
+    background: url("../../images/facet-box-bottom.gif") bottom left no-repeat transparent;
+}
+
+.lw_facet_pane > .lw_title_open {
+    background: url("../../images/facet-box-top-open.gif") top left no-repeat transparent;
+    font-weight: bold;
+    color: #666;
+    padding: 0 4px 0 16px;
+    margin: 0px;
+    border: 0px;
+    height: 32px;
+    cursor: pointer;
+}
+
+ .lw_facet_pane > .lw_title_closed {
+    background: url("../../images/facet-box-top-closed.gif") top left no-repeat transparent;
+    font-weight: bold;
+    color: #666;
+    padding: 0 4px 0 16px;
+    margin: 0px;
+    border: 0px;
+    height: 31px;
+    cursor: pointer;
+}
+
+ .lw_facet_pane > .lw_title_closed span:after {
+    content: " [click to expand]";
+    font-weight: normal;
+    font-size: 0.8em;
+    color: #999;
+}
+
+.lw_facet_pane > .lw_title_open span, .lw_facet_pane > .lw_title_closed span {
+    display: block;
+    background: url("../../images/facet-box-top-corner.gif") top right no-repeat transparent;
+    width: 100%;
+    margin: 0;
+    padding: 10px 0 0 10px;
+    height: 22px;
+}
+
+.lw_facet_pane > .end {
+    display: block;
+    width: 100%;
+    padding: 0 3px;
+    margin: 0;
+    height: 16px;
+    background: url("../../images/facet-box-bottom-corner.gif") bottom right no-repeat transparent;
+}
+
+.lw_facet_pane .lw_title_open img, .lw_facet_pane .lw_title_closed img {
+    cursor: pointer;
+    float: right;
+    position: relative;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+}
+
+.lw_facet_pane .lw_flavors { }
+
+.lw_facet_pane .lw_flavors select {
+    width: 100%;
+    border-color: white;
+    font-size: 0.8em;
+    background-color: #fff;
+    color: #888;
+}
+
+.lw_facet_pane .lw_flavors option {
+    border-style: hidden;
+}
+
+.lw_facet_pane .lw_filter {
+    padding: 0px 2px;
+    border-bottom: 1px solid #ccc;
+}
+
+.lw_facet_pane .lw_filter input {
+    border: none;
+    font-size: 0.8em;
+    color: #888;
+    width: 100%;
+    background-color: #eee;
+}
+
+.lw_facet_body {
+    width: 100%;
+    margin: 0 0 0 2px;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    z-index: 1;
+    position: relative;
+    top: 0px;
+}
+
+.lw_facet_body .lw_values {
+    background-color: #fff;
+    overflow: auto;
+    height: 10em;
+}
+.lw_facet_body .lw_values div {
+    cursor: pointer;
+    padding: 2px 4px;
+}
+.lw_facet_body .lw_values .lw_even {
+    background-color: #f4f4f4;
+}
+.lw_facet_body .lw_values .lw_odd {
+    background-color: #fff;
+}
+.lw_facet_body .lw_values .lw_value {
+    margin-right: 0.2em;
+}
+.lw_facet_body .lw_values a {
+    text-decoration: none;
+}
+.lw_facet_body .lw_values .lw_value:hover {
+    text-decoration: underline;
+}
+.lw_facet_body .lw_values .lw_count {
+    color: #666;
+}
+.lw_facet_body .lw_values .lw_count:before {
+    content: "("
+}
+.lw_facet_body .lw_values .lw_count:after {
+    content: ")"
+}
+
+.lw_facet_body .lw_empty {
+	padding: 1em;
+}
+
+.lw_facet_pane .lw_more_values {
+	text-align: right;
+	background: #ddd;
+	border-top: 1px solid #999;
+}

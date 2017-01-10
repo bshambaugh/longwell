@@ -1,0 +1,33 @@
+#if ($utilities.isURI($object))
+    #set($objectURI = $object.toString())
+    #if($objectURI.startsWith("urn:tag:"))
+        #set($tagModel = $profile.getStructuredModel("edu.mit.simile.longwell.TagModel"))
+        #set($title = "Tag: ")
+        #set($title = $title.concat($tagModel.getTagLabel($object)))
+    #else
+        #set($title = $schemaModel.getLabel($object, $locale))
+    #end
+    
+    #set($itemURL = $url.changeCommandQuery("focus", ""))
+    $itemURL.getQuery().setParameter("objectURI", $objectURI)
+    
+    <div class="lw_item" id="lw_item_${objectURI}">
+      <div class="lw_title">
+        <a class="lw_system_control"
+            title="Show this item's URI"
+            href="$objectURI"
+            onclick="prompt('You can copy the item&rsquo;s URI from here.', '$objectURI', 'Longwell'); return false;"
+            style="font-weight: normal"
+            >[URI]</a>
+        <a href="$utilities.escape($itemURL.toURLString())" title="Browse to this item"><span>$title</span></a>
+      </div>
+      #inject("properties-and-references")
+    </div>
+    
+    #*
+        This would be the ajax equivalent of the above:
+         <script type="text/javascript">loadView("${objectURI}", "$profile.getID()", "view-");</script>
+    *#
+#else
+    #inject("literal-view")
+#end

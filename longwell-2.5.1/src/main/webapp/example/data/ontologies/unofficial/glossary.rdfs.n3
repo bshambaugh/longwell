@@ -1,0 +1,9 @@
+@prefix : <http://simile.mit.edu/2004/04/ontologies/glossary#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+:defines a rdf:Property ;
+    rdfs:label "Defines"@en ;
+    rdfs:comment "A glossary defines a term."@en ;
+    owl:inverseOf rdfs:isDefinedBy .

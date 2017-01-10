@@ -1,0 +1,62 @@
+@prefix rvc:     <http://simile.mit.edu/2007/03/ontologies/rvc#> .
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix vra:     <http://simile.mit.edu/2003/10/ontologies/vraCore3#> .
+
+<http://simile.mit.edu/2007/03/ontologies/rvc#>
+    rdf:type         owl:Ontology ;
+    dc:title         "RDFS Ontology for Rotch Visual Collection" ;
+    dc:creator       "Ryan Lee" ;
+    dc:publisher     "The SIMILE Project" ;
+    dc:date          "2007-03-15"^^xsd:date ;
+    dc:format        "RDFS" .
+
+## --------- Properties --------------
+
+rvc:thumbnail
+	rdf:type rdf:Property ;
+	rdfs:label "thumbnail"@en ;
+	rdfs:comment "The URL of a thumbnail of an image."@en ;
+	rdfs:domain vra:Image .
+
+rvc:medium
+	rdf:type rdf:Property ;
+	rdfs:label "medium size"@en ;
+	rdfs:comment "The URL of a medium size version of an image."@en ;
+	rdfs:domain vra:Image .
+
+rvc:large
+	rdf:type rdf:Property ;
+	rdfs:label "large size"@en ;
+	rdfs:comment "The URL of a large size version of an image."@en ;
+	rdfs:domain vra:Image .
+
+rvc:image
+	rdf:type rdf:Property ;
+	rdfs:label "image"@en ;
+	rdfs:comment "Relates a work to an image."@en ;
+	rdfs:domain vra:Work ;
+	rdfs:range vra:Image .
+
+rvc:work
+	rdf:type rdf:Property ;
+	rdfs:label "work"@en ;
+	rdfs:comment "Relates an image to a work."@en ;
+	rdfs:domain vra:Image ;
+	rdfs:range vra:Work .
+
+rvc:view
+	rdf:type rdf:Property ;
+	rdfs:label "view"@en ;
+	rdfs:comment "Describes the perspective in an image."@en ;
+	rdfs:domain vra:Image .
+
+rvc:buildingType
+	rdf:type rdf:Property ;
+	rdfs:label "building type"@en ;
+	rdfs:comment "Describes the general type of a building work."@en ;
+	rdfs:domain vra:Work .
+

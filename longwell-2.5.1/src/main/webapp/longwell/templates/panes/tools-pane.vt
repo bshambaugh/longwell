@@ -1,0 +1,20 @@
+<div id="lw_tools">
+    <div class="lw_tabs lw_top_tabs" id="lw_tools_top_tabs">
+        <ul>
+            <li onclick="toggleToolsTab(event)" class="order_tab">Order</li>
+            <li onclick="toggleToolsTab(event)" class="commands_tab">Commands</li>
+        </ul>
+    </div>
+	<div class="lw_tab_body" id="order_tab_body">
+		#inject("sorting-controls")
+	</div>
+	<div class="lw_tab_body" id="commands_tab_body">
+		No commands available
+	</div>
+    <div class="lw_tabs lw_bottom_tabs" id="lw_tools_bottom_tabs">
+        <ul>
+            <li onclick="toggleToolsTab(event)" class="order_tab">Order</li>
+            <li onclick="toggleToolsTab(event)" class="commands_tab">Commands</li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+.lw_items_summary {
+}
+
+.lw_items_count {
+}
+.lw_items_count span {
+	font-family: "helvetica", "arial", "sans serif";
+	font-size: 200%;
+}
+
+.lw_items_sorting {
+	padding-left: 1em;
+	color: #666;
+	font-size: 90%;
+}
+
+.lw_items_sort_property {
+	font-size: 100%;
+	color: #000;
+}
+.lw_items_sort_direction {
+}
+.lw_items_sort_direction:before {
+	content: "[";
+}
+.lw_items_sort_direction:after {
+	content: "]";
+}
+
+.lw_items_index {
+	padding: 0.5em;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.lw_items_index .lw_link a {
+	text-decoration: none;
+}
+
+.lw_items_paging {
+	padding: 0.5em;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.lw_items_paging .lw_link a {
+	text-decoration: none;
+}
+
+.lw_page_number {
+	font-family: "verdana", "helvetica", "arial", "sans serif";
+}
+
+.lw_items_paging .lw_neighbor {
+	font-size: 120% ;
+}
+
+.lw_items_paging .lw_current {
+	font-size: 150%;
+}
+
+.lw_page_pointer {
+	padding: 0em 0.6em;
+}
+
+.lw_item_soft_hyphen {
+	font-size: 1pt;
+}

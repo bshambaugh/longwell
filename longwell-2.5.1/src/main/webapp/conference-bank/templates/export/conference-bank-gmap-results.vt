@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page>
+<title>Longwell</title>
+<query>Custom Query</query>
+<center lat="$centerLatitude" lng="$centerLongitude"/>
+<span lat="$spanLatitude" lng="$spanLongitude"/>
+<legend id="legend">
+ #foreach($entry in $legend)
+  <type image="$entry.getMarkerURL()" label="$entry.getLabel()"/>
+ #end
+</legend>
+#foreach($location in $locations)
+<location>
+  <point lat="$location.getLatitude()" lng="$location.getLongitude()"/>
+  <icon image="$location.getMarkerURL()" class="longwell"/>
+  <div style="padding-right: 8px; margin-top: 2px" xmlns="http://www.w3.org/1999/xhtml">
+    $location.getItems().size() item(s)
+    #set($items = $location.getItems())
+    <ul style="width: 25em">
+      #foreach($item in $items)
+        <li><a target="_top" href="$item.getItemURL()">$item.getLabel()</a>
+          [<a target="_top" title="Edit item" href="$item.getEditURL()"><em>edit</em></a>]
+          [<a target="_top" title="Remove item from map" onclick="return removeFromMap(this);" href="$item.getRemoveURL()"><em>remove</em></a>]
+        </li>
+      #end
+    </ul>
+    <div id="$location.getIndex()" lat="$location.getLatitude()" lng="$location.getLongitude()">
+      <div class="lw_map_new_marker_title">
+        Add another:
+        <input style="display: inline;" id="lw_names_${location.getIndex()}" onkeyup="onLabelTextboxKeyUp(event, 'lw_names_${location.getIndex()}', 'default');" onblur="onLabelTextboxBlur(event, 'lw_new_marker_remove_${location.getIndex()}', 'default');" />
+        <div class="lw_map_new_marker_completion" id="lw_names_completion_${location.getIndex()}">
+          <select size="5" id="lw_names_completion_selector_${location.getIndex()}">
+          </select>
+          <input type="hidden" id="lw_names_completion_uri_${location.getIndex()}" />
+        </div>
+      </div>
+      <div class="lw_map_new_marker_controls">
+        <button onclick="setLabel(this); return false;" style="display: none" id="lw_new_marker_remove_${location.getIndex()}">Remove</button>
+        <button onclick="setLabel(this); return false;" id="lw_new_marker_save_${location.getIndex()}">Save</button>
+      </div>
+    </div>
+  </div>
+</location>
+#end
+</page>

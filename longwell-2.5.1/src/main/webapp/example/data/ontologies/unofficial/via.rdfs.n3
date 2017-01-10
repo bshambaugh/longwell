@@ -1,0 +1,160 @@
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+@prefix via:     <http://simile.mit.edu/2004/06/ontologies/via#> .
+@prefix geo:     <http://simile.mit.edu/2004/06/ontologies/geography#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+
+<http://simile.mit.edu/2004/06/ontologies/via#>
+    rdf:type         owl:Ontology ;
+    dc:title         "Ontology for the VIA Metadata" ;
+    dc:creator       "Stefano Mazzocchi" ;
+    dc:publisher     "The SIMILE Project" ;
+    dc:date          "2004-06-26" ;
+    dc:format        "RDFS" .
+
+# -------------- classes ------------------------
+
+via:Record 
+    a   rdfs:Class ;
+    rdfs:subClassOf via:Item ;
+    rdfs:label  "Record"@en ;
+    rdfs:comment ""@en .
+
+via:Actor
+    a   rdfs:Class ;
+    rdfs:label  "Actor"@en ;
+    rdfs:comment "an acting entity"@en .
+
+via:Action
+    a   rdfs:Class ;
+    rdfs:label  "Action"@en ;
+    rdfs:comment "an action"@en .
+
+via:Item 
+    a   rdfs:Class ;
+    rdfs:label  "Item"@en ;
+    rdfs:comment "the superclass of all instances of items in the dataset"@en .
+
+via:Subwork 
+    a   rdfs:Class ;
+    rdfs:subClassOf via:Item ;
+    rdfs:label  "Subwork"@en ;
+    rdfs:comment ""@en .
+
+via:Surrogate 
+    a   rdfs:Class ;
+    rdfs:subClassOf via:Item ;
+    rdfs:label  "Surrogate"@en ;
+    rdfs:comment ""@en .
+
+via:Production 
+    a   rdfs:Class ;
+    rdfs:subClassOf via:Action ;
+    rdfs:label  "Production"@en ;
+    rdfs:comment "a production action"@en .
+
+via:Image
+    a   rdfs:Class ;
+    rdfs:label  "Image"@en ;
+    rdfs:comment "an image"@en .
+    
+# -------------- property ------------------------
+
+via:contains
+    a   rdf:Property ;
+    rdfs:label      "contains"@en ;
+    rdfs:comment    ""@en ;
+    rdfs:range      via:Item ;
+    rdfs:domain     via:Item .
+
+via:producedBy
+    a   rdf:Property ;
+    rdfs:label      "production"@en ;
+    rdfs:comment    "the place of production"@en ;
+    rdfs:range      via:Item ;
+    rdfs:domain     via:Production .
+
+via:producer
+    a   rdf:Property ;
+    rdfs:label      "producer"@en ;
+    rdfs:comment    "the action responsible for the production"@en ;
+    rdfs:range      via:Production .
+
+via:role
+    a   rdf:Property ;
+    rdfs:label     "role"@en ;
+    rdfs:comment    "the role of that an actor has played in a particular event"@en ;
+    rdfs:range      via:Actor .
+    
+via:workType
+    a   rdf:Property ;
+    rdfs:label      "work type"@en ;
+    rdfs:comment    "a type of work"@en .
+
+via:beginDate
+    a   rdf:Property ;
+    rdfs:label      "begin date"@en ;
+    rdfs:comment    "free format date"@en .
+
+via:endDate
+    a   rdf:Property ;
+    rdfs:label      "end date"@en ;
+    rdfs:comment    "free format date"@en .
+
+via:location
+    a   rdf:Property ;
+    rdfs:label      "location"@en ;
+    rdfs:comment    "the geographical location"@en ;
+    rdfs:range      via:Item ;
+    rdfs:domain     geo:Place .
+    
+via:hasImage
+    a    rdf:Property ;
+    rdfs:label      "image"@en ;
+    rdfs:comment    "the image representing the item"@en ;
+    rdfs:range      via:Item ;
+    rdfs:domain     via:Image .
+    
+via:restricted
+    a    rdf:Property ;
+    rdfs:label      "restricted"@en ;
+    rdfs:comment    "if the image is restricted or not"@en ;
+    rdfs:range      via:Image .
+
+via:linkToImage
+    a    rdf:Property ;
+    rdfs:label      "link to image"@en ;
+    rdfs:comment    "the link to the image"@en ;
+    rdfs:range      via:Image .
+
+via:linkToThumbnail
+    a    rdf:Property ;
+    rdfs:label      "link to thumbnail"@en ;
+    rdfs:comment    "the link to the thumbnail"@en ;
+    rdfs:range      via:Image .
+
+via:caption
+    a    rdf:Property ;
+    rdfs:label      "caption"@en ;
+    rdfs:comment    "the image caption"@en ;
+    rdfs:range      via:Image .
+    
+via:topic
+    a    rdf:Property ;
+    rdfs:label      "topic"@en ;
+    rdfs:comment    "the item topic"@en ;
+    rdfs:range      via:Item .
+
+via:style
+    a    rdf:Property ;
+    rdfs:label      "style"@en ;
+    rdfs:comment    "the item style"@en ;
+    rdfs:range      via:Item .
+
+via:culture
+    a    rdf:Property ;
+    rdfs:label      "culture"@en ;
+    rdfs:comment    "the culture that created the item"@en ;
+    rdfs:range      via:Item .
+    

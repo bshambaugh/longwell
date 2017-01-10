@@ -1,0 +1,233 @@
+@prefix vra:     <http://simile.mit.edu/2003/10/ontologies/vraCore3#> .
+@prefix art:	 	<http://simile.mit.edu/2003/10/ontologies/artstor#> .
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:       <http://www.w3.org/2002/07/owl#> .
+
+<http://simile.mit.edu/2003/10/ontologies/artstor#>
+    rdf:type         owl:Ontology ;
+    dc:title         "Ontology for the ARTStor Metadata" ;
+    dc:creator       "Andy Seaborne" ;
+    dc:publisher     "The SIMILE Project" ;
+    dc:date          "2003-10-14" ;
+    dc:format        "RDFS" .
+ 
+# ------------------- Classes ------------------
+
+art:MediaFile
+    a rdfs:Class ;
+    rdfs:label "MediaFile"@en .
+
+art:ControlledTerm
+	a rdfs:Class ;
+	rdfs:label "Controlled Term"@en .
+	
+art:Collection 
+	rdfs:subClassOf art:ControlledTerm ;
+	rdfs:label "Collection"@en ;
+	rdfs:comment "An element from the controlled list of collections"@en .
+
+art:Creator
+	rdfs:subClassOf	art:ControlledTerm ;
+	rdfs:label "Creator"@en ;
+	rdfs:comment "An element from the controlled list of creators"@en .
+
+art:Format
+	rdfs:subClassOf art:ControlledTerm ;
+	rdfs:label "Format"@en ;
+	rdfs:comment "An element from the controlled list of formats"@en .
+
+art:Geographic
+	rdfs:subClassOf art:ControlledTerm ;
+	rdfs:label "Geographic Term"@en ;
+	rdfs:comment "An element from the controlled list of geographic terms"@en .
+
+art:Id
+	rdfs:subClassOf art:ControlledTerm ;
+	rdfs:label "ID"@en ;
+	rdfs:comment "An element from the controlled list of IDs"@en .
+
+art:Image_id
+	rdfs:subClassOf art:ControlledTerm ;
+	rdfs:label "Image ID"@en ;
+	rdfs:comment "An element from the controlled list of image IDs"@en .
+
+art:LargerEntity
+	rdfs:subClassOf art:ControlledTerm ;
+	rdfs:label "Larger Entity"@en ;
+	rdfs:comment "An element from the controlled list of larger entities"@en .
+
+art:Material
+	rdfs:subClassOf art:ControlledTerm ;
+	rdfs:label "Material"@en ;
+	rdfs:comment "An element from the controlled list of materials"@en .
+
+art:Mediafile
+	rdfs:subClassOf art:ControlledTerm ;
+	rdfs:label "Media File"@en ;
+	rdfs:comment "An element from the controlled list of mediafiles"@en .
+
+art:Mediafileformat
+	rdfs:subClassOf art:ControlledTerm ;
+	rdfs:label "Media File Format"@en ;
+	rdfs:comment "An element from the controlled list of mediafile formats"@en .
+
+art:Object_id
+	rdfs:subClassOf art:ControlledTerm ;
+	rdfs:label "Object ID"@en ;
+	rdfs:comment "An element from the controlled list of object IDs"@en .
+
+art:RecordType
+	rdfs:subClassOf art:ControlledTerm ;
+	rdfs:label "Record Type"@en ;
+	rdfs:comment "An element from the controlled list of record types"@en .
+
+art:Resolution
+	rdfs:subClassOf art:ControlledTerm ;
+	rdfs:label "Resolution"@en ;
+	rdfs:comment "An element from the controlled list of resolutions"@en .
+
+art:Series
+	rdfs:subClassOf art:ControlledTerm ;
+	rdfs:label "Series"@en ;
+	rdfs:comment "An element from the controlled list of series"@en .
+
+art:Site
+	rdfs:subClassOf art:ControlledTerm ;
+	rdfs:label "Geographic Site"@en ;
+	rdfs:comment "An element from the controlled list of sites"@en .
+
+art:Source
+	rdfs:subClassOf art:ControlledTerm ;
+	rdfs:label "Source"@en ;
+	rdfs:comment "An element from the controlled list of source"@en .
+
+art:Subject
+	rdfs:subClassOf art:ControlledTerm ;
+	rdfs:label "Subject"@en ;
+	rdfs:comment "An element from the controlled list of subjects"@en .
+
+art:Topic
+	rdfs:subClassOf art:ControlledTerm ;
+	rdfs:label "Topic"@en ;
+	rdfs:comment "An element from the controlled lists of topics"@en .
+
+## Properties
+
+art:thumbnail
+    a rdf:Property ;
+    rdfs:label "thumbnail"@en .        
+
+art:inCollection
+    a rdf:Property ;
+    rdfs:domain vra:Record ;
+    rdfs:label "in collection"@en .
+
+art:lps
+    a rdf:Property ;
+    rdfs:domain art:MediaFile ;
+    rdfs:label "lps"@en .
+
+art:lpsid
+    a rdf:Property ;
+    rdfs:domain art:MediaFile ;
+    rdfs:label "lpsid"@en .
+
+art:width
+    a rdf:Property ;
+    rdfs:domain art:MediaFile ;
+    rdfs:label "width"@en .
+
+art:serverurl
+    a rdf:Property ;
+    rdfs:domain art:MediaFile ;
+    rdfs:label "server URL"@en .
+
+art:filename
+    a rdf:Property ;
+    rdfs:domain art:MediaFile ;
+    rdfs:label "file name"@en .
+
+art:url
+    a rdf:Property ;
+    rdfs:domain art:MediaFile ;
+    rdfs:label "URL"@en .
+
+art:height
+      a rdf:Property ;
+      rdfs:domain art:MediaFile ;
+      rdfs:label "height"@en .
+
+art:hasMediaFile
+      a rdf:Property ;
+      rdfs:domain vra:Record ;
+      rdfs:label "has mediafile"@en ;
+      rdfs:range vra:MediaFile .
+
+art:resolution
+      a rdf:Property ;
+      rdfs:domain art:MediaFile ;
+      rdfs:label "resolution"@en .
+
+art:mediafileFormat
+      a rdf:Property ;
+      rdfs:domain art:MediaFile ;
+      rdfs:label "mediafile format"@en .
+
+art:imageId
+      a rdf:Property ;
+      rdfs:domain vra:Record ;
+      rdfs:label "image ID"@en .
+
+art:objectId
+      a rdf:Property ;
+      rdfs:domain vra:Record ;
+      rdfs:label "object ID"@en .
+
+art:authority
+      a rdf:Property ;
+      rdfs:domain vra:Record ;
+      rdfs:label "authority"@en ;
+      rdfs:subPropertyOf vra:subject .
+
+art:geographic
+      a rdf:Property ;
+      rdfs:domain vra:Record ;
+      rdfs:label "geographic"@en .
+
+art:nationality
+      a rdf:Property ;
+      rdfs:domain vra:Entity ;
+      rdfs:label "nationality"@en .
+
+art:metadataCreationDate
+      a rdf:Property ;
+      rdfs:domain vra:Record ;
+      rdfs:label "metadata creation date"@en .
+
+art:metadataUpdateDate
+      a rdf:Property ;
+      rdfs:domain vra:Image ;
+      rdfs:label "metadata update date"@en .
+
+art:vitalDates
+      a rdf:Property ;
+      rdfs:domain vra:Entity ;
+      rdfs:label "vital dates"@en .
+
+art:topic
+      a rdf:Property ;
+      rdfs:domain vra:Record ;
+      rdfs:label "topic"@en .
+
+art:imageSource
+      a rdf:Property ;
+      rdfs:domain vra:Record ;
+      rdfs:label "image source"@en .
+
+art:sourceLocation
+      a rdf:Property ;
+      rdfs:domain vra:Record ;
+      rdfs:label "source location"@en ;
+      rdfs:subPropertyOf vra:source .

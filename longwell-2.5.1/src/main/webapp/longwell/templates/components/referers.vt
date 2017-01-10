@@ -1,0 +1,7 @@
+#set($pairs = $schemaModel.getPropertyValuesPairs($object, $locale, false))
+#if($pairs.size() > 0)
+	#set($linkDirection = "backward")
+	#inject("property-value-list")
+#else
+	<div style="padding: 0.5em">No other items refer to this item.</div>
+#end

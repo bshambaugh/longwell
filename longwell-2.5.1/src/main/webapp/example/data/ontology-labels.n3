@@ -1,0 +1,14 @@
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix contact: <http://www.w3.org/2000/10/swap/pim/contact#> .
+
+contact:Address rdfs:label "Address"@en .
+
+contact:Office rdfs:label "Office"@en .
+
+contact:address rdfs:label "address"@en .
+
+contact:office rdfs:label "office"@en .
+
+contact:homePage rdfs:label "homepage"@en .
+
+contact:phone rdfs:label "phone"@en .

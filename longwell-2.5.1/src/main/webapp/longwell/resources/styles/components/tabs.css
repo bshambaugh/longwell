@@ -1,0 +1,44 @@
+.lw_tab_body {
+    display: none;
+    padding: 1em;
+    background-color: #eee;
+    border-bottom: 1px solid #ddd;
+}
+.lw_tabs ul {
+    display: block;
+    list-style: none outside;
+    padding: 5px 0px 0px 4px;
+    margin: 0px 0px 0px 0px;
+}
+.lw_tabs li {
+    background: #eee url(../../images/frame/short_shadow.png) repeat-x left top;
+    border: 1px solid #ddd;
+    border-top: none;
+    padding: 5px 8px 3px 8px;
+    margin: 0px 3px 0px 3px;
+    display: inline;
+    background-color: #eee;
+    cursor: pointer;
+    color: #555;
+}
+.lw_tabs li:hover {
+    text-decoration: underline;
+}
+.lw_top_tabs {
+    display: none;
+    background: #eee url(../../images/frame/tall_shadow.png) repeat-x left top;
+}
+.lw_bottom_tabs {
+    background: url(../../images/frame/tall_shadow.png) repeat-x left top;
+}
+
+#lw_views ul {
+    background: none;
+    margin: 1em 0em;
+    padding: 0px;
+}
+
+#lw_views li {
+    background: none;
+    border: none;
+}

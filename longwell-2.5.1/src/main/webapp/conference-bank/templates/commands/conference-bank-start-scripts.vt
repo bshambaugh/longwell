@@ -1,0 +1,4 @@
+#inject()
+<script src="$resourcePath/scripts/components/mapframe-control.js" type="text/javascript"></script>
+<script src="$resourcePath/scripts/forms/registry.js" type="text/javascript"></script>
+

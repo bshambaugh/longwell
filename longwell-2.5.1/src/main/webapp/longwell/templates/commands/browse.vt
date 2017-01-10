@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>#inject("title")</title>
+
+        #set($dataURL = $url.changeCommand("export"))
+        $dataURL.getQuery().setParameter("format", "RDFXML")
+        <link rel="alternate" title="RDF Data" href="$dataURL.toURLString()" type="application/rdf+xml" />
+
+        #set($slidingURL = $url.changeQuery(""))
+        #set($slidingQuery = $url.getQuery().dup())
+        $slidingQuery.clearExplicitFacets()
+        $slidingQuery.clearOrders()
+        $slidingQuery.removeOtherParameters()
+        
+        #set($profileURL = $url.changeQuery(""))
+        $profileURL.getQuery().removeOtherParameters()
+
+        <script type="text/javascript">
+            var g_contextPath = "$contextPath";
+            var g_resourcePath = "$resourcePath";
+            var g_profileURL = "$profileURL.toURLString()";
+            var g_outerQuery = "$url.getQuery().toURLQueryString()";
+            var g_slidingURL = "$slidingURL.toURLString()";
+            var g_slidingQuery = "$slidingQuery.toURLQueryString()";
+        </script>
+        #inject("browse-stylesheets")
+        #inject("browse-scripts")
+    </head>
+    <body onmousedown="Menu.onBodyMouseDown(event);">
+        #inject("header")
+        <div id="lw_browser">
+            #inject("query-pane")
+            #inject("tools-pane")
+            #inject("views-pane")
+            #inject($resultsView)
+            $response.flushBuffer()
+        </div>
+        <div id="lw_sidebar">
+            #inject("sidebar")
+        </div>
+    </body>
+</html>

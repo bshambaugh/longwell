@@ -1,0 +1,64 @@
+#if ($utilities.isURI($object))
+
+    #set($objectURI = $object.toString())
+
+	#if("xml" == $format)
+		#if($fresnelResult)
+			$fresnelResult
+		#else
+            #if($fresnel)
+				#set($fresnel_available = "true")
+			#else
+				#set($fresnel_available = "false")
+			#end
+            #set($label = $schemaModel.getLabel($object, $locale))
+			<?xml version="1.0"?>
+			<item uri="$objectURI" label="$label" fresnel="$fresnel_available">
+        
+            #set($pairs = $schemaModel.getPropertyValuesPairs($object, $locale, true))
+            #if($pairs.size() > 0)
+                <forward>
+                	#inject("forward-properties")
+                </forward>
+        	#end
+                
+            #set($pairs = $schemaModel.getPropertyValuesPairs($object, $locale, false))
+            #if($pairs.size() > 0)
+                <backward>
+                	#inject("backward-properties")
+                </backward>
+			#end
+			</item>
+		#end	
+	#else
+    	#if($fresnelResult)
+    		<div class="lw_item lw_fresnel_rendered" id="lw_item_${objectURI}">
+    			$fresnelResult
+    		</div>
+    	#else
+            #if($fresnel)
+				#set($fresnel_available = "lw_fresnel_available")
+			#else
+				#set($fresnel_available = "")
+			#end
+    		<div class="lw_item $fresnel_available" id="lw_item_${objectURI}">
+                #set($title = $schemaModel.getLabel($object, $locale))
+                <div class="lw_title"><span title="$object">$title</span></div>
+            
+                #set($pairs = $schemaModel.getPropertyValuesPairs($object, $locale, true))
+                #if($pairs.size() > 0)
+                    <div class="lw_flinks">
+                    	#inject("forward-properties")
+                    </div>
+            	#end
+                    
+                #set($pairs = $schemaModel.getPropertyValuesPairs($object, $locale, false))
+                #if($pairs.size() > 0)
+                    <div class="lw_blinks">
+                    	#inject("backward-properties")
+                    </div>
+        		#end
+    		</div>
+		#end
+	#end
+#end

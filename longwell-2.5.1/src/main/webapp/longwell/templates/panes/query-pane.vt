@@ -1,0 +1,64 @@
+#macro(makeBroadeningFacet $facet $facetID)
+	<li class="lw_criterion">
+		<span class="lw_facet">$facet.getLabel()</span>
+
+		#set($projectorName = $facet.getProjectorName())
+		#set($projectorParameter = $facet.getProjectorParameter())
+
+		#set($existingBuckets = $facet.getExistingBuckets())
+		#if ($existingBuckets.size() == 1)
+			#set($removeFacetURL = $url.dup())
+			$removeFacetURL.getQuery().removeRestriction($facet.getRestrictionID())
+			$removeFacetURL.getQuery().removeParameter("page")
+
+			<span class="lw_facet_value">$existingBuckets.get(0).getLabel()</span>
+			<a class="lw_link" href="$removeFacetURL.toURLString()">remove</a>
+		#else
+			#foreach($bucket in $existingBuckets)
+				#set($bucketURL = $url.dup())
+				$bucketURL.getQuery().removeRestriction($facet.getRestrictionID())
+				$bucketURL.getQuery().addRestriction($projectorName, $projectorParameter, $bucket.getBucketerName(), $bucket.getBucketerParameter())
+				$bucketURL.getQuery().removeParameter("page")
+				<span class="lw_facet_value">$bucket.getLabel()</span>
+				<a class="lw_link" href="$bucketURL.toURLString()">remove</a>
+			#end
+		#end
+
+		#if($facet.getBucketThemes().size() > 0)
+			<span id="lw_${facetID}_show_broadening_facet"
+				class="lw_facet_addmore lw_link"
+				onclick="toggleBroadeningFacet('$facetID')">add more</span>
+			<div class="lw_facet_pane" id="lw_${facetID}_hide_broadening_facet" style="display: none;">
+				<div id="lw_${facetID}_show_broadening_buckets" class="lw_title"><img onclick="toggleBroadeningFacet('$facetID')" src="$resourcePath/images/close.png"/>Add more</div>
+				<div class="lw_facet_body">
+					#inject("facet-body")
+				</div>
+			</div>
+		#end
+	</li>
+#end
+
+<div id="lw_query">
+	#set($broadeningFacets = $answer.getBroadeningFacets())
+
+    <div class="lw_title">
+		#if ($broadeningFacets.size() == 1)
+			1 filter criterion
+		#else
+			$broadeningFacets.size() filter criteria <a href="$contextPath/">remove all</a>
+		#end
+	</div>
+
+    <ul class="lw_criteria">
+		#set($showCount = false)
+		#set($removeOldRestriction = true)
+
+		#set($index = 1)
+		#set($facetIDPrefix = "broadening_facet")
+    		#foreach($facet in $broadeningFacets)
+   			#set($facetID = $facetIDPrefix.concat($index.toString()))
+			#makeBroadeningFacet($facet $facetID)
+    		#set($index = $index + 1)
+		#end
+	</ul>
+</div>

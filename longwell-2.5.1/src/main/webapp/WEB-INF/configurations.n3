@@ -1,0 +1,75 @@
+@prefix rdf:		<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:		<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc:         <http://purl.org/dc/elements/1.1/> .
+
+@prefix flair:		<http://simile.mit.edu/2005/04/flair#> .
+@prefix longwell:	<http://simile.mit.edu/2005/04/longwell#> .
+@prefix tags:		<http://simile.mit.edu/2005/04/ontologies/tags#> .
+
+# ---------- System -----------
+
+longwell:SystemStatus
+	rdf:type rdfs:Class ;
+	rdfs:label "System Status"@en ;
+	rdfs:comment "System status"@en ;
+.
+
+longwell:Trusted
+	rdf:type longwell:SystemStatus ;
+	rdfs:label "Trusted Status"@en ;
+	rdfs:comment "Trusted status"@en ;
+.
+
+longwell:systemic
+	rdf:type rdf:Property ;
+	rdfs:label "systemic"@en ;
+	rdfs:comment "Whether this type is a system setting"@en ;
+.
+
+longwell:systemStatus
+	rdf:type rdf:Property ;
+	rdfs:label "system status"@en ;
+	rdfs:comment "Status of item within system"@en ;
+.
+
+# ---------- Browsing -----------
+
+longwell:Property
+	rdf:type	 rdfs:Class ;
+	rdfs:subPropertyOf rdf:Property ;
+.
+
+longwell:DateTimeProperty
+	rdf:type	 rdfs:Class ;
+	rdfs:subClassOf	longwell:Property ;
+	longwell:projector	"edu.mit.simile.longwell.query.project.DateTimeProjector" ;
+	longwell:bucketer	"edu.mit.simile.longwell.query.bucket.DateTimeBucketer"
+.
+
+longwell:TagProperty
+	rdf:type	 rdfs:Class ;
+	rdfs:subClassOf	longwell:Property ;
+	longwell:projector	"edu.mit.simile.longwell.query.project.TagProjector" ;
+	longwell:bucketer	"edu.mit.simile.longwell.query.bucket.DistinctValueBucketer"
+.
+
+# ---------- Flair ---------------
+
+flair:Facade
+	rdf:type			rdfs:Class ;
+	rdfs:label			"Facade" ;
+	longwell:systemic	"true"
+.
+
+flair:QueryBasedFacade
+	rdf:type			rdfs:Class ;
+	rdfs:subClassOf		flair:Facade ;
+	rdfs:label			"Query-based Facade" ;
+	longwell:systemic	"true"
+.
+
+# -------- Mappings ---------------
+
+dc:date		rdf:type		longwell:DateTimeProperty .
+tags:tag 	rdf:type		longwell:TagProperty .
+

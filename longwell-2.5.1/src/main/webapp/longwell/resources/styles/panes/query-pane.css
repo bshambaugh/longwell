@@ -1,0 +1,71 @@
+#lw_query {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding: 0.5em 1em;
+    background-color: #f8f8f8;
+}
+#lw_query > .lw_title {
+    color: #444;
+    padding-right: 0.2em;
+    padding-bottom: 0.2em;
+    margin-bottom: 0.2em;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+}
+#lw_query .lw_criteria {
+    padding-left: 1em;
+    margin: 0.5em;
+}
+#lw_query .lw_criterion .lw_facet {
+    font-weight: bold;
+    color: #444;
+}
+#lw_query .lw_criterion .lw_facet_value {
+    font-size: 100%;
+}
+#lw_query .lw_criterion .lw_facet:after {
+    content: ": ";
+}
+#lw_query a, #lw_query .lw_facet_addmore {
+    color: #888;
+    padding-left: 0.2em;
+    font-size: 90%;
+    font-weight: normal;
+}
+#lw_query a:before {
+    content: "(";
+}
+#lw_query a:after {
+    content: ")";
+}
+#lw_query .lw_facet_addmore:before {
+    content: "[";
+}
+#lw_query .lw_facet_addmore:after {
+    content: "]";
+}
+#lw_query .lw_facet_pane {
+    border: 1px solid #ccc;
+    margin: 5px;
+    background-image: none;
+}
+#lw_query .lw_facet_pane > .lw_title {
+    background-color: #ddd;
+    font-weight: bold;
+    color: #666;
+    padding: 2px 2px;
+    margin: 0px;
+    border: 0px;
+}
+#lw_query .lw_facet_pane .lw_title img {
+    cursor: pointer;
+    float: right;
+    position: relative;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+}
+#lw_query .lw_facet_pane .lw_facet_body {
+  border: 0;
+  margin: 0;
+}

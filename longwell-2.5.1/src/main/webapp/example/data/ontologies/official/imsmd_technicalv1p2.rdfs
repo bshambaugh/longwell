@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE rdf:RDF [
+        <!ENTITY lom_tech      'http://www.imsproject.org/rdf/imsmd_technicalv1p2#'>
+]>
+
+<rdf:RDF
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:dcq="http://dublincore.org/2000/03/13/dcq#"
+     xmlns:lom="http://www.imsproject.org/rdf/imsmd_rootv1p2#"
+     xmlns:lom_tech="&lom_tech;"
+     xml:base="&lom_tech;">
+
+
+  <dcq:FormatScheme rdf:ID="NonDigital">
+    <rdfs:label>Non-digital formats</rdfs:label>
+    <rdfs:comment>Instances of this class represent non-digital formats.</rdfs:comment>
+  </dcq:FormatScheme>
+  
+  <rdfs:Class rdf:ID="ByteSize">
+    <rdfs:label>Size in bytes.</rdfs:label>
+    <rdfs:comment>Instances of this class represent sizes in bytes.
+Use an rdf:value pointing to the size as a positive integer.</rdfs:comment>
+  </rdfs:Class>
+  
+
+  <rdf:Property rdf:ID="location">
+    <rdfs:label>Location</rdfs:label>
+    <rdfs:comment>Location of an object.</rdfs:comment>
+  </rdf:Property>
+
+  <rdfs:Class rdf:ID="TechnologyRequirement">
+    <rdfs:label>Technology</rdfs:label>
+    <rdfs:comment>Instances of this class are technology requirements
+such as operating systems or browsers.</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="OperatingSystemRequirement">
+    <rdfs:subClassOf rdf:resource="&lom_tech;TechnologyRequirement"/>
+    <rdfs:label>Operating Systems</rdfs:label>
+    <rdfs:comment>Instances of this class are operating system versions.</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="BrowserRequirement">
+    <rdfs:subClassOf rdf:resource="&lom_tech;TechnologyRequirement"/>
+    <rdfs:label>Browsers</rdfs:label>
+    <rdfs:comment>Instances of this class are browser versions.</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="PC-DOS">
+    <rdfs:subClassOf rdf:resource="&lom_tech;OperatingSystemRequirement"/>
+    <rdfs:label>PC-DOS</rdfs:label>
+    <rdfs:comment>Instances of this class are versions of PC-DOS.</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="MacOS">
+    <rdfs:subClassOf rdf:resource="&lom_tech;OperatingSystemRequirement"/>
+    <rdfs:label>MacOS</rdfs:label>
+    <rdfs:comment>Instances of this class are versions of MacOS.</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="Unix">
+    <rdfs:subClassOf rdf:resource="&lom_tech;OperatingSystemRequirement"/>
+    <rdfs:label>Unix</rdfs:label>
+    <rdfs:comment>Instances of this class are versions of Unix.</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="Multi-OS">
+    <rdfs:subClassOf rdf:resource="&lom_tech;OperatingSystemRequirement"/>
+    <rdfs:label>Multi-OS</rdfs:label>
+    <rdfs:comment>Instances of this class are versions of more than one OS.</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="None">
+    <rdfs:subClassOf rdf:resource="&lom_tech;OperatingSystemRequirement"/>
+    <rdfs:label>None</rdfs:label>
+    <rdfs:comment>Instances of this class are no operating system at all (empty class).</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="Any">
+    <rdfs:subClassOf rdf:resource="&lom_tech;BrowserRequirement"/>
+    <rdfs:label>MS-Windows</rdfs:label>
+    <rdfs:comment>Instances of this class are versions of any browser.</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="NetscapeCommunicator">
+    <rdfs:subClassOf rdf:resource="&lom_tech;BrowserRequirement"/>
+    <rdfs:label>Netscape Communicator</rdfs:label>
+    <rdfs:comment>Instances of this class are versions of Netscape.</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="MicrosoftInternetExplorer">
+    <rdfs:subClassOf rdf:resource="&lom_tech;BrowserRequirement"/>
+    <rdfs:label>Microsoft InternetExplorer</rdfs:label>
+    <rdfs:comment>Instances of this class are versions of Internet Explorer.</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="Opera">
+    <rdfs:subClassOf rdf:resource="&lom_tech;BrowserRequirement"/>
+    <rdfs:label>Opera</rdfs:label>
+    <rdfs:comment>Instances of this class are versions of Opera.</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:ID="Amaya">
+    <rdfs:subClassOf rdf:resource="&lom_tech;BrowserRequirement"/>
+    <rdfs:label>Amaya</rdfs:label>
+    <rdfs:comment>Instances of this class are versions of Amaya.</rdfs:comment>
+  </rdfs:Class>
+
+
+  <rdf:Property rdf:ID="requirement">
+    <rdfs:range rdf:resource="&lom_tech;TechnologyRequirement"/>
+    <rdfs:label>Requirement</rdfs:label>
+    <rdfs:comment>A required technology.</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property rdf:ID="operatingsystem">
+    <rdfs:subPropertyOf rdf:resource="&lom_tech;requirement"/>
+    <rdfs:range rdf:resource="&lom_tech;OperatingSystemRequirement"/>
+    <rdfs:label>Operating system requirement</rdfs:label>
+  </rdf:Property>
+
+  <rdf:Property rdf:ID="browser">
+    <rdfs:subPropertyOf rdf:resource="&lom_tech;requirement"/>
+    <rdfs:range rdf:resource="&lom_tech;BrowserRequirement"/>
+    <rdfs:label>A browser requirement</rdfs:label>
+  </rdf:Property>
+
+
+  <rdf:Property rdf:ID="minimumversion">
+    <rdfs:domain rdf:resource="&lom_tech;TechnologyRequirement"/>
+    <rdfs:label>A minimum version requirement</rdfs:label>
+  </rdf:Property>
+
+
+  <rdf:Property rdf:ID="maximumversion">
+    <rdfs:domain rdf:resource="&lom_tech;TechnologyRequirement"/>
+    <rdfs:label>A maximum version requirement</rdfs:label>
+  </rdf:Property>
+
+
+
+  <rdf:Property rdf:ID="installationremarks">
+    <rdfs:label>Other Platform Requirements</rdfs:label>
+  </rdf:Property>
+
+
+  <rdf:Property rdf:ID="otherplatformrequirements">
+    <rdfs:label>Other Platform Requirements</rdfs:label>
+  </rdf:Property>
+
+
+</rdf:RDF>

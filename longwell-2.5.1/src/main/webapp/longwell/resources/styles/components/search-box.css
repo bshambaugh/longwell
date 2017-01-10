@@ -1,0 +1,28 @@
+.lw_search {
+    margin-top: 10px;
+    margin-right: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+}
+.lw_search .lw_left {
+    background: url(../../images/frame/roundbar_left.png) no-repeat left top;
+    width: 20px;
+    height: 22px;
+}
+.lw_search .lw_right {
+    background: url(../../images/frame/roundbar_right.png) no-repeat right top;
+    width: 12px;
+}
+.lw_search .lw_bg {
+    background: url(../../images/frame/roundbar_bg.png) top repeat-x;
+}
+.lw_search input {
+    border: none;
+    padding: 0;
+    margin: 0;
+    margin-left: 0.5em;
+    color: #888;
+    width: 100%;
+    position: relative;
+}

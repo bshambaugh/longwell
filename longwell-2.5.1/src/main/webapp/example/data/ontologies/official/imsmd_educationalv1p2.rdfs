@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!-- Added labels Mark H. Butler 15 / 01 / 2004 -->
+
+<!DOCTYPE rdf:RDF [
+        <!ENTITY lom_edu      'http://www.imsproject.org/rdf/imsmd_educationalv1p2#'>
+]>
+
+<rdf:RDF
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:dcq="http://dublincore.org/2000/03/13/dcq#"
+     xmlns:lom="http://www.imsproject.org/rdf/imsmd_rootv1p2#"
+     xmlns:lom_edu="&lom_edu;"
+     xml:base="&lom_edu;">
+
+  <rdfs:Class rdf:ID="InteractivityType">
+    <rdfs:label>Interactivity types</rdfs:label>
+    <rdfs:comment>Instances of this class represent interactivity types.</rdfs:comment>
+  </rdfs:Class>
+  
+  <lom_edu:InteractivitType rdf:ID="Active" rdfs:label="Active"/>
+  <lom_edu:InteractivitType rdf:ID="Expositive" rdfs:label="Expositive"/>
+  <lom_edu:InteractivitType rdf:ID="Mixed" rdfs:label="Mixed"/>
+  <lom_edu:InteractivitType rdf:ID="Undefined" rdfs:label="Undefined"/>
+
+
+  <rdf:Property rdf:ID="interactivitytype">
+    <rdfs:range rdf:resource="&lom_edu;InteractivityType"/>
+    <rdfs:label>Interactivity type</rdfs:label>
+    <rdfs:comment>The flow of interaction between the learning object and the user.</rdfs:comment>
+  </rdf:Property>
+
+  <!-- Mark H. Butler 19/01/04  
+  Fixed some basic RDFS modelling errors here -->
+
+  <dcq:TypeScheme rdf:ID="LearningResourceType">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label>Learning Resource</rdfs:label>
+    <rdfs:comment>Instances of this class represent learning resource types.
+Each such type should be an rdfs:Class that can be used as the value
+of an rdf:type property.</rdfs:comment>
+  </dcq:TypeScheme>
+
+  <rdf:Description rdf:ID="Exercise">
+    <rdfs:subClassOf rdf:resource="&lom_edu;LearningResourceType"/>
+    <rdfs:label>Exercise</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:ID="Simulation">
+    <rdfs:subClassOf rdf:resource="&lom_edu;LearningResourceType"/>
+    <rdfs:label>Simulation</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:ID="Questionnaire">
+    <rdfs:subClassOf rdf:resource="&lom_edu;LearningResourceType"/>
+    <rdfs:label>Questionnaire</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:ID="Diagram">
+    <rdfs:subClassOf rdf:resource="&lom_edu;LearningResourceType"/>
+    <rdfs:label>Diagram</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:ID="Figure">
+    <rdfs:subClassOf rdf:resource="&lom_edu;LearningResourceType"/>
+    <rdfs:label>Figure</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:ID="Graph">
+    <rdfs:subClassOf rdf:resource="&lom_edu;LearningResourceType"/>
+    <rdfs:label>Graph</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:ID="Index">
+    <rdfs:subClassOf rdf:resource="&lom_edu;LearningResourceType"/>
+    <rdfs:label>Index</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:ID="Slide">
+    <rdfs:subClassOf rdf:resource="&lom_edu;LearningResourceType"/>
+    <rdfs:label>Slide</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:ID="Table">
+    <rdfs:subClassOf rdf:resource="&lom_edu;LearningResourceType"/>
+    <rdfs:label>Table</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:ID="NarrativeText">
+    <rdfs:subClassOf rdf:resource="&lom_edu;LearningResourceType"/>
+    <rdfs:label>Narrative Text</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:ID="Exam">
+    <rdfs:subClassOf rdf:resource="&lom_edu;LearningResourceType"/>
+    <rdfs:label>Exam</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:ID="Experiment">
+    <rdfs:subClassOf rdf:resource="&lom_edu;LearningResourceType"/>
+    <rdfs:label>Experiment</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:ID="ProblemStatement">
+    <rdfs:subClassOf rdf:resource="&lom_edu;LearningResourceType"/>
+    <rdfs:label>ProblemStatement</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:ID="SelfAssessment">
+    <rdfs:subClassOf rdf:resource="&lom_edu;LearningResourceType"/>
+    <rdfs:label>Self Assessment</rdfs:label>
+  </rdf:Description>
+
+  <rdfs:Class rdf:ID="InteractivityLevel">
+    <rdfs:label>Interactivity levels</rdfs:label>
+    <rdfs:comment>Instances of this class represent interactivity levels.</rdfs:comment>
+  </rdfs:Class>
+
+  <lom_edu:InteractivityLevel rdf:ID="VeryLowInteractivity" rdfs:label="Very low interactivity"/>
+  <lom_edu:InteractivityLevel rdf:ID="LowInteractivity" rdfs:label="Low interactivity"/>
+  <lom_edu:InteractivityLevel rdf:ID="MediumInteractivity" rdfs:label="Medium interactivity"/>
+  <lom_edu:InteractivityLevel rdf:ID="HighInteractivity" rdfs:label="High interactivity"/>
+  <lom_edu:InteractivityLevel rdf:ID="VeryHighInteractivity" rdfs:label="Very high interactivity"/>
+
+
+  <rdf:Property rdf:ID="interactivitylevel">
+    <rdfs:range rdf:resource="&lom_edu;InteractivityLevel"/>
+    <rdfs:label>Interactivity level</rdfs:label>
+    <rdfs:comment>The degree of interactivity between the end user and this learning object.</rdfs:comment>
+  </rdf:Property>
+
+
+  <rdfs:Class rdf:ID="SemanticDensity">
+    <rdfs:label>Semantic Densities</rdfs:label>
+    <rdfs:comment>Instances of this class represent semantic densities.</rdfs:comment>
+  </rdfs:Class>
+  
+  <lom_edu:SemanticDensity rdf:ID="VeryLowDensity" rdfs:label="Very low density"/>
+  <lom_edu:SemanticDensity rdf:ID="LowDensity" rdfs:label="Low density"/>
+  <lom_edu:SemanticDensity rdf:ID="MediumDensity" rdfs:label="Medium density"/>
+  <lom_edu:SemanticDensity rdf:ID="HighDensity" rdfs:label="High density"/>
+  <lom_edu:SemanticDensity rdf:ID="VeryHighDensity" rdfs:label="Very high density"/>
+
+  <rdf:Property rdf:ID="semanticdensity">
+    <rdfs:range rdf:resource="&lom_edu;SemanticDensity"/>
+    <rdfs:label>Semantic density</rdfs:label>
+    <rdfs:comment>Amount of information conveyed by this learning object as compared to its size or duration.</rdfs:comment>
+  </rdf:Property>
+
+  <rdfs:Class rdf:ID="IntendedEndUserRole">
+    <rdfs:label>Intended end user role</rdfs:label>
+    <rdfs:comment>Instances of this class represent intended end user roles.</rdfs:comment>
+  </rdfs:Class>
+  
+  <lom_edu:IntendedEndUserRole rdf:ID="Teacher" rdfs:label="Teacher"/>
+  <lom_edu:IntendedEndUserRole rdf:ID="Author" rdfs:label="Author"/>
+  <lom_edu:IntendedEndUserRole rdf:ID="Learner" rdfs:label="Learner"/>
+  <lom_edu:IntendedEndUserRole rdf:ID="Manager" rdfs:label="Manager"/>
+
+
+  <rdf:Property rdf:ID="intendedenduserrole">
+    <rdfs:range rdf:resource="&lom_edu;IntendedEndUserRole"/>
+    <rdfs:label>Intended end user role</rdfs:label>
+    <rdfs:comment>Principal user(s) for which this learning object was designed</rdfs:comment>
+  </rdf:Property>
+
+
+  <rdfs:Class rdf:ID="Context">
+    <rdfs:label>Learning Context</rdfs:label>
+    <rdfs:comment>Instances of this class represent learning contexts.</rdfs:comment>
+  </rdfs:Class>
+  
+  <lom_edu:Context rdf:ID="PrimaryEducation" rdfs:label="Primary education"/>
+  <lom_edu:Context rdf:ID="SecondaryEducation" rdfs:label="Secondary education"/>
+  <lom_edu:Context rdf:ID="HigherEducation" rdfs:label="Higher education"/>
+  <lom_edu:Context rdf:ID="UniversityFirstCycle" rdfs:label="University First Cycle"/>
+  <lom_edu:Context rdf:ID="UniversitySecondCycle" rdfs:label="University Second Cycle"/>
+  <lom_edu:Context rdf:ID="UniversityPostGrade" rdfs:label="University Post Grade"/>
+  <lom_edu:Context rdf:ID="TechnicalSchoolFirstCycle" rdfs:label="Technical School First Cycle"/>
+  <lom_edu:Context rdf:ID="TechnicalSchoolSecondCycle" rdfs:label="Technical School Second Cycle"/>
+  <lom_edu:Context rdf:ID="ProfessionalFormation" rdfs:label="Professional Formation"/>
+  <lom_edu:Context rdf:ID="ContinuousFormation" rdfs:label="Continuous Formation"/>
+  <lom_edu:Context rdf:ID="VocationalTraining" rdfs:label="Vocational Training"/>
+
+
+  <rdf:Property rdf:ID="context">
+    <rdfs:range rdf:resource="&lom_edu;Context"/>
+    <rdfs:label>Learning Context</rdfs:label>
+    <rdfs:comment>The principal environment within which the learning and use of this learning object is intended to take place.</rdfs:comment>
+  </rdf:Property>
+
+
+
+  <rdf:Property rdf:ID="typicalagerange">
+    <rdfs:label>Typical Age Range</rdfs:label>
+    <rdfs:comment>Age of the typical intended user.</rdfs:comment>
+  </rdf:Property>
+
+
+  <rdfs:Class rdf:ID="Difficulty">
+    <rdfs:label>Difficulty</rdfs:label>
+    <rdfs:comment>Instances of this class represent difficulties.</rdfs:comment>
+  </rdfs:Class>
+  
+  <lom_edu:Difficulty rdf:ID="VeryEasy" rdfs:label="Very easy"/>
+  <lom_edu:Difficulty rdf:ID="Easy" rdfs:label="Easy"/>
+  <lom_edu:Difficulty rdf:ID="MediumDifficulty" rdfs:label="Medium difficulty"/>
+  <lom_edu:Difficulty rdf:ID="Difficult" rdfs:label="Difficult"/>
+  <lom_edu:Difficulty rdf:ID="VeryDifficult" rdfs:label="Very difficult"/>
+
+
+  <rdf:Property rdf:ID="diffuculty">
+    <rdfs:range rdf:resource="&lom_edu;Difficulty"/>
+    <rdfs:label>Difficulty</rdfs:label>
+    <rdfs:comment>This element defines how hard it is to work through this learning object for the typical target audience.</rdfs:comment>
+  </rdf:Property>
+
+
+  <rdf:Property rdf:ID="typicallearningtime">
+    <rdfs:label>Typical Learning Time</rdfs:label>
+    <rdfs:comment>Approximate or typical time it takes to work with this learning object.</rdfs:comment>
+  </rdf:Property>
+
+
+  <rdf:Property rdf:ID="description">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/description"/>
+    <rdfs:label>Educational description</rdfs:label>
+    <rdfs:comment>Comments on how this learning object is to be used.</rdfs:comment>
+  </rdf:Property>
+
+
+  <rdf:Property rdf:ID="language">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/language"/>
+    <rdfs:label>Educational language</rdfs:label>
+    <rdfs:comment>The human language used by the typical intended user of this learning object.</rdfs:comment>
+  </rdf:Property>
+
+</rdf:RDF>

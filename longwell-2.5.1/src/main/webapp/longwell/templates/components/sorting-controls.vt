@@ -1,0 +1,88 @@
+#macro(makeSorterBlock $rankings $name)
+	<form class="lw_sorter_block" id="lw_${name}_sorter_block">
+		<div>
+            <select id="lw_${name}_sorter_list" size="10" class="lw_sorter_listbox" style="width: 15em"
+				onchange="selectSorter($name, this.selectedIndex, null);">
+    			#foreach($ranking in $rankings)
+    				<option>$ranking.getLabel()</option>
+    			#end
+            </select>
+			<div>
+    			<input type="radio"
+    				name="lw_${name}_sorter_direction"
+    				id="lw_${name}_sorter_ascending"
+    				value="ascending">
+					<span id="lw_${name}_sorter_ascending_label">Ascending</span>
+				</input>
+    			<br/>
+                <input type="radio"
+    				name="lw_${name}_sorter_direction"
+    				id="lw_${name}_sorter_descending"
+    				value="descending">
+    				<span id="lw_${name}_sorter_descending_label">Descending</span>
+    			</input>
+			</div>
+		</div>
+	</form>
+#end
+
+<div id="lw_sort_block">
+	#set($rankings = $answer.getRankings().getRankings())
+	<table cellpadding="0" cellspacing="10" border="0">
+    	<tr style="vertical-align: text-top" valign="top">
+    		<td>Re-sort by:</td>
+    		<td><input type="checkbox" id="lw_2_sort_block_check" onclick="checkSorterBlock(2);">Then by:</input></td>
+    		<td><input type="checkbox" id="lw_3_sort_block_check"  onclick="checkSorterBlock(3);">Then by:</input></td>
+    	</tr>
+    	<tr>
+    		<td>#makeSorterBlock($rankings 1)</td>
+    		<td>#makeSorterBlock($rankings 2)</td>
+    		<td>#makeSorterBlock($rankings 3)</td>
+    	</tr>
+   </table>
+
+   <div class="lw_buttons">
+    <button class="lw_button" onclick="resort();">Re-sort Results</button>
+    <button class="lw_button" onclick="autosort();">Auto-sort</button>
+   </div>
+</div>
+
+#macro (makeRankingArray $elementCode)
+	[	#set($first = true)
+		#foreach($ranking in $rankings)
+			#if($first)	#set($first = false) #else , #end $elementCode
+		#end
+	]
+#end
+#macro (makeRankingStringArray $elementCode)
+	[	#set($first = true)
+		#foreach($ranking in $rankings)
+			#if($first)	#set($first = false) #else , #end "$elementCode"
+		#end
+	]
+#end
+
+<script type="text/javascript">
+	var ascendingRankingLabels =
+		#makeRankingStringArray($ranking.getComparator().getAscendingLabel($locale));
+	var descendingRankingLabels =
+		#makeRankingStringArray($ranking.getComparator().getDescendingLabel($locale));
+
+	var rankingAscendingFlags =
+		#makeRankingArray($ranking.getComparator().isAscendingByDefault($locale));
+
+	var ascendingURLParameter =
+		#makeRankingStringArray($ranking.toURLParameter(true));
+	var descendingURLParameter =
+		#makeRankingStringArray($ranking.toURLParameter(false));
+
+	#set($urlWithoutOrders = $url.dup())
+	$urlWithoutOrders.getQuery().clearOrders()
+	$urlWithoutOrders.getQuery().removeParameter("page")
+	var urlWithoutOrders = "$urlWithoutOrders.toURLString()";
+
+	initializeSorterBlock(1, true);
+	initializeSorterBlock(2, false);
+	initializeSorterBlock(3, false);
+	checkSorterBlock(2);
+</script>

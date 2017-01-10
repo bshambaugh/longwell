@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>#inject("title")</title>
+		#set($profileURL = $url.changeQuery(""))
+		$profileURL.getQuery().removeOtherParameters()
+		
+        <script type="text/javascript">
+        	var g_contextPath = "$contextPath";
+        	var g_resourcePath = "$resourcePath";
+		var g_profileURL = "$profileURL.toURLString()";
+		var g_outerQuery = "$url.getQuery().toURLQueryString()";
+        </script>
+		#inject("start-stylesheets")
+		#inject("start-scripts")
+	</head>
+	<body onmousedown="Menu.onBodyMouseDown(event);">
+	#inject("header")
+
+	<table id="center" width="100%" cellspacing="0" cellpadding="0">
+	<tr valign="top">
+	<td width="100%">
+	<div class="lw_box">
+	<div class="lw_title">Login</div>
+
+        #if($status)
+          <div class="warning">$status</div>
+        #end
+
+        #if($needsNickname == "1")
+          <p>Welcome.  Your OpenID login is verified.  Provide a nickname to finish creating your account.</p>
+          <form method="post" action="">
+           Nickname: <input type="text" name="nickname" size="25" />
+           <input type="submit" value=" Create account " />
+          </form>
+        #end
+
+        </div>
+
+	</td>
+	</tr>
+	</table>
+
+	#inject("footer")
+	</body>
+</html>

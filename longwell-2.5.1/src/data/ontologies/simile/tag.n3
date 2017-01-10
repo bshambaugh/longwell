@@ -1,0 +1,21 @@
+@prefix rdf:			<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:		<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     	<http://www.w3.org/2002/07/owl#> .
+@prefix dc:      	<http://purl.org/dc/elements/1.1/> .
+@prefix tags:		<http://simile.mit.edu/2005/04/ontologies/tags#> .
+
+<http://simile.mit.edu/2005/04/ontologies/tags#>
+    rdf:type         owl:Ontology ;
+    dc:title         "Minimalistic Tag Ontology" ;
+    dc:creator       "David Huynh" ;
+    dc:creator       "Stefano Mazzocchi" ;
+    dc:publisher     "The SIMILE Project" ;
+    dc:date          "2005-4-15" ;
+    dc:format        "RDFS" .
+
+# ---------- Properties ------------
+
+tags:tag
+	rdf:type	rdf:Property ;
+	rdfs:label "tag"
+.

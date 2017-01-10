@@ -1,0 +1,41 @@
+#set($showCount = true)
+#set($removeOldRestriction = false)
+
+#macro(setupPane $facet $facetURI $facetLabel $configured)
+    #if ($configured)
+      #set($paneClass = "open")
+    #else
+      #set($paneClass = "closed")
+    #end
+    <div class="lw_facet_pane" id="lw_facet_pane_${facetURI}" style="display: none;">
+        <div class="lw_title_${paneClass}" onclick="toggleFacet(event, '$facetURI')">
+          <span>
+            $facetLabel
+          </span>
+        </div>
+
+        <div class="lw_facet_body" id="lw_facet_body_${facetURI}"> </div>
+        <span class="end"> </span>
+    </div>
+    <script type="text/javascript">loadFacetData("$profile.getID()", "$facetURI", "initial", "lw_facet_body_", "lw_facet_pane_", $configured);</script>
+#end
+
+#set($facetCount = 0)
+#set($narrowingFacets = $answer.getNarrowingFacets())
+#foreach($facet in $narrowingFacets)
+    #set($facetURI = $facet.getURI().toString())
+    #set($facetLabel = $facet.getLabel($locale))
+    #set($configured = true)
+    #setupPane($facet $facetURI $facetLabel $configured)
+    #set($facetCount = $facetCount + 1)
+#end
+
+#foreach($property in $remainingFacets)
+    #set($propertyURI = $property.getURI().toString())
+    #set($propertyLabel = $property.getLabel($locale))
+    #set($configured = false)
+    #setupPane($property $propertyURI $propertyLabel $configured)
+    #set($facetCount = $facetCount + 1)
+#end
+
+<script type="text/javascript">registerFacetCount($facetCount);</script>

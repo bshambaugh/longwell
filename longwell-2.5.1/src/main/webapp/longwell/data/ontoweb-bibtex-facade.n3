@@ -1,0 +1,167 @@
+@prefix rdf:			<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:		<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc:			<http://purl.org/dc/elements/1.1/> .
+@prefix flair:		<http://simile.mit.edu/2005/04/flair#> .
+@prefix facade:		<http://simile.mit.edu/2005/04/flair/facades#> .
+
+@prefix bibtex:		<http://www.ontoweb.org/ontology/1#> .
+
+facade:ontoweb_bibtex_people-1_0
+	rdf:type		flair:Facade ;
+	rdf:type		flair:QueryBasedFacade ;
+
+	rdfs:label		"Facade for Ontoweb Bibtext People"@en ;
+	dc:description	"A facade for browsing OntoWeb Bibtex people items"@en ;
+
+	flair:shortLabel			"People"@en ;
+	flair:contentDescription	"Students, professors, staff, employees, managers, etc."@en ;
+
+	flair:restriction [
+		flair:predicate		rdf:type ;
+
+		flair:object		bibtex:Person ;
+		flair:object		bibtex:Employee ;
+		flair:object		bibtex:PhDStudent ;
+		flair:object		bibtex:Student ;
+		flair:object		bibtex:FacultyMember ;
+		flair:object		bibtex:Lecturer ;
+		flair:object		bibtex:AdministrativeStaff ;
+		flair:object		bibtex:Manager ;
+		flair:object		bibtex:TechnicalStaff ;
+		flair:object		bibtex:AssistantProfessor ;
+		flair:object		bibtex:AssociateProfessor ;
+		flair:object		bibtex:FullProfessor ;
+		flair:object		bibtex:Graduate ;
+		flair:object		bibtex:Undergraduate
+	]
+.
+
+facade:ontoweb_bibtex_organizations-1_0
+	rdf:type		flair:Facade ;
+	rdf:type		flair:QueryBasedFacade ;
+
+	rdfs:label		"Facade for Ontoweb Bibtext Organizations"@en ;
+	dc:description	"A facade for browsing OntoWeb Bibtex Organization items"@en ;
+
+	flair:shortLabel			"Organizations"@en ;
+	flair:contentDescription	"Institutes, universities, associations, enterprises, groups, etc."@en ;
+
+	flair:restriction [
+		flair:predicate		rdf:type ;
+		flair:object		bibtex:Organization ;
+		flair:object		bibtex:Association ;
+		flair:object		bibtex:Department ;
+		flair:object		bibtex:Enterprise ;
+		flair:object		bibtex:Group ;
+		flair:object		bibtex:Institute ;
+		flair:object		bibtex:ResearchGroup ;
+		flair:object		bibtex:SIG ;
+		flair:object		bibtex:University
+	]
+.
+
+facade:ontoweb_bibtex_projects-1_0
+	rdf:type		flair:Facade ;
+	rdf:type		flair:QueryBasedFacade ;
+
+	rdfs:label		"Facade for Ontoweb Bibtext Projects and Products"@en ;
+	dc:description	"A facade for browsing OntoWeb Bibtex project and product items"@en ;
+
+	flair:shortLabel			"Projects and Products"@en ;
+	flair:contentDescription	"Projects and products"@en ;
+
+	flair:restriction [
+		flair:predicate		rdf:type ;
+
+		flair:object		bibtex:Project ;
+		flair:object		bibtex:DevelopmentProject ;
+		flair:object		bibtex:SoftwareProject ;
+		flair:object		bibtex:ResearchProject ;
+
+		flair:object		bibtex:Product ;
+		flair:object		bibtex:SoftwareComponent
+	]
+.
+
+facade:ontoweb_bibtex_events-1_0
+	rdf:type		flair:Facade ;
+	rdf:type		flair:QueryBasedFacade ;
+
+	rdfs:label		"Facade for Ontoweb Bibtext Events"@en ;
+	dc:description	"A facade for browsing OntoWeb Bibtex Event items"@en ;
+
+	flair:shortLabel			"Events"@en ;
+	flair:contentDescription	"Conferences, workshops, meetings, lectures, etc."@en ;
+
+	flair:restriction [
+		flair:predicate		rdf:type ;
+
+		flair:object		bibtex:Event ;
+		flair:object		bibtex:Conference ;
+		flair:object		bibtex:Lecture ;
+		flair:object		bibtex:Meeting ;
+		flair:object		bibtex:Workshop ;
+		flair:object		bibtex:Exhibition ;
+		flair:object		bibtex:ProjectMeeting
+	]
+.
+
+facade:ontoweb_bibtex_publications-1_0
+	rdf:type		flair:Facade ;
+	rdf:type		flair:QueryBasedFacade ;
+
+	rdfs:label		"Facade for Ontoweb Bibtext Publications"@en ;
+	dc:description	"A facade for browsing OntoWeb Bibtex publication items"@en ;
+
+	flair:shortLabel			"Publications"@en ;
+	flair:contentDescription	"Articles, books, in-proceedings, thesis, etc."@en ;
+
+	flair:restriction [
+		flair:predicate		rdf:type ;
+		flair:object		bibtex:Topic ;
+		flair:object		bibtex:ResearchTopic ;
+
+		flair:object		bibtex:Publication ;
+		flair:object		bibtex:Article ;
+		flair:object		bibtex:Book ;
+		flair:object		bibtex:Booklet ;
+		flair:object		bibtex:InBook ;
+		flair:object		bibtex:InCollection ;
+		flair:object		bibtex:InProceedings ;
+		flair:object		bibtex:Manual ;
+		flair:object		bibtex:MasterThesis ;
+		flair:object		bibtex:Misc ;
+		flair:object		bibtex:PhDThesis ;
+		flair:object		bibtex:Proceedings ;
+		flair:object		bibtex:ProjectReport ;
+		flair:object		bibtex:Report ;
+		flair:object		bibtex:TechReport ;
+		flair:object		bibtex:Thesis ;
+		flair:object		bibtex:Unpublished
+	]
+.
+
+# --------- mappings ----------
+
+#bibtex:month
+#	longwell:propertyType longwell:MonthProperty .
+
+#bibtex:age
+#	longwell:propertyType longwell:HumanAgeProperty .
+
+#bibtex:email
+#	longwell:propertyType longwell:EmailProperty .
+
+#bibtex:fax
+#	longwell:propertyType longwell:PhoneProperty .
+
+#bibtex:phone
+#	longwell:propertyType longwell:PhoneProperty .
+
+#bibtex:homepage
+#	longwell:propertyType longwell:URLProperty .
+
+#bibtex:year
+#	longwell:propertyType longwell:YearProperty .
+
+

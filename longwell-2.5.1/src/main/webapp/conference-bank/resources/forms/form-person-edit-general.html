@@ -1,0 +1,151 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="../styles/forms/styles.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/forms/forms.css" type="text/css" />
+  <script type="text/javascript">
+  <!--
+    function fillData(data) {
+      Form.initializeTextBox(data, "title", "full-name-textbox");
+      Form.initializeTextBox(data, "givenname", "given-name-textbox");
+      Form.initializeTextBox(data, "family_name", "family-name-textbox");
+      
+      Form.initializeTextBox(data, "affiliation", "affiliation-textbox");
+      Form.initializeTextBox(data, "position", "position-textbox");
+      
+      Form.initializeTextBox(data, "mbox", "email-textbox");
+      Form.initializeTextBox(data, "homepage", "homepage-textbox");
+      Form.initializeTextBox(data, "depiction", "photo-textbox");
+
+      Form.initializeSelect(data, "continent", "continent-select");
+      Form.initializeTextBox(data, "country", "country-textbox");
+      Form.initializeTextBox(data, "city", "city-textbox");
+      Form.initializeTextBox(data, "address", "address-textbox");
+      Form.initializeTextBox(data, "coordinates", "latlong-textbox");
+    }
+    function processForm(uri, types) {
+      Form.addPrefix("foaf", "http://xmlns.com/foaf/0.1/");
+      Form.addPrefix("loc", "http://simile.mit.edu/2005/05/ontologies/location#");
+      
+      Form.appendURIAndTypes(uri, types);
+      Form.appendTextProperty("dc:title", "full-name-textbox");
+      Form.appendTextProperty("foaf:givenname", "given-name-textbox");
+      Form.appendTextProperty("foaf:family_name", "family-name-textbox");
+      
+      Form.appendTextProperty("foaf:affiliation", "affiliation-textbox");
+      Form.appendTextProperty("foaf:position", "position-textbox");
+      
+      Form.appendTextProperty("foaf:mbox", "email-textbox");
+      Form.appendTextProperty("foaf:homepage", "homepage-textbox");
+      Form.appendTextProperty("foaf:depiction", "photo-textbox");
+      
+      Form.appendSelectProperty("loc:continent", "continent-select");
+      Form.appendTextProperty("loc:country", "country-textbox");
+      Form.appendTextProperty("loc:city", "city-textbox");
+      Form.appendTextProperty("loc:address", "address-textbox");
+      Form.appendTextProperty("loc:coordinates", "latlong-textbox");
+      Form.appendLine(".");
+    }
+  -->
+  </script>
+  <script type="text/javascript" src="../scripts/forms/form.js"/>
+  <script type="text/javascript" src="../scripts/utilities/http.js"/>
+  <title>Form - Contact</title>
+</head>
+<body onload="Form.onLoad();">
+<table>
+<tr>
+<td width="100%">
+  <div class="form-section">
+    <div class="form-section-title">Addressing Information</div>
+    <div class="form-section-body">
+      <div class="labeled-field">
+        Full Name/Full Title:
+        <input type="text" id="full-name-textbox" />
+      </div>
+      <div class="labeled-field">
+        Given Name:
+        <input type="text" id="given-name-textbox" />
+      </div>
+      <div class="labeled-field">
+        Family Name:
+        <input type="text" id="family-name-textbox" />
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-section">
+    <div class="form-section-title">Work Information</div>
+    <div class="form-section-body">
+      <div class="labeled-field">
+        Affiliation:
+        <input type="text" id="affiliation-textbox" />
+      </div>
+      <div class="labeled-field">
+        Position:
+        <input type="text" id="position-textbox" />
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-section">
+    <div class="form-section-title">Online Information</div>
+    <div class="form-section-body">
+      <div class="labeled-field">
+        E-mail Address:
+        <input type="text" id="email-textbox" />
+      </div>
+      <div class="labeled-field">
+        Homepage URL:
+        <input type="text" id="homepage-textbox" />
+      </div>
+      <div class="labeled-field">
+        Photo URL:
+        <input type="text" id="photo-textbox" />
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-section">
+    <div class="form-section-title">Real-World Location</div>
+    <div class="form-section-body">
+      <div class="labeled-field">
+        Continent:
+        <select id="continent-select">
+          <option value="">unspecified</option>
+          <option value="Africa">Africa</option>
+          <option value="Antarctica">Antarctica</option>
+          <option value="Arctic">Arctic</option>
+          <option value="Asia">Asia</option>
+          <option value="Australia">Australia</option>
+          <option value="Europe">Europe</option>
+          <option value="North America">North America</option>
+          <option value="South America">South America</option>
+        </select>
+      </div>
+      <div class="labeled-field">
+        Country:
+        <input type="text" id="country-textbox" />
+      </div>
+      <div class="labeled-field">
+        City:
+        <input type="text" id="city-textbox" />
+      </div>
+      <div class="labeled-field">
+        Full Address:
+        <input type="text" id="address-textbox" />
+      </div>
+      <div class="labeled-field">
+        lat,long:
+        <input type="text" id="latlong-textbox" />
+      </div>
+    </div>
+  </div>
+</td>
+<td>
+  <div id="form-controls"></div>
+</td>
+</tr>
+</table>
+</body>
+</html>

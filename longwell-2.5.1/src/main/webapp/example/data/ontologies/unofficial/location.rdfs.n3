@@ -1,0 +1,101 @@
+@prefix rdf:			<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:		<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     	<http://www.w3.org/2002/07/owl#> .
+@prefix dc:      	<http://purl.org/dc/elements/1.1/> .
+@prefix loc:         <http://simile.mit.edu/2005/05/ontologies/location#> .
+
+<http://simile.mit.edu/2005/05/ontologies/location#>
+    rdf:type         owl:Ontology ;
+    dc:title         "Minimalistic Location Ontology" ;
+    dc:creator       "David Huynh" ;
+    dc:creator       "Stefano Mazzocchi" ;
+    dc:publisher     "The SIMILE Project" ;
+    dc:date          "2005-5-20" ;
+    dc:format        "RDFS" .
+
+# ---------- Classes ------------
+
+loc:Property
+	rdf:type rdfs:Class ;
+	rdfs:label "Property"@en ;
+	rdfs:comment "A real-estate property"@en
+.
+
+# ---------- Properties ----------
+
+loc:address
+	rdf:type rdf:Property ;
+	rdfs:label "address"@en ;
+	rdfs:comment "Street address of something."@en ;
+	rdfs:domain owl:Thing;
+.
+
+loc:continent
+	rdf:type rdf:Property ;
+	rdfs:label "continent"@en ;
+	rdfs:comment "Continent where something is located."@en ;
+	rdfs:domain owl:Thing;
+.
+
+loc:country
+	rdf:type rdf:Property ;
+	rdfs:label "country"@en ;
+	rdfs:comment "Country where something is located."@en ;
+	rdfs:domain owl:Thing;
+.
+
+loc:city
+	rdf:type rdf:Property ;
+	rdfs:label "city"@en ;
+	rdfs:comment "City where something is located."@en ;
+	rdfs:domain owl:Thing;
+.
+
+loc:province
+	rdf:type rdf:Property ;
+	rdfs:label "province"@en ;
+	rdfs:comment "Province where something is located."@en ;
+	rdfs:domain owl:Thing;
+.
+
+loc:state
+	rdf:type rdf:Property ;
+	rdfs:label "state"@en ;
+	rdfs:comment "State where something is located."@en ;
+	rdfs:domain owl:Thing;
+.
+
+loc:district
+	rdf:type rdf:Property ;
+	rdfs:label "district"@en ;
+	rdfs:comment "District where something is located."@en ;
+	rdfs:domain owl:Thing;
+.
+
+loc:neighborhood
+	rdf:type rdf:Property ;
+	rdfs:label "neighborhood"@en ;
+	rdfs:comment "Neighborhood where something is located."@en ;
+	rdfs:domain owl:Thing;
+.
+
+loc:postal-code
+	rdf:type rdf:Property ;
+	rdfs:label "postal code"@en ;
+	rdfs:comment "Postal code."@en ;
+	rdfs:domain owl:Thing;
+.
+
+loc:zip-code
+	rdf:type rdf:Property ;
+	rdfs:label "zip code"@en ;
+	rdfs:comment "Zip code."@en ;
+	rdfs:domain owl:Thing;
+.
+
+loc:coordinates
+	rdf:type rdf:Property ;
+	rdfs:label "coordinates"@en ;
+	rdfs:comment "Latitude,longitude pair."@en ;
+	rdfs:domain owl:Thing;
+.

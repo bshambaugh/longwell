@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:contact="http://www.w3.org/2000/10/swap/pim/contact#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/">
+ <foaf:PersonalProfileDocument rdf:about="http://people.csail.mit.edu/ryanlee/about">
+  <dc:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string" xml:lang="en-US">Information about Ryan Lee</dc:title>
+  <foaf:maker rdf:resource="http://people.csail.mit.edu/ryanlee/about#ryanlee"/>
+  <foaf:primaryTopic rdf:resource="http://people.csail.mit.edu/ryanlee/about#ryanlee"/>
+ </foaf:PersonalProfileDocument>
+
+ <foaf:Person rdf:about="http://people.csail.mit.edu/ryanlee/about#ryanlee" xml:lang="en-US">
+  <foaf:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ryan Lee</foaf:name>
+  <foaf:nick rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ryanlee</foaf:nick>
+  <foaf:mbox rdf:resource="mailto:ryanlee@csail.mit.edu"/>
+  <foaf:workInfoHomepage rdf:resource="http://people.csail.mit.edu/ryanlee/"/>
+  <foaf:workplaceHomepage rdf:resource="http://www.csail.mit.edu/"/>
+  <foaf:workplaceHomepage rdf:resource="http://dig.csail.mit.edu/"/>
+  <foaf:workplaceHomepage rdf:resource="http://www.w3.org/"/>
+  <foaf:schoolHomepage rdf:resource="http://web.mit.edu/"/>
+  <foaf:homepage rdf:resource="http://ryanlee.org/"/>
+  <foaf:weblog rdf:resource="http://ryanlee.org/journal/"/>
+  <rdfs:seeAlso rdf:resource="http://ryanlee.org/foaf.rdf"/>
+  <contact:office rdf:parseType="Resource">
+    <rdf:type rdf:resource="http://www.w3.org/2000/10/swap/pim/contact#Office"/>
+    <contact:address rdf:parseType="Resource">
+      <rdf:type rdf:resource="http://www.w3.org/2000/10/swap/pim/contact#Address"/>
+      <contact:city rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cambridge</contact:city>
+      <contact:country rdf:datatype="http://www.w3.org/2001/XMLSchema#string">USA</contact:country>
+      <contact:postalCode>02139</contact:postalCode>
+      <contact:street>32 Vassar Street</contact:street>
+      <contact:street2>MIT CSAIL Room 32-G506</contact:street2>
+    </contact:address>
+    <contact:phone rdf:resource="tel:+1.617.2535327"/>
+    <geo:lat>42.361860</geo:lat>
+    <geo:long>-71.091840</geo:long>
+  </contact:office>
+ </foaf:Person>
+</rdf:RDF>

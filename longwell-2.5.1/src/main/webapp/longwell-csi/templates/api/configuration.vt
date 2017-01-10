@@ -1,0 +1,103 @@
+Longwell.Configuration = {
+    contextPath:    "$contextPath/",
+    resourcePath:   "$resourcePath/",
+    profileID:      "$profile.getID()",
+    googleMapsKey:  "$longwell.getMapProperties().getProperty('map.google.key')",
+    queryEngine: {
+        rootQuery: []
+    },
+    ui: {
+        browsePanel: {
+            hideProperties: {
+                "http://purl.org/dc/elements/1.1/identifier": true,
+                "http://purl.org/dc/elements/1.1/title": true,
+                "http://www.w3.org/2000/01/rdf-schema#label": true,
+                "http://purl.org/dc/elements/1.1/description": true,
+                 // neither of these are in dc namespace - where are they from?
+                "http://purl.org/dc/elements/1.1/thumbnail": true,
+                "http://purl.org/dc/elements/1.1/largeimage": true
+            },
+            topMostProperties: [
+            ]
+        },
+        viewPanel: {
+            views: {
+                "tabular-view": {
+                    doNotAutoPickProperties: {
+                        "http://purl.org/dc/elements/1.1/identifier": true,
+                        "http://purl.org/dc/elements/1.1/title": true,
+                        "http://www.w3.org/2000/01/rdf-schema#label": true,
+                        "http://purl.org/dc/elements/1.1/description": true,
+                         // largeimage is not in dc namespace
+                        "http://purl.org/dc/elements/1.1/largeimage": true
+                    }
+                },
+                "grid-view": {
+                    thumbnailProperties: {
+                        "http://xmlns.com/foaf/0.1/img": true,
+                        "http://xmlns.com/foaf/0.1/depicts": true
+                    }
+                }
+            },
+            startingPoints: [
+                {   title:          "Types",
+                    propertyURI:    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                    forward:        true
+                }
+            ]
+        },
+        controlPanel: {
+        }
+    }
+};
+
+Longwell.ProfileData = {
+    classes: [
+        #set($first = true)
+        #set($classes = $profile.getSchemaModel().getLearnedClasses())
+        #foreach($class in $classes)
+            #if($first) #set($first = false) #else , #end
+            {   uri:   '$utilities.escapeForJavascript($class.getURI().toString())',
+                label: '$utilities.escapeForJavascript($class.getLabel($locale))',
+                count: $class.countItems()
+            }
+        #end
+    ],
+    properties: [
+        #set($first = true)
+        #set($properties = $profile.getSchemaModel().getLearnedProperties())
+        #foreach($property in $properties)
+            #if($first) #set($first = false) #else , #end
+            {   uri:             '$utilities.escapeForJavascript($property.getURI().toString())',
+                label:           '$utilities.escapeForJavascript($property.getLabel($locale))',
+                fanIn:           $property.getFanIn(),
+                fanOut:          $property.getFanOut(),
+                uniqueness:      $property.getUniqueness(),
+                isNumeric:       $property.getTypeConfidence(1),
+                isInteger:       $property.getTypeConfidence(2),
+                isBoolean:       $property.getTypeConfidence(3),
+                isDateTime:      $property.getTypeConfidence(4),
+                isURI:           $property.getTypeConfidence(5),
+                isLatLong:       $property.getTypeConfidence(6),
+                forcedValueType: null
+            }
+        #end
+    ]
+};
+
+Longwell.ProfileData.classIndex = [];
+for (var i = 0; i < Longwell.ProfileData.classes.length; i++) {
+    var klass = Longwell.ProfileData.classes[i];
+    Longwell.ProfileData.classIndex[klass.uri] = klass;
+}
+
+Longwell.ProfileData.propertyIndex = [];
+for (var i = 0; i < Longwell.ProfileData.properties.length; i++) {
+    var property = Longwell.ProfileData.properties[i];
+    Longwell.ProfileData.propertyIndex[property.uri] = property;
+}
+
+if (Longwell.Configuration.googleMapsKey.length > 0) {
+	var url = "http://maps.google.com/maps?file=api&amp;v=2&amp;key=" + encodeURIComponent(Longwell.Configuration.googleMapsKey);
+    document.write("<script defer='true' src='" + url + "' type='text/javascript'></" + "script>");
+}

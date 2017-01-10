@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- 
+	The following code has been adapted from the information from
+		http://stuff.rancidbacon.com/gmaps-standalone/
+		http://libgmail.sourceforge.net/googlemaps.html
+		http://www.chicagocrime.org/m/maps.js
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+	<title>Longwell2</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="../../../styles/common.css" type="text/css"/>
+	<link rel="stylesheet" href="../../../styles/colors.css" type="text/css"/>
+	<link rel="stylesheet" href="../../../styles/panes/map/map-default.css" type="text/css"/>
+	<style>
+	#map { border: 1px solid #979797; height: 470px; }
+	</style>
+	<script type="text/javascript">
+        //<![CDATA[
+        function postLoad() {
+           var keyOffset = document.location.search.indexOf("key=") + "key=".length;
+	       var endOffset = document.location.search.substring(keyOffset).indexOf("&")
+           var key = document.location.search.substring(keyOffset, endOffset+keyOffset);
+           document.write("<"+"script src='http://maps.google.com/maps?file=api&v=2&key=" + key + "' type='text/javascript'></"+"script>");
+        }
+        //]]>
+        </script>
+</head>
+<body onload="_initGMap();" onunload="GUnload();">
+	<div id="mapcontainer">
+		<div id="map"><div id="loading" style="margin: 10px">Loading...</div></div>
+		<div id="maptoggle"></div>
+	</div>
+    <script type="text/javascript">postLoad();</script>
+    <script type="text/javascript" src="../../../scripts/panes/map/map.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+#if($exportType == "GMap")
+#inject("export-gmap-results")
+#elseif($exportType == "iCal")
+#inject("export-ical-results")
+#end
+

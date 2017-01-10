@@ -1,0 +1,27 @@
+<div id="lw_content">
+    #set($objects = $answer.getObjects())
+    #if ($answer.getObjects().size() == 0)
+       <div class="lw_message">
+        No items found.
+       </div>
+    #elseif ($answer.getObjects().size() > 500)
+        <div class="lw_message">
+            <div class="lw_items_count lw_title"><span>$answer.getObjects().size()</span> items</div>
+            <div>Narrow down further<br/>by clicking on more filtering criteria ---></div>
+        </div>
+    #else
+        #set($graphURL = $url.changeCommand("export"))
+        $graphURL.getQuery().setParameter("format","RDFXML")
+        $graphURL.getQuery().removeParameter("resultsView")
+        $graphURL.getQuery().removeParameter("resultsViewParam")
+        
+        <applet name="welkin" 
+          code="edu.mit.simile.welkin.Welkin" 
+          archive="$resourcePath/content/panes/graph/welkin.jar, $resourcePath/content/panes/graph/rio-1.0.5.jar, $resourcePath/content/panes/graph/openrdf-util-diff.jar, $resourcePath/content/panes/graph/openrdf-model.jar"
+          height="600"
+          width="700"
+          >
+            <param name="data" value="$graphURL.toURLString()"/>
+        </applet>
+    #end
+</div>

@@ -1,0 +1,45 @@
+#set($dqModel = $profile.getStructuredModel("edu.mit.simile.longwell.dq.DynamicQueryModel"))
+#set($schemaModel = $profile.getSchemaModel())
+
+#set($fq = $dqModel.createFacetedQuery($xmlRoot.getElementsByTagName("query").item(0)))
+#set($facets = $fq.updateSeveralFacets($profile, $dqModel, $xmlRoot.getElementsByTagName("facets").item(0), $locale))
+
+{
+    facets: [
+    #set($first = true)
+    #foreach($facet in $facets)
+        #if($first) #set($first = false) #else , #end {
+            propertyURI: "$utilities.escapeForJavascript($facet.getPropertyURI())",
+            forward:     #if ($facet.isForward()) true #else false #end,
+            valueClass:  "$facet.getValueClass().getName()",
+            #if ($facet.getFacetType() == 0)
+                #set($items = $facet.getItems())
+                items: [
+                    #set($first2 = true)
+                    #foreach($item in $items)
+                        #if($first2) #set($first2 = false) #else , #end {
+                            label:  "$utilities.escapeForJavascript($item.getLabel())",
+                            value:  "$utilities.escapeForJavascript($item.getValueAsString())",
+                            count:  $item.getCount()
+                        }
+                    #end
+                ]
+            #else
+                #set($ranges = $facet.getRanges())
+                ranges: [
+                    #set($first2 = true)
+                    #foreach($range in $ranges)
+                        #if($first2) #set($first2 = false) #else , #end {
+                            label: "$utilities.escapeForJavascript($range.getLabel())",
+                            min:   $range.getMin(),
+                            max:   $range.getMax(),
+                            count: $range.getCount(),
+                            level: $range.getLevel()
+                        }
+                    #end
+                ]
+            #end
+        }
+    #end    
+    ]
+}

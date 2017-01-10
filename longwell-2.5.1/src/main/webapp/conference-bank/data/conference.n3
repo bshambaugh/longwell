@@ -1,0 +1,255 @@
+@prefix rdf:		<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:		<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix dc:     <http://purl.org/dc/elements/1.1/> .
+@prefix foaf:   <http://xmlns.com/foaf/0.1/> .
+@prefix conf:   <http://simile.mit.edu/2005/11/ontologies/conference#> .
+
+<http://simile.mit.edu/2005/11/ontologies/conference#>
+    rdf:type         owl:Ontology ;
+    dc:title         "Minimalistic Conference Ontology" ;
+    dc:creator       "David Huynh" ;
+    dc:publisher     "The SIMILE Project" ;
+    dc:date          "2005-11-03" ;
+    dc:format        "RDFS" .
+
+# ---------- Event Classes ------------
+
+conf:Event
+	rdf:type rdfs:Class ;
+	rdfs:label "Event"@en ;
+	rdfs:comment "An event"@en
+.
+
+conf:AdministrativeEvent
+	rdf:type rdfs:Class ;
+  rdfs:subClassOf conf:Event ;
+	rdfs:label "Administrative Event"@en ;
+	rdfs:comment "An administrative event"@en
+.
+
+conf:SocialEvent
+	rdf:type rdfs:Class ;
+  rdfs:subClassOf conf:Event ;
+	rdfs:label "Social Event"@en ;
+	rdfs:comment "A social event"@en
+.
+
+conf:Break
+	rdf:type rdfs:Class ;
+  rdfs:subClassOf conf:Event ;
+	rdfs:label "Break"@en ;
+	rdfs:comment "A break"@en
+.
+
+conf:CoffeeBreak
+	rdf:type rdfs:Class ;
+  rdfs:subClassOf conf:Event ;
+  rdfs:subClassOf conf:Break ;
+	rdfs:label "Coffee Break"@en ;
+	rdfs:comment "A coffee break"@en
+.
+
+conf:LunchBreak
+	rdf:type rdfs:Class ;
+  rdfs:subClassOf conf:Event ;
+  rdfs:subClassOf conf:Break ;
+	rdfs:label "Lunch Break"@en ;
+	rdfs:comment "A lunch break"@en
+.
+
+conf:Session
+	rdf:type rdfs:Class ;
+  rdfs:subClassOf conf:Event ;
+	rdfs:label "Session"@en ;
+	rdfs:comment "A session"@en
+.
+
+conf:PaperSession
+	rdf:type rdfs:Class ;
+  rdfs:subClassOf conf:Event ;
+  rdfs:subClassOf conf:Session ;
+	rdfs:label "Paper Session"@en ;
+	rdfs:comment "A paper session"@en
+.
+
+conf:PlenarySession
+	rdf:type rdfs:Class ;
+  rdfs:subClassOf conf:Event ;
+  rdfs:subClassOf conf:Session ;
+	rdfs:label "Plenary Session"@en ;
+	rdfs:comment "A plenary session"@en
+.
+
+conf:PosterSession
+	rdf:type rdfs:Class ;
+  rdfs:subClassOf conf:Event ;
+  rdfs:subClassOf conf:Session ;
+	rdfs:label "Poster Session"@en ;
+	rdfs:comment "A poster session"@en
+.
+
+conf:Workshop
+	rdf:type rdfs:Class ;
+  rdfs:subClassOf conf:Event ;
+  rdfs:subClassOf conf:Session ;
+	rdfs:label "Workshop"@en ;
+	rdfs:comment "A workshop"@en
+.
+
+conf:Tutorial
+	rdf:type rdfs:Class ;
+  rdfs:subClassOf conf:Event ;
+  rdfs:subClassOf conf:Session ;
+	rdfs:label "Tutorial"@en ;
+	rdfs:comment "A tutorial"@en
+.
+
+conf:Talk
+	rdf:type rdfs:Class ;
+  rdfs:subClassOf conf:Event ;
+	rdfs:label "Talk"@en ;
+	rdfs:comment "A talk"@en
+.
+
+conf:PaperTalk
+	rdf:type rdfs:Class ;
+  rdfs:subClassOf conf:Event ;
+  rdfs:subClassOf conf:Talk ;
+	rdfs:label "Paper Talk"@en ;
+	rdfs:comment "A paper talk"@en
+.
+
+conf:PosterTalk
+	rdf:type rdfs:Class ;
+  rdfs:subClassOf conf:Event ;
+  rdfs:subClassOf conf:Talk ;
+	rdfs:label "Poster Talk"@en ;
+	rdfs:comment "A poster talk"@en
+.
+
+conf:InvitedTalk
+	rdf:type rdfs:Class ;
+  rdfs:subClassOf conf:Event ;
+  rdfs:subClassOf conf:Talk ;
+	rdfs:label "Invited Talk"@en ;
+	rdfs:comment "An invited talk"@en
+.
+
+# ---------- Event Properties ----------
+
+conf:abstract
+	rdf:type rdf:Property ;
+	rdfs:label "abstract"@en ;
+	rdfs:comment "Abstract of an event"@en ;
+	rdfs:domain conf:Event
+.
+
+conf:speaks-at
+	rdf:type rdf:Property ;
+	rdfs:label "speaks at"@en ;
+	rdfs:comment "Speaks at"@en ;
+	rdfs:domain foaf:Person;
+  rdfs:range conf:Event 
+.
+
+conf:speaker
+	rdf:type rdf:Property ;
+	rdfs:label "speaker"@en ;
+	rdfs:comment "Has speaker"@en ;
+  rdfs:domain conf:Event ;
+	rdfs:range foaf:Person
+.
+
+conf:sub-event
+	rdf:type rdf:Property ;
+	rdfs:label "sub event"@en ;
+	rdfs:comment "Has sub event"@en ;
+	rdfs:domain conf:Event ;
+  rdfs:range conf:Event 
+.
+
+conf:super-event
+	rdf:type rdf:Property ;
+	rdfs:label "super event"@en ;
+	rdfs:comment "Has super event"@en ;
+	rdfs:domain conf:Event ;
+  rdfs:range conf:Event 
+.
+
+conf:period-of-day
+	rdf:type rdf:Property ;
+	rdfs:label "period of day"@en ;
+	rdfs:comment "Period of day (morning, afternoon,...)"@en ;
+	rdfs:domain conf:Event
+.
+
+conf:start-time
+	rdf:type rdf:Property ;
+	rdfs:label "start time"@en ;
+	rdfs:comment "Start time"@en ;
+	rdfs:domain conf:Event
+.
+
+conf:end-time
+	rdf:type rdf:Property ;
+	rdfs:label "end time"@en ;
+	rdfs:comment "End time"@en ;
+	rdfs:domain conf:Event
+.
+
+conf:track-type
+	rdf:type rdf:Property ;
+	rdfs:label "track type"@en ;
+	rdfs:comment "Track type"@en ;
+	rdfs:domain conf:Talk
+.
+
+
+# ---------- Location Classes ------------
+
+conf:Room
+	rdf:type rdfs:Class ;
+	rdfs:label "Room"@en ;
+	rdfs:comment "A room"@en
+.
+
+conf:ConferenceRoom
+	rdf:type rdfs:Class ;
+  rdfs:subClassOf conf:Room ;
+	rdfs:label "Conference Room"@en ;
+	rdfs:comment "A conference room"@en
+.
+
+conf:MeetingRoom
+	rdf:type rdfs:Class ;
+  rdfs:subClassOf conf:Room ;
+	rdfs:label "Meeting Room"@en ;
+	rdfs:comment "A meeting room"@en
+.
+
+conf:Hall
+	rdf:type rdfs:Class ;
+  rdfs:subClassOf conf:Room ;
+	rdfs:label "Hall"@en ;
+	rdfs:comment "A hall"@en
+.
+
+# ---------- Location Properties ------------
+
+conf:holds
+	rdf:type rdf:Property ;
+	rdfs:label "holds"@en ;
+	rdfs:comment "Holds event"@en ;
+	rdfs:domain conf:Room ;
+  rdfs:range conf:Event 
+.
+
+conf:held-at
+	rdf:type rdf:Property ;
+	rdfs:label "held at"@en ;
+	rdfs:comment "Is held at"@en ;
+  rdfs:domain conf:Event ;
+	rdfs:range conf:Room
+.
+

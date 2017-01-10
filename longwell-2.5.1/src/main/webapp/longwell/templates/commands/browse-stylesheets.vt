@@ -1,0 +1,14 @@
+<link rel="stylesheet" href="$resourcePath/styles/views/default.css" type="text/css"/>
+<link rel="stylesheet" href="$resourcePath/styles/panes/query-pane.css" type="text/css"/>
+<link rel="stylesheet" href="$resourcePath/styles/panes/tools-pane.css" type="text/css"/>
+<link rel="stylesheet" href="$resourcePath/styles/panes/sidebar.css" type="text/css"/>
+<link rel="stylesheet" href="$resourcePath/styles/panes/views-pane.css" type="text/css"/>
+<link rel="stylesheet" href="$resourcePath/styles/components/menu.css" type="text/css"/>
+<link rel="stylesheet" href="$resourcePath/styles/components/search-box.css" type="text/css"/>
+<link rel="stylesheet" href="$resourcePath/styles/components/facets.css" type="text/css"/>
+<link rel="stylesheet" href="$resourcePath/styles/components/sorting-controls.css" type="text/css"/>
+<link rel="stylesheet" href="$resourcePath/styles/components/items-summaries.css" type="text/css"/>
+<link rel="stylesheet" href="$resourcePath/styles/components/tabs.css" type="text/css"/>
+<link rel="stylesheet" href="$resourcePath/styles/components/fresnel-common.css" type="text/css"/>
+<link rel="stylesheet" href="$resourcePath/styles/views/tag.css" type="text/css"/>
+#inject("common-stylesheets")

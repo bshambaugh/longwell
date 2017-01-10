@@ -1,0 +1,7 @@
+#set($pairs = $schemaModel.getPropertyValuesPairs($object, $locale, true))
+
+<div class="lw_flinks">
+	#set($linkDirection = "forward")
+	#inject("property-value-list")
+</div>
+#inject("references")

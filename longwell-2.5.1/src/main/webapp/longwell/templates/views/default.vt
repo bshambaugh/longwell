@@ -1,0 +1,47 @@
+#if ($utilities.isURI($object))
+    #set($objectURI = $object.toString())
+    #set($title = $schemaModel.getLabel($object, $locale))
+    
+    #set($itemURL = $url.changeCommandQuery("focus", ""))
+    $itemURL.getQuery().setParameter("objectURI", $objectURI)
+
+    #*
+     Fresnel test
+     *#
+    #if($fresnelResult)
+    <div class="lw_item" id="lw_item_${objectURI}">
+      <div class="lw_title" title="Browse to this item">
+        <a class="lw_system_control"
+            title="Show this item's URI"
+            href=""
+            onclick="prompt('You can copy the item&rsquo;s URI from here.', '$objectURI', 'Longwell'); return false;"
+            style="font-weight: normal"
+            >[URI]</a>
+        <a href="$utilities.escape($itemURL.toURLString())"><span id="lw_item_${objectURI}_title"></span></a>
+      </div>
+      <div id="lw_item_${objectURI}_fresnel_results">
+        $fresnelResult
+      </div>
+      #inject("references")
+    </div>
+    #else
+
+    <div class="lw_item" id="lw_item_${objectURI}">
+      <div class="lw_title" title="Browse to this item">
+        <a class="lw_system_control"
+            title="Show this item's URI"
+            href=""
+            onclick="prompt('You can copy the item&rsquo;s URI from here.', '$objectURI', 'Longwell'); return false;"
+            style="font-weight: normal"
+            >[URI]</a>
+        <a href="$utilities.escape($itemURL.toURLString())"><span>$title</span></a>
+      </div>
+      #inject("properties-and-references")
+    </div>
+    
+    #*
+        This would be the ajax equivalent of the above:
+         <script type="text/javascript">loadView("${objectURI}", "$profile.getID()", "view-");</script>
+    *#
+    #end
+#end

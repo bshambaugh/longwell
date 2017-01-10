@@ -1,0 +1,9 @@
+@prefix fresnel:    <http://www.w3.org/2004/09/fresnel#> .
+@prefix rdf:        <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix facets:     <http://simile.mit.edu/2006/01/ontologies/fresnel-facets#> .
+
+@prefix :           <#> .
+
+:facets a facets:FacetSet ;
+	facets:types facets:allTypes ;
+	facets:facets ( rdf:type ) .

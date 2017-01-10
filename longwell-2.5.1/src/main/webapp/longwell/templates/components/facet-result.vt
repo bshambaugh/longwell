@@ -1,0 +1,4 @@
+#set($facetIDPrefix = "lw_narrowing_facet")
+#set($facetID = $facet.getPropertyURI())
+#set($showCount = 1)
+#inject("facet-body")

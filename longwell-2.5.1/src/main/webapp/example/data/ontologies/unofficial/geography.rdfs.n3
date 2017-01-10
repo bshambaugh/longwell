@@ -1,0 +1,61 @@
+@prefix geo:     <http://simile.mit.edu/2004/06/ontologies/geography#> .
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix wgs84:   <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix owl:       <http://www.w3.org/2002/07/owl#> .
+
+<http://simile.mit.edu/2004/06/ontologies/geography#>
+    rdf:type         owl:Ontology ;
+    dc:title         "Minimal Geographic Ontology" ;
+    dc:creator       "Stefano Mazzocchi" ;
+    dc:publisher     "The SIMILE Project" ;
+    dc:date          "2004-06-26" ;
+    dc:format        "RDFS" .
+
+# -------------- classes ------------------------
+
+geo:Place
+    a	rdfs:Class ;
+    rdfs:label      "Place"@en ;
+    rdfs:subClassOf wgs84:SpatialThing ;
+    rdfs:comment    "a geographical location"@en .
+
+# -------------- properties ---------------------
+
+geo:name
+	a	rdf:Property ;
+	rdfs:label	   "name"@en ;
+	rdfs:comment    "the name of a geographical location"@en ;
+	rdfs:domain		geo:Place .
+
+geo:region
+	a	rdf:Property ;
+	rdfs:label	   "region"@en ;
+	rdfs:comment    "the world region that includes the place"@en ;
+	rdfs:domain		geo:Place .
+	
+geo:country
+	a	rdf:Property ;
+	rdfs:label	   "country"@en ;
+	rdfs:comment    "the country that includes the place"@en ;
+	rdfs:domain		geo:Place .
+	
+geo:province
+	a	rdf:Property ;
+	rdfs:label	   "province/state"@en ;
+	rdfs:comment    "the state/province that includes the place"@en ;
+	rdfs:domain		geo:Place .
+
+geo:site
+	a	rdf:Property ;
+	rdfs:label	   "site/city"@en ;
+	rdfs:comment    "the site/city that includes the place"@en ;
+	rdfs:domain		geo:Place .
+	
+geo:coordinates
+	a   rdf:Property ;
+	rdfs:label	   "coordinates"@en ;
+	rdfs:comment    "the geographic coordinates of the place"@en ;
+	rdfs:domain		geo:Place .
+	

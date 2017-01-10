@@ -1,0 +1,210 @@
+.longwell-browsePanel h1 {
+    font-size:      130%;
+    font-weight:    normal;
+    font-variant:   small-caps;
+    text-transform: lowercase;
+    margin:         0;
+    padding:        4px;
+    background:     #fff;
+    text-align:     center;
+}
+
+.longwell-browsePanel h2 {
+    font-size:      100%;
+    font-weight:    bold;
+    color:          #666;
+    margin:         0 0 0.5em 0;
+    clear:          none;
+}
+
+.longwell-browsePanel div {
+    margin: 0;
+    padding: 0;
+}
+
+div.longwell-browsePanel-progress {
+    text-align:     right;
+}
+
+div.longwell-browsePanel-message {
+    padding:        1em;
+    text-align:     center;
+    font-style:     italic;
+    color:          #888;
+    border:         1px solid #ccc;
+}
+
+div.longwell-browsePanel-facetContainer {
+}
+
+div.longwell-browsePanel-searchContainer {
+}
+
+.longwell-browsePanel-searchContainer .search {
+    padding:        2px 4px 2px 20px;
+    cursor:         pointer;
+    background:     #ddd url(../images/x-search.gif) center left no-repeat;
+    margin:         0 0.5em 0.5em 0.5em;
+}
+
+.longwell-browsePanel-searchBox {
+    background:     white;
+    position:       relative;
+    height:         2em;
+    border:         1px solid #aaa;
+    background:     white;
+}
+
+.longwell-browsePanel-searchBox input {
+    position:       absolute;
+    top:            0.25em;
+    left:           0.25em;
+    right:          0.25em;
+    height:         1.5em;
+    margin:         0;
+    padding:        0;
+    padding-left:   20px;
+    background:     url(../images/search.gif) center left no-repeat;
+    border:         none;
+}
+
+div.longwell-browsePanel-facet {
+    border:     1px solid #ccc;
+    margin-top: 0.5em;
+    overflow:   hidden;
+}
+
+div.longwell-browsePanel-facet:first-child {
+    margin-top: 0;
+}
+
+div.longwell-browsePanel-facet-title {
+    padding:                2px;
+    background-color:       #ddd;
+    cursor:                 pointer;
+}
+
+.longwell-browsePanel-facet-open div.longwell-browsePanel-facet-title {
+    background-color:       #fff;
+    border-bottom:          1px solid #ccc;
+}
+
+.longwell-browsePanel-facet-title .selection {
+    float:      right;
+    width:      3em;
+    display:    none;
+    text-align: right;
+}
+
+.longwell-browsePanel-facet-title .selection img {
+    vertical-align: middle;
+}
+
+.longwell-browsePanel-facet-hasSelection div.longwell-browsePanel-facet-title .selection {
+    display:    block;
+}
+
+div.longwell-browsePanel-facet-message {
+    text-align: center;
+    margin:     1em;
+    font-style: italic;
+    color:      #888;
+}
+.longwell-browsePanel-facet-message img {
+    vertical-align: middle;
+}
+
+div.longwell-browsePanel-facet-body {
+    display:      none;
+    height:       15em;
+    overflow:     auto;
+    background:   white;
+}
+
+.longwell-browsePanel-facet-open div.longwell-browsePanel-facet-body {
+    display:    block;
+}
+
+div.longwell-browsePanel-listFacet-item {
+    clear:          both;
+    padding:        2px;
+    white-space:    pre;
+    cursor:         pointer;
+}
+
+.longwell-browsePanel-listFacet-item div.count {
+    width:          3em;
+    float:          left;
+    text-align:     right;
+    font-family:    monospace;
+    color:          #aaa;
+}
+
+.longwell-browsePanel-listFacet-item div.select {
+    float:      left;
+    width:      16px;
+    height:     16px;
+    background: url(../images/gray-check.png);
+}
+
+.longwell-browsePanel-facet-hasSelection .longwell-browsePanel-listFacet-item div.select {
+    background: url(../images/no-check.png);
+}
+.longwell-browsePanel-listFacet-item-checked div.select {
+    background: url(../images/black-check.png);
+}
+.longwell-browsePanel-facet-hasSelection .longwell-browsePanel-listFacet-item-checked div.select {
+    background: url(../images/black-check.png);
+}
+
+div.longwell-browsePanel-rangeFacet-range {
+    clear:          both;
+    padding:        2px;
+    white-space:    pre;
+    overflow:       hidden;
+    cursor:         pointer;
+}
+
+.longwell-browsePanel-rangeFacet-range div.count {
+    width:          3em;
+    float:          left;
+    text-align:     right;
+    font-family:    monospace;
+    color:          #aaa;
+}
+
+.longwell-browsePanel-rangeFacet-range div.select {
+    float:      left;
+    width:      16px;
+    height:     16px;
+    background: url(../images/gray-check.png);
+}
+
+.longwell-browsePanel-facet-hasSelection .longwell-browsePanel-rangeFacet-range div.select {
+    background: url(../images/no-check.png);
+}
+
+.longwell-browsePanel-rangeFacet-range-checked div.select {
+    background: url(../images/black-check.png);
+}
+.longwell-browsePanel-facet-hasSelection .longwell-browsePanel-rangeFacet-range-checked div.select {
+    background: url(../images/black-check.png);
+}
+
+.longwell-browsePanel-rangeFacet-range div.space {
+    float:      left;
+    width:      16px;
+    height:     16px;
+}
+
+.longwell-browsePanel-rangeFacet-range div.tree-control {
+    float:      left;
+    width:      16px;
+    height:     16px;
+}
+.longwell-browsePanel-rangeFacet-range-opened div.tree-control {
+    background: url(../images/collapse.png) center center no-repeat;
+}
+.longwell-browsePanel-rangeFacet-range-closed div.tree-control {
+    background: url(../images/expand.png) center center no-repeat;
+}

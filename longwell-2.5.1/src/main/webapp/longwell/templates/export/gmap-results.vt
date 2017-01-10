@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page>
+<title>Longwell</title>
+<query>Custom Query</query>
+<center lat="$centerLatitude" lng="$centerLongitude"/>
+<span lat="$spanLatitude" lng="$spanLongitude"/>
+<legend id="legend">
+ #foreach($entry in $legend)
+  <type image="$entry.getMarkerURL()" label="$entry.getLabel()"/>
+ #end
+</legend>
+#foreach($location in $locations)
+<location>
+  <point lat="$location.getLatitude()" lng="$location.getLongitude()"/>
+  <icon image="$location.getMarkerURL()" class="longwell"/>
+  <div style="padding-right: 8px; margin-top: 2px" xmlns="http://www.w3.org/1999/xhtml">
+    $location.getItems().size() item(s)
+    #set($items = $location.getItems())
+    <ul style="width: 25em">
+      #foreach($item in $items)
+        <li><a target="_top" href="$item.getItemURL()">$item.getLabel()</a></li>
+      #end
+    </ul>
+  </div>
+</location>
+#end
+</page>

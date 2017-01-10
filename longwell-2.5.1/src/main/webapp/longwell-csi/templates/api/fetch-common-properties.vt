@@ -1,0 +1,14 @@
+#set($dqModel = $profile.getStructuredModel("edu.mit.simile.longwell.dq.DynamicQueryModel"))
+#set($schemaModel = $profile.getSchemaModel())
+#set($fq = $dqModel.createFacetedQuery($xmlRoot))
+#set($items = $dqModel.getAnswer($fq).getObjects())
+#if($items)
+#set($properties = $schemaModel.getSortedLearnedProperties($items))
+
+[
+#set($first = true)
+#foreach($property in $properties)
+    #if($first) #set($first = false) #else , #end "$property.getURI().toString()"
+#end    
+]
+#end

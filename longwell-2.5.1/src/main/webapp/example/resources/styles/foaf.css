@@ -1,0 +1,164 @@
+/* foaf */
+.fresnel-results>.f-resource {
+	background: #fff;
+}
+
+.foaf-resource .foaf-resource {
+	border: 0;
+	padding: 0;
+}
+
+.foaf-property>.f-value {
+	padding-left: 1.0em;
+}
+
+.foaf-resource a {
+	font-family: "Verdana", sans-serif;
+	color: #555;
+	font-weight: bold;
+}
+
+.foaf-resource>.foaf-name {
+	font-size: 3.0em;
+	font-family: "Verdana", sans-serif;
+	color: #333;
+	float: left;
+	padding: 1em 0 0;
+	margin: 0;
+}
+
+.foaf-resource>.foaf-name {
+	font-size: 3.0em;
+	font-family: "Verdana", sans-serif;
+	color: #333;
+	padding: 0;
+	margin: 0.5em 0 0;
+}
+
+.foaf-resource>.foaf-name>.f-value {
+	padding: 0 0.25em 0 0;
+	margin: 0;
+}
+
+.foaf-nickname {
+	padding: 0;
+	margin: 0;
+	display: block;
+	clear: left;
+}
+
+.foaf-nickname>.f-value,
+.foaf-nickname>.f-value .f-title {
+	padding: 0;
+	margin: 0;
+	display: inline;
+}
+
+.foaf-resource .foaf-image {
+	clear: right;
+	float: right;
+	width: 50%;
+	padding: 2px;
+	margin: 0;
+	text-align: right;
+}
+
+.foaf-resource .foaf-link {
+	clear: left;
+	float: left;
+}
+
+.foaf-organization .foaf-link .f-value .f-resource {
+	padding: 1.0em;
+}
+
+/* people */
+.foaf-person {
+	color: #000;
+}
+
+.foaf-person .foaf-link,
+.foaf-person .foaf-mbox,
+.foaf-person .foaf-phone,
+.foaf-person .con-office {
+	padding: 0.2em;
+	margin: 0;
+	clear: left;
+	float: left;
+	width: 40%;
+}
+
+.foaf-person .con-office .foaf-link,
+.foaf-person .con-office .foaf-phone {
+	float: none;
+	width: 100%;
+}
+
+.foaf-image { }
+
+.foaf-knows {
+	clear: both;
+}
+
+.foaf-knows>.f-value {
+	float: left;
+	width: 30%;
+}
+
+.foaf-resource .foaf-property>.f-label {
+	font-size: 1.5em;
+	font-family: "Verdana", sans-serif;
+	font-weight: normal;
+	color: #777;
+}
+
+.foaf-person .con-office>.f-label {
+	margin: 0 0 0.5em;
+}
+
+.foaf-person .con-office>.f-value {
+	padding: 0 1em 1em;
+	border: 1px solid #333;
+}
+
+.foaf-person .con-office>.f-value>.foaf-resource>.f-title,
+.foaf-person .con-address>.f-value>.foaf-resource>.f-title {
+	display: none;
+}
+
+.foaf-person .con-address-part {
+	padding: 0;
+	margin: 0;
+}
+
+/* organizations */
+.foaf-organization {
+	color: #ccc;
+}
+
+.foaf-organization .foaf-link {
+	float: left;
+	width: 20%;
+}
+
+.foaf-organization .foaf-link .f-value,
+.foaf-organization .foaf-link .f-resource {
+	padding: 0;
+	margin: 0;
+}
+
+.foaf-organization .foaf-member>.f-label {
+	font-size: 1.5em;
+	font-family: "Verdana", sans-serif;
+	font-weight: normal;
+}
+
+.foaf-member {
+	clear: both;
+}
+
+.foaf-member>.f-value {
+	float: left;
+	width: 23%;
+	height: 30px;
+}

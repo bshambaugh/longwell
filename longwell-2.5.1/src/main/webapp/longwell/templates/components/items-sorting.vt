@@ -1,0 +1,14 @@
+<div class="lw_items_sorting">
+	#set($first = true)
+	#set($orderInfos = $answer.getOrderInfos())
+	#foreach($orderInfo in $orderInfos)
+		#if($first)
+			sorted by
+		#else
+			then by
+		#end
+		<span class="lw_items_sort_property">$orderInfo.getLabel()</span>
+		<span class="lw_items_sort_direction">$orderInfo.getDirectionLabel()</span><br/>
+		#set($first = false)
+	#end
+</div>

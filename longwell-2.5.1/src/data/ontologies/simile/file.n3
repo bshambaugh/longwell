@@ -1,0 +1,72 @@
+@prefix rdf:			<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:		<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     	<http://www.w3.org/2002/07/owl#> .
+@prefix dc:      	<http://purl.org/dc/elements/1.1/> .
+@prefix file:         <http://simile.mit.edu/2005/04/ontologies/file#> .
+
+<http://simile.mit.edu/2005/04/ontologies/file#>
+    rdf:type         owl:Ontology ;
+    dc:title         "File/Folder Ontology" ;
+    dc:creator       "David Huynh" ;
+    dc:creator       "Stefano Mazzocchi" ;
+    dc:publisher     "The SIMILE Project" ;
+    dc:date          "2005-4-21" ;
+    dc:format        "RDFS" .
+
+# ---------- Classes ----------
+
+file:File
+	rdf:type rdfs:Class ;
+	rdfs:label "File"@en ;
+	rdfs:comment "A file"@en ;
+.
+
+file:Folder
+	rdf:type rdfs:Class ;
+	rdfs:label "Folder"@en ;
+	rdfs:comment "A folder"@en ;
+.
+
+# ---------- Properties ----------
+
+file:contains
+	rdf:type rdf:Property ;
+	rdfs:label "contains"@en ;
+	rdfs:comment "Indicates containing relationship"@en ;
+.
+
+file:container
+	rdf:type rdf:Property ;
+	rdfs:label "container"@en ;
+	rdfs:comment "Indicates container relationship"@en ;
+.
+
+file:name
+	rdf:type rdf:Property ;
+	rdfs:label "name"@en ;
+	rdfs:comment "File or folder name"@en ;
+.
+
+file:extension
+	rdf:type rdf:Property ;
+	rdfs:label "extension"@en ;
+	rdfs:comment "Extension"@en ;
+.
+
+file:attribute
+	rdf:type rdf:Property ;
+	rdfs:label "attribute"@en ;
+	rdfs:comment "Attribute"@en ;
+.
+
+file:length
+	rdf:type rdf:Property ;
+	rdfs:label "length"@en ;
+	rdfs:comment "File length"@en ;
+.
+
+file:word
+	rdf:type rdf:Property ;
+	rdfs:label "word"@en ;
+	rdfs:comment "Word with file or folder name"@en ;
+.

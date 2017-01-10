@@ -1,0 +1,548 @@
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+@prefix mods:    <http://simile.mit.edu/2006/01/ontologies/mods3#> .
+@prefix roles:   <http://simile.mit.edu/2006/01/roles#> .
+
+<http://simile.mit.edu/2006/01/ontologies/mods3#>
+    rdf:type         owl:Ontology ;
+    dc:title         "RDF Ontology for MODS v3.1" ;
+    dc:creator       "Stefano Mazzocchi" ;
+    dc:publisher     "The SIMILE Project" ;
+    dc:date          "2006-01-29" ;
+    dc:format        "RDFS" .
+ 
+# ------------------- Classes ------------------
+
+mods:Record 
+    rdf:type rdfs:Class ;
+    rdfs:label "Record"@en .
+
+mods:Date 
+    rdf:type rdfs:Class ;
+    rdfs:label "Date"@en .
+
+mods:Classification
+    rdf:type rdfs:Class ;
+    rdfs:label "Classification"@en .
+
+mods:Audience
+    rdf:type rdfs:Class ;
+    rdfs:label "Audience"@en .
+
+mods:Genre
+    rdf:type rdfs:Class ;
+    rdfs:label "Genre"@en .
+
+mods:Language
+    rdf:type rdfs:Class ;
+    rdfs:label "Language"@en .
+
+mods:Description
+    rdf:type rdfs:Class ;
+    rdfs:label "Description"@en .
+
+mods:Form
+    rdf:type rdfs:Class ;
+    rdfs:label "Form"@en .
+
+mods:Publisher
+    rdf:type rdfs:Class ;
+    rdfs:label "Publisher"@en .
+
+mods:Conference
+    rdf:type rdfs:Class ;
+    rdfs:label "Conference"@en .
+
+mods:Corporation
+    rdf:type rdfs:Class ;
+    rdfs:label "Corporation"@en .
+
+
+# --- Title Types ----
+
+mods:Title 
+    rdf:type rdfs:Class ;
+    rdfs:label "Title"@en .
+
+mods:UniformTitle
+    rdfs:subClassOf mods:Title ;
+    rdfs:label "Uniform Title"@en .
+
+mods:AlternativeTitle
+    rdfs:subClassOf mods:Title ;
+    rdfs:label "Alternative Title"@en .
+
+mods:TranslatedTitle
+    rdfs:subClassOf mods:Title ;
+    rdfs:label "Translated Title"@en .
+
+mods:AbbreviatedTitle
+    rdfs:subClassOf mods:Title ;
+    rdfs:label "Abbreviated Title"@en .
+
+
+
+# ---- Name Types ----
+
+mods:Name
+    rdf:type rdfs:Class ;
+    rdfs:label "Name"@en .
+
+mods:PersonalName
+    rdfs:subClassOf mods:Name ;
+    rdfs:label "Personal Name"@en .
+
+mods:CorporateName
+    rdfs:subClassOf mods:Name ;
+    rdfs:label "Corporate Name"@en .
+
+mods:ConferenceName
+    rdfs:subClassOf mods:Name ;
+    rdfs:label "Conference Name"@en .
+
+
+
+# --- Item Types ----
+
+mods:Item 
+    rdf:type rdfs:Class ;
+    rdfs:label "Item"@en .
+
+mods:Text
+    rdfs:label "Text"@en ;
+    rdfs:subClassOf mods:Item .
+
+mods:Cartographic
+    rdfs:label "Cartographic"@en ;
+    rdfs:subClassOf mods:Item .
+
+mods:NotatedMusic
+    rdfs:label "Notated Music"@en ;
+    rdfs:subClassOf mods:Item .
+
+mods:SoundRecordingNonMusical
+    rdfs:label "Non-Musical Sound Recording"@en ;
+    rdfs:subClassOf mods:Item .
+
+mods:SoundRecordingMusical
+    rdfs:label "Musical Sound Recording"@en ;
+    rdfs:subClassOf mods:Item .
+
+mods:SoundRecording
+    rdfs:label "Sound Recording"@en ;
+    rdfs:subClassOf mods:Item .
+
+mods:StillImage
+    rdfs:label "Still Image"@en ;
+    rdfs:subClassOf mods:Item .
+
+mods:MovingImage
+    rdfs:label "Moving Image"@en ;
+    rdfs:subClassOf mods:Item .
+
+mods:A3DObject
+    rdfs:label "A 3D Object"@en ;
+    rdfs:subClassOf mods:Item .
+
+mods:SoftwareAndMultimedia
+    rdfs:label "Software & Multimedia"@en ;
+    rdfs:subClassOf mods:Item .
+
+mods:MixedMaterial
+    rdfs:label "Mixed Material"@en ;
+    rdfs:subClassOf mods:Item .
+
+mods:Manuscript
+    rdfs:label "Manuscript"@en ;
+    rdfs:subClassOf mods:Item .
+
+
+# ---- Subject Types ---------
+
+mods:Subject
+    a rdfs:Class ;
+    rdfs:label "Subject" .
+    
+mods:SubjectPart
+    a rdfs:Class ;
+    rdfs:label "Subject Part" .
+    
+mods:Topic
+    rdfs:subClassOf mods:SubjectPart ;
+    rdfs:label "Topic"@en .
+
+mods:Place
+    rdfs:subClassOf mods:SubjectPart ;
+    rdfs:label "Place"@en .
+
+mods:Era
+    rdfs:subClassOf mods:SubjectPart ;
+    rdfs:label "Era"@en .
+
+mods:Title
+    rdfs:subClassOf mods:SubjectPart ;
+    rdfs:label "Title"@en .
+
+mods:Occupation
+    rdfs:subClassOf mods:SubjectPart ;
+    rdfs:label "Occupation"@en .
+
+
+
+
+# ------------------- Properties ------------------
+
+
+# - General properties -----------
+
+mods:value
+    a rdf:Property ;
+    rdfs:label "Value"@en .
+
+mods:authority
+    a rdf:Property ;
+    rdfs:label "Authority"@en .
+
+mods:edition
+    a rdf:Property ;
+    rdfs:label "Edition"@en .
+    
+mods:encoding
+    a rdf:Property ;
+    rdfs:label "Encoding"@en .
+
+mods:realm
+    a rdf:Property ;
+    rdfs:label "Realm"@en .
+
+mods:type
+    a rdf:Property ;
+    rdfs:label "Type"@en .
+    
+mods:name
+    a rdf:Property;
+    rdfs:label "Name"@en .
+
+mods:code
+    a rdf:Property;
+    rdfs:label "Code"@en .
+    
+mods:nonSort
+    a rdf:Property;
+    rdfs:label "NonSort"@en .
+
+mods:sub
+    a rdf:Property;
+    rdfs:label "Secondary Value"@en .
+
+mods:partName
+    a rdf:Property;
+    rdfs:label "Part Name"@en .
+
+mods:partNumber
+    a rdf:Property;
+    rdfs:label "Part Number"@en .
+
+
+
+
+# - Item properties -----------
+
+mods:abstract
+    a rdf:Property ;
+    rdfs:domain mods:Item ;
+    rdfs:label "Abstract"@en .
+
+mods:access
+    a rdf:Property ;
+    rdfs:domain mods:Item ;
+    rdfs:label "Access"@en .
+
+mods:note
+    a rdf:Property ;
+    rdfs:domain mods:Item ;
+    rdfs:label "Note"@en .
+
+mods:contents
+    a rdf:Property ;
+    rdfs:domain mods:Item ;
+    rdfs:label "Contents"@en .
+
+mods:audience
+    a rdf:Property ;
+    rdfs:domain mods:Item ;
+    rdfs:range mods:Audience ;
+    rdfs:label "Audience"@en .
+
+mods:genre
+    a rdf:Property ;
+    rdfs:domain mods:Item ;
+    rdfs:range mods:Genre ;
+    rdfs:label "Genre"@en .
+
+mods:language
+    a rdf:Property ;
+    rdfs:domain mods:Item ;
+    rdfs:range mods:Language ;
+    rdfs:label "Language"@en .
+
+mods:classification
+    a rdf:Property ;
+    rdfs:domain mods:Item ;
+    rdfs:range mods:Classification ;
+    rdfs:label "Classification"@en .
+
+mods:description
+    a rdf:Property ;
+    rdfs:domain mods:Item ;
+    rdfs:range mods:Description ;
+    rdfs:label "Description"@en .
+
+mods:physicalDescription
+    a rdf:Property ;
+    rdfs:subPropertyOf mods:description ;
+    rdfs:label "Physical Description"@en .
+
+mods:form
+    a rdf:Property ;
+    rdfs:domain mods:Description ;
+    rdfs:range mods:Form ;
+    rdfs:label "Form"@en .
+
+mods:extent
+    a rdf:Property ;
+    rdfs:domain mods:Description ;
+    rdfs:label "Extent"@en .
+
+mods:edition
+    a rdf:Property ;
+    rdfs:domain mods:Item ;
+    rdfs:label "Edition"@en .
+
+mods:frequency
+    a rdf:Property ;
+    rdfs:domain mods:Item ;
+    rdfs:label "Frequency"@en .
+
+mods:issuance
+    a rdf:Property ;
+    rdfs:domain mods:Item ;
+    rdfs:label "Issuance"@en .
+
+mods:publisher
+    a rdf:Property ;
+    rdfs:domain mods:Item ;
+    rdfs:range mods:Publisher ;
+    rdfs:label "Publisher"@en .
+
+mods:location
+    a rdf:Property ;
+    rdfs:domain mods:Publisher ;
+    rdfs:range mods:Place ;
+    rdfs:label "Place"@en .
+
+mods:copyrightDate
+    a rdf:Property ;
+    rdfs:domain mods:Item ;
+    rdfs:range mods:Date ;
+    rdfs:label "Copyright"@en .
+
+mods:dateIssued
+    a rdf:Property ;
+    rdfs:domain mods:Item ;
+    rdfs:range mods:Date ;
+    rdfs:label "Issued"@en .
+
+mods:dateCreated
+    a rdf:Property ;
+    rdfs:domain mods:Item ;
+    rdfs:range mods:Date ;
+    rdfs:label "Created"@en .
+
+mods:dateCaptured
+    a rdf:Property ;
+    rdfs:domain mods:Item ;
+    rdfs:range mods:Date ;
+    rdfs:label "Captured"@en .
+
+mods:dateValid
+    a rdf:Property ;
+    rdfs:domain mods:Item ;
+    rdfs:range mods:Date ;
+    rdfs:label "Valid"@en .
+
+mods:dateModified
+    a rdf:Property ;
+    rdfs:domain mods:Item ;
+    rdfs:range mods:Date ;
+    rdfs:label "Modified"@en .
+
+mods:subject
+    a rdf:Property ;
+    rdfs:domain mods:Item ;
+    rdfs:range mods:Subject ;
+    rdfs:label "Subject"@en .
+
+mods:part
+    a rdf:Property ;
+    rdfs:domain mods:Subject ;
+    rdfs:range mods:SubjectPart ;
+    rdfs:label "Part"@en .
+
+mods:title
+    a rdf:Property ;
+    rdfs:domain mods:Text ; 
+    rdfs:range mods:Title ;
+    rdfs:label "Title"@en .
+
+
+# --- Name Properties ----
+
+mods:dates
+    a rdf:Property ;
+    rdfs:domain mods:Name ;
+    rdfs:label "Life Dates"@en .
+
+mods:familyName
+    a rdf:Property ;
+    rdfs:domain mods:Name ;
+    rdfs:label "Family Name"@en .
+
+mods:givenName
+    a rdf:Property ;
+    rdfs:domain mods:Name ;
+    rdfs:label "Given Names"@en .
+
+mods:address
+    a rdf:Property ;
+    rdfs:domain mods:Name ;
+    rdfs:label "Address"@en .
+
+mods:fullName
+    a rdf:Property ;
+    rdfs:domain mods:Name ;
+    rdfs:label "Full Name"@en .
+
+mods:displayForm
+    a rdf:Property ;
+    rdfs:domain mods:Name ;
+    rdfs:label "Display Form"@en .
+
+mods:nameDescription
+    a rdf:Property ;
+    rdfs:domain mods:Name ;
+    rdfs:label "Description"@en .
+
+mods:affiliation
+    a rdf:Property ;
+    rdfs:domain mods:Name ;
+    rdfs:label "Affiliation"@en .
+
+
+
+
+# - Item Relationships ----
+
+mods:preceding
+    a rdf:Property ;
+    rdfs:range mods:Item ;
+    rdfs:range mods:Item ;
+    rdfs:label "Preceding"@en .
+
+mods:succeeding
+    a rdf:Property ;
+    rdfs:range mods:Item ;
+    rdfs:range mods:Item ;
+    rdfs:label "Succeeding"@en .
+
+mods:original
+    a rdf:Property ;
+    rdfs:range mods:Item ;
+    rdfs:range mods:Item ;
+    rdfs:label "Original"@en .
+
+mods:host
+    a rdf:Property ;
+    rdfs:range mods:Item ;
+    rdfs:range mods:Item ;
+    rdfs:label "Host"@en .
+
+mods:constituent
+    a rdf:Property ;
+    rdfs:range mods:Item ;
+    rdfs:range mods:Item ;
+    rdfs:label "Part Of"@en .
+
+mods:series
+    a rdf:Property ;
+    rdfs:range mods:Item ;
+    rdfs:range mods:Item ;
+    rdfs:label "Part of Series"@en .
+
+mods:otherVersion
+    a rdf:Property ;
+    rdfs:range mods:Item ;
+    rdfs:range mods:Item ;
+    rdfs:label "Other Version"@en .
+
+mods:otherFormat
+    a rdf:Property ;
+    rdfs:range mods:Item ;
+    rdfs:range mods:Item ;
+    rdfs:label "Other Format"@en .
+
+mods:isReferencedBy
+    a rdf:Property ;
+    rdfs:range mods:Item ;
+    rdfs:range mods:Item ;
+    rdfs:label "Referenced By"@en .
+
+mods:relatedTo
+    a rdf:Property ;
+    rdfs:range mods:Item ;
+    rdfs:range mods:Item ;
+    rdfs:label "Related To"@en .
+
+
+
+
+
+# - Record properties -----------
+
+mods:records
+    a rdf:Property ;
+    rdfs:domain mods:Record ;
+    rdfs:label "Records"@en .
+
+mods:origin
+    a rdf:Property ;
+    rdfs:domain mods:Record ;
+    rdfs:label "Origin"@en .
+
+mods:created
+    a rdf:Property ;
+    rdfs:domain mods:Record ;
+    rdf:range mods:Date ;
+    rdfs:label "Created"@en .
+
+mods:changed
+    a rdf:Property ;
+    rdfs:domain mods:Record ;
+    rdf:range mods:Date ;
+    rdfs:label "Changed"@en .
+
+mods:catalogingLanguage
+    rdfs:subPropertyOf mods:language ;
+    rdfs:domain mods:Record ;
+    rdf:range mods:Language ;
+    rdfs:label "Language"@en .
+
+# ------------------- Roles ------------------
+
+roles:creator
+    a rdf:Property ;
+    rdfs:domain mods:Item ;
+    rdf:range mods:Person ;
+    rdfs:label "Creator"@en .

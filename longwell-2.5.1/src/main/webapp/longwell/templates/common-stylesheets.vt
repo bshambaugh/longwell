@@ -1,0 +1,5 @@
+<link rel="shortcut icon" href="$resourcePath/images/icon.png" type="image/png">
+
+<link rel="stylesheet" href="$resourcePath/styles/common.css" type="text/css"/>
+<link rel="stylesheet" href="$resourcePath/styles/page.css" type="text/css"/>
+<link rel="stylesheet" href="$resourcePath/styles/colors.css" type="text/css"/>

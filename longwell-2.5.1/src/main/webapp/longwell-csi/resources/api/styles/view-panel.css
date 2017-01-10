@@ -1,0 +1,119 @@
+div.longwell-viewPanel-frontPage-message {
+    font-style: italic;
+    font-size:  200%;
+    text-align: center;
+    margin:     2em;
+    color:      #888;
+}
+.longwell-viewPanel-frontPage-message img {
+    vertical-align: middle;
+}
+
+.longwell-viewPanel-frontPage-search-container {
+    border-collapse: collapse;
+    border:          0;
+}
+
+td.longwell-viewPanel-frontPage-search-left {
+    background:     transparent url(../../images/roundbar_left.png) no-repeat scroll left top;
+    height:         22px;
+    width:          20px;
+    margin:         0;
+    padding:        0;
+}
+
+td.longwell-viewPanel-frontPage-search-right {
+    background:     transparent url(../../images/roundbar_right.png) no-repeat scroll right top;
+    width:          12px;
+    margin:         0;
+    padding:        0;
+}
+
+td.longwell-viewPanel-frontPage-search {
+    padding:        0.3em 0 0;
+    text-align:     center;
+    background:     transparent url(../../images/roundbar_bg.png) repeat-x scroll center top;
+}
+
+td.longwell-viewPanel-frontPage-search input {
+    border:         medium none;
+    color:          #888888;
+    margin:         0pt 0pt 0pt 0.5em;
+    padding:        0pt;
+    position:       relative;
+    width:          100%;
+}
+
+div.longwell-viewPanel-frontPage-facet {
+    padding:        1em;
+    border:         1px solid #ddd;
+}
+
+.longwell-viewPanel-frontPage-facet h1 {
+    font-size:  120%;
+    padding:    0;
+    margin:     0;
+}
+
+.longwell-viewPanel-frontPage-facet ul {
+    padding-left:       1em;
+    list-style-type:    disc;
+}
+
+.longwell-viewPanel-frontPage-facet li {
+    padding:     0.25em 0.25em;
+}
+.longwell-viewPanel-frontPage-facet li.odd {
+}
+.longwell-viewPanel-frontPage-facet li.even {
+    background: #f0f0f0;
+}
+
+.longwell-viewPanel-frontPage-facet-count {
+    color: #555;
+    float: right;
+    margin: 0em 0em 0em 1em;
+}
+
+div.longwell-viewPanel {
+}
+
+div.longwell-viewPanel-viewContainer {
+    padding:    3em 0;
+    clear:      none;
+    border-top: 3px solid #ccc;
+}
+
+div.longwell-viewPanel-viewContainer:first-child {
+    padding-top: 0;
+    border-top:  none;
+}
+
+.longwell-viewPanel-viewContainer .closeView {
+    float:          right;
+    width:          16px;
+    height:         16px;
+    background:     url(../images/close.png) center center no-repeat;
+    display:        none;
+    cursor:         pointer;
+}
+
+.longwell-viewPanel[multiple="true"] .longwell-viewPanel-viewContainer .closeView {
+    display:        block;
+}
+
+.longwell-viewPanel-viewContainer .viewSelector {
+    float:          right;
+    height:         32px;
+    width:          9em;
+    margin:         0 0 0.5em 0.5em;
+    cursor:         pointer;
+    text-align:     right;
+    text-transform: uppercase;
+    color:          #606054;
+    font-weight:    bold;
+}
+.longwell-viewPanel .viewSelector img {
+    vertical-align: middle;
+    margin-left:    4px;
+}

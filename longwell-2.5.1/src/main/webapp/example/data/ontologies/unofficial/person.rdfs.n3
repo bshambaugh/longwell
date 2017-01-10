@@ -1,0 +1,47 @@
+@prefix person:  <http://simile.mit.edu/2003/10/ontologies/person#> .
+@prefix vc:      <http://www.w3.org/2001/vcard-rdf/3.0#> .
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:       <http://www.w3.org/2002/07/owl#> .
+
+<http://simile.mit.edu/2003/10/ontologies/person#>
+    rdf:type         owl:Ontology ;
+    dc:title         "Simple Person Ontology" ;
+    dc:creator       "Andy Seaborne" ;
+    dc:publisher     "The SIMILE Project" ;
+    dc:date          "2003-10-14" ;
+    dc:format        "RDFS" .
+
+# ----------- Classes ---------------
+
+person:Person
+    a	rdfs:Class ;
+    rdfs:label      "Person"@en .
+
+# ----------- Properties ---------------
+
+vc:FN
+	a	rdf:Property;
+	rdfs:domain person:Person ;
+	rdfs:label "full name"@en .
+
+vc:Family
+	a	rdf:Property;
+	rdfs:domain person:Person ;
+	rdfs:label "family name"@en .
+
+vc:Given
+	a	rdf:Property;
+	rdfs:domain	person:Person ;
+	rdfs:label	"given name" .
+
+person:birth
+	a	rdf:Property;
+	rdfs:domain	person:Person ;
+	rdfs:label	"birth" .
+
+person:death
+	a	rdf:Property;
+	rdfs:domain	person:Person ;
+	rdfs:label	"death" .

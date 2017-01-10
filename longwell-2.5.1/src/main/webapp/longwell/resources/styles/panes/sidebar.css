@@ -1,0 +1,102 @@
+#lw_sidebar {
+    float: right;
+    width: 30%;
+}
+#lw_sidebar_hidden {
+    display: none;
+    width: 2em;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-right: none;
+}
+#lw_sidebar_layer {
+    z-index: 2;
+    position: relative;
+}
+#lw_sidebar_top {
+    background-color: #eee;
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+}
+
+#lw_sidebar_top {
+    background-color: #eee;
+}
+
+#lw_sidebar_facet_panes {
+    padding: 0px 10px;
+}
+#lw_sidebar_top_bottom {
+    background: url(../../images/frame/sidebar_bg_bottom.png) repeat-x left bottom;
+    height: 15px;
+}
+
+
+#lw_sidebar_slider {
+    z-index: 1;
+    position: relative;
+    top: -20px;
+}
+#lw_sidebar_drawer {
+    background: #ddd url(../../images/frame/drawer_bg_bottom.png) repeat-x left bottom;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+#lw_sidebar_drawer #lw_sidebar_drawer_body {
+    padding: 5px 10px 0px 10px;
+}
+#lw_sidebar_drawer_shadow .lw_corner {
+    background: url(../../images/frame/drawer_corner.png) no-repeat left top;
+    height: 10px;
+    width: 10px;
+}
+#lw_sidebar_drawer_shadow .lw_background {
+    background: url(../../images/frame/drawer_bg_top.png) repeat-x left top;
+    height: 10px;
+}
+
+#lw_sidebar_drawer ul {
+    margin: 5px 5px;
+    padding: 0px;
+}
+#lw_sidebar_drawer li a {
+    text-decoration: none;
+}
+#lw_sidebar_drawer li {
+    list-style-type: none;
+}
+#lw_sidebar_drawer li:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+#lw_sidebar_drawer li img {
+    padding: 1px 3px 1px 0px;
+}
+#lw_sidebar_drawer .lw_handle_down {
+    background: url(../../images/frame/drawer_handle_down.png) no-repeat center top;
+    height: 16px;
+    cursor: pointer;
+}
+#lw_sidebar_drawer .lw_handle_up {
+    background: url(../../images/frame/drawer_handle_up.png) no-repeat center top;
+    height: 16px;
+    cursor: pointer;
+}
+#lw_sidebar_bottom {
+    text-align: center;
+}
+#lw_sidebar_bottom_shadow .lw_corner {
+    background: url(../../images/frame/sidebar_bottom_corner.png) no-repeat left top;
+    height: 15px;
+    width: 10px;
+}
+#lw_sidebar_bottom_shadow .lw_background {
+    background: url(../../images/frame/sidebar_bottom_bg.png) repeat-x left top;
+    height: 15px;
+}
+#lw_sidebar_bottom img {
+    border: 1px solid #ccc;
+    margin: 10px 5px 25px 5px;
+    padding: 1px;
+}

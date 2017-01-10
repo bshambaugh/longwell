@@ -1,0 +1,5 @@
+<script src="$resourcePath/scripts/utilities/debug.js" type="text/javascript"></script>
+<script src="$resourcePath/scripts/utilities/http.js" type="text/javascript"></script>
+<script src="$resourcePath/scripts/common.js" type="text/javascript"></script>
+<script src="$resourcePath/scripts/frame.js" type="text/javascript"></script>
+<script src="$resourcePath/scripts/components/menu.js" type="text/javascript"></script>

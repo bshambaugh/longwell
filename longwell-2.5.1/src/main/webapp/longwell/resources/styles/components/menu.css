@@ -1,0 +1,32 @@
+.lw_popup_menu {
+	display: none;
+	border: 1px solid #888;
+	padding: 1px;
+	background-color: white;
+	position: absolute;
+	z-index: 100;
+}
+
+.lw_popup_menu_button {
+	cursor: pointer;
+}
+
+.lw_popup_menu_header {
+	font-weight: bold;
+	padding: 0.25em;
+	background-color: #eef;
+	border-bottom: 1px solid #ddd;
+}
+
+.lw_popup_menu_item {
+	padding: 0.25em;
+	cursor: pointer;
+}
+
+.lw_popup-menu_item:hover {
+	background-color: #eee ;
+}
+
+.lw_popup_menu_item a {
+	text-decoration: none;
+}

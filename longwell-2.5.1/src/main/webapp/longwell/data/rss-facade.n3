@@ -1,0 +1,24 @@
+@prefix rdf:			<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:		<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc:			<http://purl.org/dc/elements/1.1/> .
+@prefix flair:		<http://simile.mit.edu/2005/04/flair#> .
+@prefix facade:		<http://simile.mit.edu/2005/04/flair/facades#> .
+
+@prefix rss:			<http://purl.org/rss/1.0/> .
+
+facade:rss_1_0
+	rdf:type		flair:Facade ;
+	rdf:type		flair:QueryBasedFacade ;
+
+	rdfs:label		"Facade for RSS Items"@en ;
+	dc:description	"A facade for browsing RSS items"@en ;
+
+	flair:shortLabel			"News"@en ;
+	flair:contentDescription	"News articles and channels"@en ;
+
+	flair:restriction [
+		flair:predicate	rdf:type ;
+		flair:object		rss:item ;
+		flair:object		rss:channel
+	]
+.

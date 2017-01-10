@@ -1,0 +1,70 @@
+<div id="lw_content">
+    #set($objects = $answer.getObjects())
+    #if ($answer.getObjects().size() == 0)
+        <div class="lw_message">
+            No item found.
+        </div>
+    #elseif ($answer.getObjects().size() > 500)
+        <div class="lw_message">
+            <div class="lw_items_count lw_title"><span>$answer.getObjects().size()</span> items</div>
+            <div>Narrow down further<br/>by clicking on more filtering criteria ---></div>
+        </div>
+    #else
+        #if($answer.getObjects().size() > 1)
+          #set($items = "items")
+        #else
+          #set($items = "item")
+        #end
+        <div class="lw_items_count"><span>$answer.getObjects().size()</span> $items</div>
+        <script>
+            function Map_setLegend(elmt) {
+                var s = "";
+                
+                var childNodes = elmt.childNodes;
+                for (i = 0; i < childNodes.length; i++) {
+                    try {
+                        var node = childNodes[i];
+                        var image = node.getAttribute("image");
+                        var label = node.getAttribute("label");
+                         if (image != null)
+                        s += "<span><img src='" + image + "' align='absmiddle' /><span>" + label + "</span></span>";
+                    } catch (e) {
+                    }
+                }
+                
+                var legend = document.getElementById("lw_legend");
+                legend.innerHTML = s;
+            }
+        </script>
+        #set($mapURL = $url.changeCommand("export"))
+        #set($resultsViewParam = $mapURL.getQuery().getFirstParamValue("resultsViewParam"))
+        $mapURL.getQuery().removeParameter("resultsViewParam")
+        $mapURL.getQuery().removeParameter("resultsView")
+        $mapURL.getQuery().setParameter("latlong", $resultsViewParam)
+        #if ($longwell.getMapProperties().getProperty("map.google.key"))
+            $mapURL.getQuery().setParameter("format", "GMap")
+            #set($framesrc = "$resourcePath/content/panes/map/map.html?key=$longwell.getMapProperties().getProperty('map.google.key')&url=$mapURL.toURLStringEncoded()")
+        #else
+            #set($framesrc = "$resourcePath/content/panes/map/nomap.html")
+        #end
+        <iframe name="map" id="map"
+            frameborder="0" style="width: 100%"  height="500"
+            src="$framesrc">
+        </iframe>
+        <div id="lw_legend" style="margin: 1em"></div>
+
+	#set($mapRestrictorURL = $url.dup())
+	#if ($outerQuery)
+	  #set($mapRestrictorURL = $mapRestrictorURL.changeCommandQuery("browse", $outerQuery))
+	#end
+	$mapRestrictorURL.getQuery().addRestriction("@lwq.project.CoordinateWindowProjector", "http://simile.mit.edu/2005/05/ontologies/location#coordinates", "@lwq.bucket.CoordinateWindowBucketer", "")
+	$mapRestrictorURL.getQuery().removeParameter("page")
+	#set($mapRestrictorURLString = $mapRestrictorURL.toURLString())
+	<div id="restrictor" style="display: none;"> </div>
+	<script type="text/javascript">
+        var mapRestrictorURL = "$mapRestrictorURLString";
+        mapRestrictorURL = mapRestrictorURL.substring(0, mapRestrictorURL.length - 1);
+	document.getElementById("restrictor").setAttribute("mapRestrictorURL", mapRestrictorURL);
+        </script>
+    #end
+</div>

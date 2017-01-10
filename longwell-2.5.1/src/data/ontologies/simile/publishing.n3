@@ -1,0 +1,43 @@
+@prefix rdf:			<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:		<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     	<http://www.w3.org/2002/07/owl#> .
+@prefix dc:      	<http://purl.org/dc/elements/1.1/> .
+@prefix pub:         <http://simile.mit.edu/2005/04/ontologies/publishing#> .
+
+<http://simile.mit.edu/2005/04/ontologies/publishing#>
+    rdf:type         owl:Ontology ;
+    dc:title         "Minimalistic Publishing Ontology" ;
+    dc:creator       "David Huynh" ;
+    dc:creator       "Stefano Mazzocchi" ;
+    dc:publisher     "The SIMILE Project" ;
+    dc:date          "2005-4-15" ;
+    dc:format        "RDFS" .
+
+# ---------- Classes ----------
+
+pub:Public
+	rdf:type rdfs:Class ;
+	rdfs:label "Public"@en ;
+	rdfs:comment "The status of being available to a general public."@en ;
+.
+
+pub:Private
+	rdf:type rdfs:Class ;
+	rdfs:label "Private"@en ;
+	rdfs:comment "The status of being restricted to a private group of people."@en ;
+.
+
+# ---------- Properties ----------
+
+pub:status
+	rdf:type rdf:Property ;
+	rdfs:label "status"@en ;
+	rdfs:comment "Indicates the publication status of an item."@en ;
+.
+
+pub:contributedBy
+	rdf:type rdf:Property ;
+	rdfs:label "contributed by"@en ;
+	rdfs:comment "Indicates the contributor of an item."@en ;
+.
+

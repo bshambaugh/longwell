@@ -1,0 +1,29 @@
+.fresnel-results > .f-resource {
+  border: 1px solid #ccc;
+}
+
+.f-resource {
+  clear: both;
+}
+
+.f-resource > .f-title {
+  display: none;
+}
+
+.f-property {
+  margin: 1em ;
+}
+
+.f-property > .f-label {
+  font-weight: bold;
+}
+
+.f-value {
+  padding-left: 1em;
+}
+
+.f-resource .f-value .f-resource > .f-title {
+  display: block;
+  font-weight: normal;
+  font-style: normal;
+}

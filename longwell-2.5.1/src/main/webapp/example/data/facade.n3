@@ -1,0 +1,23 @@
+@prefix rdf:			<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:		<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc:			<http://purl.org/dc/elements/1.1/> .
+@prefix flair:		<http://simile.mit.edu/2005/04/flair#> .
+@prefix facade:		<http://simile.mit.edu/2005/04/flair/facades#> .
+
+@prefix foaf:		<http://xmlns.com/foaf/0.1/> .
+
+facade:simile
+	rdf:type		flair:Facade ;
+	rdf:type		flair:QueryBasedFacade ;
+
+	rdfs:label		"Facade for SIMILE Members"@en ;
+	dc:description	"A facade for browsing SIMILE roster"@en ;
+
+	flair:shortLabel			"SIMILE-ers"@en ;
+	flair:contentDescription	"Team members of the SIMILE project."@en ;
+
+	flair:restriction [
+		flair:predicate		rdf:type ;
+		flair:object		foaf:Organization ;
+	]
+.

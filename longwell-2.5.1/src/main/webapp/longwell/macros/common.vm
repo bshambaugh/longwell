@@ -1,0 +1,73 @@
+#macro (addNarrowingButton $o $property $forward)
+    #set($narrowingURL = $outerURL.getNarrowingURL($property, $o.getValue(), false, $forward))
+    #if($narrowingURL != "")
+        <div class="lw_popup_menu_item">
+          <a href="$utilities.escape($narrowingURL)">
+            <img class="lw_narrowing_image" src="$resourcePath/images/zoom-in.png" />
+            In the same field within these search results
+          </a>
+        </div>
+    #end
+#end
+
+#macro (addBroadeningButton $o $property $forward)
+  #set($narrowingURL = $url.getNarrowingURL($property, $o.getValue(), true, $forward))
+  #if($narrowingURL != "")
+    <div class="lw_popup_menu_item">
+      <a href="$utilities.escape($narrowingURL)">
+        <img class="lw_narrowing_image" src="$resourcePath/images/zoom-out.png" />
+        In the same field on any item
+      </a>
+    </div>
+  #end
+#end
+
+#macro (addTextSearchButton $o)
+  #set($label = $o.getLabel())
+  #if($label != "" && $label.length() < 50)
+     #set($narrowingURL = $url.changeCommandQuery("browse", ""))
+     $narrowingURL.getQuery().addRestriction("edu.mit.simile.longwell.query.project.TextIndexProjector", "", "edu.mit.simile.longwell.query.bucket.TextIndexBucketer", $label)
+
+     <div class="lw_popup_menu_item">
+        <a href="$utilities.escape($narrowingURL.toURLString())">
+          <img class="lw_narrowing_image" src="$resourcePath/images/zoom.png" />
+          In any field on any item
+        </a>
+     </div>
+  #end
+#end
+
+#macro (makeSearchPopupMenu $o $property $forward)
+    #set($randomKey = $utilities.randomString())
+    <img class="lw_popup_menu_button"
+        id="lw_search_popup_button_${randomKey}"
+        src="$resourcePath/images/search.gif"
+        onclick="Menu.show('lw_search_popup_button_${randomKey}', 'lw_search_popup_${randomKey}')"
+        title="Click for choices to search by this value"
+        />
+    <div class="lw_popup_menu" id="lw_search_popup_${randomKey}">
+        <div class="lw_popup_menu_header">Search for this value:</div>
+        #if("$!outerURL.getCommand()" == "browse")
+            #addNarrowingButton($o $property $forward)
+        #end
+        #addBroadeningButton($o $property $forward)
+        #if($value.getLabel().length() < 30)
+            #addTextSearchButton($o)
+        #end
+    </div>
+#end
+
+#macro(addStringField $fieldName $text)
+    ,$fieldName: #if($utilities.isNull($text)) null #else "$utilities.escapeForJavascript($text)" #end
+#end
+
+#macro(addStringFieldIfNotNull $fieldName $text)
+    #if($utilities.isNotNull($text)) ,$fieldName:"$utilities.escapeForJavascript($text)" #end
+#end
+
+#macro(addNonStringField $fieldName $value)
+    ,$fieldName: #if($utilities.isNotNull($value)) null #else $value #end
+#end
+#macro(addNonStringFieldIfNotNull $fieldName $value)
+    #if($utilities.isNotNull($value)) ,$fieldName: $value #end
+#end

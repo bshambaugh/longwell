@@ -1,0 +1,97 @@
+div.longwell-gridView-header {
+    margin-bottom:  2em;
+    clear:          none;
+}
+
+.longwell-gridView-header tr {
+    vertical-align: baseline;
+}
+
+.longwell-gridView-header input {
+    text-align:     center;
+    font-size:      120%;
+    font-weight:    bold;
+    border:         1px solid #aaa;
+    background:     #f8f8f8;
+}
+
+.longwell-gridView-header span.item-count {
+    font-size:      150%;
+    font-weight:    bold;
+}
+
+div.longwell-gridView-tableControls {
+    text-align: center;
+    margin:     2em 0 1em 0;
+}
+
+div.longwell-gridView-container {
+    margin: 2em 0em;
+}
+
+div.longwell-gridView-container .longwell-gridView-item {
+    float:          left;
+    border:         1px solid #ccc;
+    margin:         0.5em;
+    padding:        0 0.5em 0.5em;
+    text-align:     center;
+    width:          150px;
+    height:         120px;
+}
+
+.longwell-gridView-item img {
+    padding:        0.25em 0 0;
+    border:         1px solid #eee;
+}
+
+.longwell-gridView-item span.item-label {
+    display:         block;
+}
+
+div.longwell-gridView-breaker {
+    clear:          both;
+}
+
+.longwell-gridView-footer {
+    margin-top:     2em;
+    clear:          none;
+    width:          100%;
+}
+
+.longwell-gridView-footer tr {
+    vertical-align: baseline;
+}
+
+.longwell-gridView-footer td {
+    text-align: center;
+}
+
+.longwell-gridView-footer a {
+    margin: 0 0.5em;
+}
+
+.longwell-gridView-footer a[disabled="true"] {
+    color: #ccc;
+}
+
+.longwell-gridView-footer a.next,  .longwell-gridView-footer a.previous {
+    font-weight: bold;
+    font-size: 120%;
+}
+
+.longwell-gridView-footer input {
+    vertical-align: middle;
+}
+
+.longwell-gridView-footer input[type="text"] {
+    text-align:     center;
+    font-size:      120%;
+    font-weight:    bold;
+    border:         1px solid #aaa;
+    background:     #FFFFE0;
+}
+
+.longwell-gridView-footer span.item-count {
+    font-size:      200%;
+    font-weight:    bold;
+}

@@ -1,0 +1,123 @@
+div.longwell-tabularView-header {
+    margin-bottom:  2em;
+    clear:          none;
+}
+
+.longwell-tabularView-header tr {
+    vertical-align: baseline;
+}
+
+.longwell-tabularView-header a.action {
+    font-size:   120%;
+    font-weight: bold;
+}
+
+.longwell-tabularView-header input {
+    text-align:     center;
+    font-size:      120%;
+    font-weight:    bold;
+    border:         1px solid #aaa;
+    background:     #f8f8f8;
+}
+
+.longwell-tabularView-header span.item-count {
+    font-size:      150%;
+    font-weight:    bold;
+}
+
+div.longwell-tabularView-tableControls {
+    text-align: center;
+    margin:     2em 0 1em 0;
+}
+
+table.longwell-tabularView-table {
+}
+
+table.longwell-tabularView-table thead td {
+    font-weight:    bold;
+    background:     #ddd;
+    cursor:         pointer;
+    vertical-align: top;
+}
+
+table.longwell-tabularView-table thead div {
+    position:       relative;
+    padding:        4px;
+    padding-right:  16px;
+}
+
+table.longwell-tabularView-table thead .remove-column-control {
+    position:       absolute;
+    right:          0px;
+    top:            0px;
+    cursor:         pointer;
+}
+
+table.longwell-tabularView-table tbody tr td {
+    padding: 4px;
+    vertical-align: top;
+}
+
+table.longwell-tabularView-table tbody tr.longwell-tabularView-oddRow {
+    background: #eee;
+}
+
+table.longwell-tabularView-table tbody tr.longwell-tabularView-evenRow {
+}
+
+table.longwell-tabularView-table tbody tr td.item-number {
+    text-align: right;
+    color: #bbb;
+}
+
+table.longwell-tabularView-table tbody tr td.item-label {
+}
+
+.longwell-tabularView-footer {
+    margin-top:     2em;
+    clear:          none;
+    width:          100%;
+}
+
+.longwell-tabularView-footer tr {
+    vertical-align: baseline;
+}
+
+.longwell-tabularView-footer a.action {
+    font-size:   120%;
+    font-weight: bold;
+}
+
+.longwell-tabularView-footer td {
+    text-align: center;
+}
+
+.longwell-tabularView-footer a {
+    margin: 0 0.5em;
+}
+
+.longwell-tabularView-footer a[disabled="true"] {
+    color: #ccc;
+}
+
+.longwell-tabularView-footer a.next,  .longwell-tabularView-footer a.previous {
+    font-weight: bold;
+    font-size: 120%;
+}
+
+.longwell-tabularView-footer input {
+    vertical-align: middle;
+}
+
+.longwell-tabularView-footer input[type="text"] {
+    text-align:     center;
+    font-size:      120%;
+    font-weight:    bold;
+    border:         1px solid #aaa;
+    background:     #FFFFE0;
+}
+
+.longwell-tabularView-footer span.item-count {
+    font-size:      200%;
+    font-weight:    bold;
+}

@@ -1,0 +1,69 @@
+#set($sortPropertyURI = $xmlRoot.getAttribute("sortPropertyURI"))
+#set($ascending = $utilities.getElementBooleanAttribute($xmlRoot, "ascending"))
+#set($startIndex = $utilities.getElementIntegerAttribute($xmlRoot, "startIndex"))
+#set($endIndex = $utilities.getElementIntegerAttribute($xmlRoot, "endIndex"))
+
+#set($dqModel = $profile.getStructuredModel("edu.mit.simile.longwell.dq.DynamicQueryModel"))
+#set($schemaModel = $profile.getSchemaModel())
+
+#set($fq = $dqModel.createFacetedQuery($xmlRoot.getElementsByTagName("query").item(0)))
+#set($answer = $dqModel.getAnswer($fq, $sortPropertyURI, $ascending))
+#set($objects = $answer.getSortedObjects())
+#if ($utilities.isNull($objects))
+    #set($totalCount = 0)
+#else
+    #set($totalCount = $objects.size())
+#end
+
+#if ($totalCount == 0)
+    {   totalItemCount: 0,
+        items: []
+    }
+#else
+    #if ($startIndex > $totalCount) #set($startIndex = $totalCount) #end
+    #if ($endIndex > $totalCount) #set($endIndex = $totalCount) #end
+    
+    #set($properties = [])
+    #foreach($e in $utilities.getElementsByTagName($xmlRoot.getElementsByTagName("columns").item(0), "column"))
+        #set($nothing = $properties.add($e.getAttribute("uri")))
+    #end
+    
+    {   totalItemCount: $totalCount,
+        startIndex: $startIndex,
+        endIndex: $endIndex,
+        items: [
+        #set($first = true)
+        #foreach($item in $objects.subList($startIndex, $endIndex))
+            #if($first) #set($first = false) #else , #end {
+                #if ($utilities.isURI($item))
+                    uri: "$item.toString()",
+                    label: "$utilities.escapeForJavascript($schemaModel.getLabel($item, $locale))",
+                    properties: [
+                    
+#set($first2 = true)
+#foreach($propertyURI in $properties)
+    #if($first2) #set($first2 = false) #else , #end [
+    #set($values = $utilities.getPropertyValues($item, $propertyURI, $profile))
+        #set($first3 = true)
+        #foreach($value in $values)
+            #if($first3) #set($first3 = false) #else , #end {
+                #if ($utilities.isURI($value))
+                    uri: "$value.toString()",
+                    label: "$utilities.escapeForJavascript($schemaModel.getLabel($value, $locale))"
+                #else
+                    label: "$utilities.escapeForJavascript($utilities.makeEllipticalText($value.getLabel(), 300))"
+                #end
+            }
+        #end
+    ]
+#end
+
+                    ]
+                #else
+                    label: "$item.getLabel()"
+                #end
+            }
+        #end    
+        ]
+    }
+#end

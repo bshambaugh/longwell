@@ -1,0 +1,19 @@
+@prefix rdf:		<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:		<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix flair:		<http://simile.mit.edu/2005/04/flair#> .
+@prefix longwell:	<http://simile.mit.edu/2005/04/longwell#> .
+
+# -------- Classes -------------
+
+flair:Facade
+	rdf:type			rdfs:Class ;
+	rdfs:label			"Facade" ;
+	longwell:systemic	"true"
+.
+
+flair:QueryBasedFacade
+	rdf:type			rdfs:Class ;
+	rdfs:subClassOf		flair:Facade ;
+	rdfs:label			"Query-based Facade" ;
+	longwell:systemic	"true"
+.

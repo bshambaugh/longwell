@@ -1,0 +1,101 @@
+.longwell-listView-header {
+    margin-bottom:  2em;
+    clear:          none;
+    width:          100%;
+}
+
+.longwell-listView-header tr {
+    vertical-align: baseline;
+}
+
+.longwell-listView-header a {
+    margin: 0 0.5em;
+}
+
+.longwell-listView-header a[disabled="true"] {
+    color: #ccc;
+}
+
+.longwell-listView-header a.next,  .longwell-listView-header a.previous {
+    font-weight: bold;
+    font-size: 120%;
+}
+
+.longwell-listView-header input {
+    vertical-align: middle;
+}
+
+.longwell-listView-header input[type="text"] {
+    text-align:     center;
+    font-size:      120%;
+    font-weight:    bold;
+    border:         1px solid #aaa;
+    background:     #f8f8f8;
+}
+
+.longwell-listView-header span.item-count {
+    font-size:      200%;
+    font-weight:    bold;
+}
+
+.longwell-listView-controls {
+    text-align: center;
+    margin:     1em;
+}
+
+table.longwell-listView-table {
+}
+
+table.longwell-listView-table tbody tr td {
+    padding: 4px;
+    vertical-align: top;
+}
+
+table.longwell-listView-table tbody tr td.item-number {
+    text-align: right;
+    color: #bbb;
+}
+
+.longwell-listView-footer {
+    margin-top:  2em;
+    clear:          none;
+    width:          100%;
+}
+
+.longwell-listView-footer tr {
+    vertical-align: baseline;
+}
+
+.longwell-listView-footer td {
+    text-align: center;
+}
+
+.longwell-listView-footer a {
+    margin: 0 0.5em;
+}
+
+.longwell-listView-footer a[disabled="true"] {
+    color: #ccc;
+}
+
+.longwell-listView-footer a.next,  .longwell-listView-footer a.previous {
+    font-weight: bold;
+    font-size: 120%;
+}
+
+.longwell-listView-footer input {
+    vertical-align: middle;
+}
+
+.longwell-listView-footer input[type="text"] {
+    text-align:     center;
+    font-size:      120%;
+    font-weight:    bold;
+    border:         1px solid #aaa;
+    background:     #f8f8f8;
+}
+
+.longwell-listView-footer span.item-count {
+    font-size:      200%;
+    font-weight:    bold;
+}

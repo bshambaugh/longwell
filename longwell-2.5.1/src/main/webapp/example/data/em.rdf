@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/" 
+         xmlns:contact="http://www.w3.org/2000/10/swap/pim/contact#"
+	 xmlns:loc="http://simile.mit.edu/2005/05/ontologies/location#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+<foaf:Person rdf:about = "http://www.w3.org/People/EM/contact#me">
+   <rdf:value>Eric Miller, em@w3.org</rdf:value>
+   <foaf:name>Eric Miller</foaf:name>
+   <foaf:phone rdf:resource="tel:+1-(617)-258-5714"/>
+   <foaf:mbox rdf:resource="mailto:em@w3.org"/>
+   <foaf:nick>em</foaf:nick>
+   <foaf:img rdf:resource="http://www.w3.org/People/EM/s000782.JPG"/>
+   <foaf:workInfoHomepage rdf:resource="http://www.w3.org/People/EM"/>
+   <foaf:workplaceHomepage rdf:resource="http://www.w3.org/"/>
+
+   <contact:office>
+     <contact:contactLocation>	
+      <rdf:value>MIT CSAIL</rdf:value>  
+      <contact:homePage rdf:resource = "http://csail.mit.edu/" />
+      <contact:address>
+         <contact:Address>
+           <rdf:value>The Stata Center, Building 32-G516, 32 Vassar Street, Cambridge MA 02139</rdf:value>  
+           <contact:city>Cambridge</contact:city>
+           <contact:country>USA</contact:country>
+           <contact:postalCode>02139</contact:postalCode>
+           <contact:street>The Stata Center, Building 32-G516, 32 Vassar Street</contact:street>
+           <loc:coordinates>42.361860,-71.091840</loc:coordinates>
+	 </contact:Address>
+      </contact:address>
+    </contact:contactLocation>
+   </contact:office>
+
+</foaf:Person>
+
+</rdf:RDF>

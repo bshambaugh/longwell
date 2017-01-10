@@ -1,0 +1,76 @@
+#set($iCalURL = $url.changeCommand("export"))
+#set($resultsViewParam = $iCalURL.getQuery().getFirstParamValue("resultsViewParam"))
+$iCalURL.getQuery().removeParameter("resultsViewParam")
+$iCalURL.getQuery().removeParameter("resultsView")
+$iCalURL.getQuery().setParameter("properties", $resultsViewParam)
+$iCalURL.getQuery().setParameter("format", "iCal")
+
+<center><a href="$iCalURL.toURLString()">Export in iCalendar format</a></center>
+
+<div id="lw_content">
+
+  #set($objects = $answer.getObjects())
+  #if ($answer.getObjects().size() == 0)
+     <div class="lw_message">No item found.</div>
+  #elseif ($answer.getObjects().size() > 500)
+    <div class="lw_message">
+        <div class="lw_items_count lw_title"><span>$answer.getObjects().size()</span> items</div>
+        <div>Narrow down further<br/>by clicking on more filtering criteria ---></div>
+    </div>
+  #else
+    #set($parameters = $utilities.decodeURLComponent($url.getQuery().getFirstParamValue("resultsViewParam")).split(","))
+    #set($startProperty = $utilities.getArrayElement($parameters, 0))
+    #set($endProperty = $utilities.getArrayElement($parameters, 1))
+    #set($previewProperty = $utilities.getArrayElement($parameters, 2))
+    #set($colorProperty = $utilities.getArrayElement($parameters, 3))
+    #set($timeZone = $utilities.getArrayElement($parameters, 4))
+    <style>
+        .timeline-default {
+            font-family: Trebuchet MS, Helvetica, Arial, sans serif;
+            font-size: 8pt;
+            border: 1px solid #aaa;
+        }
+    </style>
+    
+    <script src="$resourcePath/scripts/panes/timeline/timeline.js" type="text/javascript"></script>
+    <script>
+      #set($endTime = "")
+      #set($preview = "")
+      #set($colorKey = "")
+      
+      var timeZone = $timeZone;
+      var itemData = [
+      #set($first = true)
+      #foreach($object in $objects)
+        #set($title = $schemaModel.getLabel($object, $locale))
+        #set($startTime = $utilities.getLiteralProperty($object, $startProperty, $profile))
+        #if($endProperty != "")
+            #set($endTime = $utilities.getLiteralProperty($object, $endProperty, $profile))
+        #end
+        #if($previewProperty != "")
+            #set($preview = $utilities.getLiteralProperty($object, $previewProperty, $profile))
+        #end
+        #if($colorProperty != "")
+            #set($colorKey = $utilities.getPropertyValueLabel($object, $colorProperty, $profile, $locale))
+        #end
+        
+        #set($itemURL = $url.changeCommandQuery("focus", ""))
+        $itemURL.getQuery().setParameter("objectURI", $object.toString())
+        
+        #if ($first) #set($first = false) {
+        #else ,{
+        #end
+          title : "$utilities.escapeForJavascript($title)",
+          focusURL : "$utilities.escapeForJavascript($itemURL.toURLString())",
+          preview : "$utilities.escapeForJavascript($preview)",
+          colorKey : "$utilities.escapeForJavascript($colorKey)",
+          start : "$startTime",
+          end : "$endTime"
+        }
+      #end
+      ];
+      
+      initTimeline("$resourcePath/content/panes/timeline/");
+    </script>
+  #end
+</div>

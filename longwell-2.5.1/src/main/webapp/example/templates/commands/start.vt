@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<!--
+		#set($dataURL = $url.changeCommand("export"))
+		<link rel="alternate" title="RDF Data" href="$dataURL.toURLString()" type="application/n3" />
+		-->
+		<title>#inject("title")</title>
+		
+		#set($profileURL = $url.changeQuery(""))
+		$profileURL.getQuery().removeOtherParameters()
+		
+        <script type="text/javascript">
+			var g_contextPath = "$contextPath";
+			var g_resourcePath = "$resourcePath";
+			var g_profileURL = "$profileURL.toURLString()";
+			var g_outerQuery = "$url.getQuery().toURLQueryString()";
+        </script>
+        #inject("start-stylesheets")
+        #inject("start-scripts")
+	</head>
+	<body onmousedown="Menu.onBodyMouseDown(event);">
+		#set($showSearchBox = true)
+        #inject("header")
+		<div id="lw_content">
+			#if ($facades.size() > 0 || $classes.size() > 0)
+				#inject("facades")
+			#else
+				No typed data found.
+			#end
+		</div>
+        #inject("footer")
+	</body>
+</html>

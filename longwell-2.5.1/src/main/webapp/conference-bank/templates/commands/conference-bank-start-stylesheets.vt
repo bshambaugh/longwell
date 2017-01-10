@@ -1,0 +1,2 @@
+#inject()
+<link rel="stylesheet" href="$resourcePath/styles/components/mapframe-control.css" type="text/css"/>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE rdf:RDF [
+        <!ENTITY lom      'http://www.imsproject.org/rdf/imsmd_rootv1p2#'>
+]>
+
+<rdf:RDF
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:dcq="http://dublincore.org/2000/03/13/dcq#"
+     xmlns:lom="&lom;"
+     xml:base="&lom;">
+
+  <rdfs:Class rdf:ID="Entity">
+    <rdfs:label>Entity</rdfs:label>
+    <rdfs:comment>An entity such as a person or an organization.</rdfs:comment>
+  </rdfs:Class>   
+     
+  <rdfs:Class rdf:ID="LangString">
+    <rdfs:label>LangString</rdfs:label>
+    <rdfs:comment>Instances of this class represent a natural language object, with possible translations.
+It is expected to have an rdf:value pointing to the primary value, together with several lom:translations.</rdfs:comment>
+  </rdfs:Class>
+
+  <rdf:Property rdf:ID="translation">
+    <rdfs:domain rdf:resource="&lom;LangString"/>
+    <rdfs:label>Translation</rdfs:label>
+    <rdfs:comment>A translation of the natural language object represented by a LangString.</rdfs:comment>
+  </rdf:Property>
+
+
+  <rdfs:Class rdf:ID="ISO8601">
+    <rdfs:label>ISO8601</rdfs:label>
+    <rdfs:comment>Instances of this class are dates and times (especially lengths of time)
+     encoded with ISO8601.</rdfs:comment>
+  </rdfs:Class>
+
+
+</rdf:RDF>

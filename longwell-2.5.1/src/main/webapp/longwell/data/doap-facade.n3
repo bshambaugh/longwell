@@ -1,0 +1,24 @@
+@prefix rdf:			<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:		<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc:			<http://purl.org/dc/elements/1.1/> .
+@prefix flair:		<http://simile.mit.edu/2005/04/flair#> .
+@prefix facade:		<http://simile.mit.edu/2005/04/flair/facades#> .
+
+@prefix doap:		<http://usefulinc.com/ns/doap#> .
+
+facade:doap-1_0
+	rdf:type		flair:Facade ;
+	rdf:type		flair:QueryBasedFacade ;
+
+	rdfs:label		"Facade v1.0 for DOAP Items"@en ;
+	dc:description	"A facade for browsing DOAP items"@en ;
+
+	flair:shortLabel			"Software Projects"@en ;
+	flair:contentDescription	"Software Projects and Repositories described in DOAP"@en ;
+
+	flair:restriction [
+		flair:predicate		rdf:type ;
+		flair:object		<http://usefulinc.com/ns/doap#Project> ;
+		flair:object		<http://usefulinc.com/ns/doap#Repository>
+	]
+.

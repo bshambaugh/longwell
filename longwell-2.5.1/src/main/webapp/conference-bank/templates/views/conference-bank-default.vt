@@ -1,0 +1,50 @@
+#if ($utilities.isURI($object))
+    #set($objectURI = $object.toString())
+    #set($escapedObjectURI = $utilities.escape($objectURI))
+    #if($objectURI.startsWith("urn:tag:"))
+        #set($tagModel = $profile.getStructuredModel("edu.mit.simile.longwell.TagModel"))
+        #set($title = "Tag: ")
+        #set($title = $title.concat($tagModel.getTagLabel($object)))
+    #else
+        #set($title = $schemaModel.getLabel($object, $locale))
+    #end
+    #set($escapedTitle = $utilities.escape($title))
+    
+    #set($itemURL = $url.changeCommandQuery("focus", ""))
+    $itemURL.getQuery().setParameter("objectURI", $objectURI)
+    
+    <div class="lw_item" id="lw_item_${escapedObjectURI}">
+      <div class="lw_title">
+        <a class="lw_system_control"
+            title="Show this item's URI"
+            href="$objectURI"
+            onclick="prompt('You can copy the item&rsquo;s URI from here.', '$escapedObjectURI', 'Longwell'); return false;"
+            style="font-weight: normal"
+            >[URI]</a>
+        <a href="$utilities.escape($itemURL.toURLString())" title="Browse to this item"><span class="lw_text">$title</span></a>
+        #set($accountID = $longwell.retrieveAccountID($object))
+        #if($accountID != "")
+          #set($bankAccountURL = $url.changeQuery("").changeCommandProfile("start", $accountID))
+          &raquo; <a href="$utilities.escape($bankAccountURL.toURLString())">view account</a>
+        #end
+
+      </div>
+    
+      #inject("properties-and-references")
+    
+      <div class="lw_tools">
+        #set($itemEditURL = $resourcePath.concat("/forms/?uri="))
+        #set($itemEditURL = $itemEditURL.concat($utilities.encodeURLComponent($objectURI)))
+        #set($types = $utilities.getPropertyValues($object, "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", $profile))
+        #foreach($type in $types)
+            #set($itemEditURL = $itemEditURL.concat("&type="))
+            #set($itemEditURL = $itemEditURL.concat($utilities.encodeURLComponent($type.toString())))
+        #end
+        <button class="lw_button" onclick="browseTo('$itemEditURL');" title="Edit this item">Edit</button>
+        
+        <button class="lw_button" onclick="Operations.remove('$escapedObjectURI', '$escapedTitle'); event.cancelBubble = true;" title="Delete this item from the semantic bank">Delete</button>
+      </div>
+    </div>
+#else
+    #inject("literal-view")
+#end

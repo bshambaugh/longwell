@@ -1,0 +1,26 @@
+#if($classes.size() > 0)
+  <div id="lw_classes" class="lw_box">
+      <div class="lw_title">Browse Data by Type</div>
+      <div class="lw_filter"><input
+		onkeyup="filterClasses(event, 'lw_classes_body')"
+		onfocus="if(this.value=='Type here to filter')this.value=''"
+		onblur="if(this.value=='')this.value='Type here to filter'"
+		type="text"
+		value="Type here to filter"/></div>
+
+    <ul id="lw_classes_body">
+    	#foreach($class in $classes)
+    		#if($class.countItems() > 0)
+        		#set($newURL = $url.changeCommandQuery("browse", ""))
+        		#set($bucketerParameter = "r")
+        		#set($bucketerParameter = $bucketerParameter.concat($class.getURI().toString()))
+        		$newURL.getQuery().addRestriction("edu.mit.simile.longwell.query.project.PropertyProjector", "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "edu.mit.simile.longwell.query.bucket.DistinctValueBucketer", $bucketerParameter)
+        		#set($newURLString = $newURL.toURLString())
+        		<li><span class="lw_label" title="$class.getURI().toString()"><a href="$newURLString">$class.getLabel($locale)</a></span>
+    				<span class="lw_count">$class.countItems()</span>
+        		</li>
+    		#end
+    	#end
+    </ul>
+  </div>
+#end

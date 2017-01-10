@@ -1,0 +1,94 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Conference Semantic Bank</title>
+  
+  <link rel="stylesheet" href="../styles/common.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/page.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/semantic-bank-colors.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/forms/styles.css" type="text/css" />
+  <script type="text/javascript" src="../scripts/utilities/http.js"/>
+  <script type="text/javascript" src="../scripts/forms/editing.js"/>
+  <script type="text/javascript" src="../scripts/forms/registry.js"/>
+  <style>
+    #uri-box {
+      padding : 1em ;
+    }
+    #tagging {
+      padding : 0 1em 0.5em;
+    }
+    
+    #top-pane {
+      border-bottom : 1px solid #aaa ;
+    }
+    #left-pane {
+      padding : 1em ;
+      border-right : 1px solid #aaa ;
+    }
+    
+    #type-ui {
+    }
+    #types-list {
+    }
+    #types-list div {
+      padding : 0.2em 0 ;
+    }
+    
+    #form-ui {
+    }
+    
+    #forms-list {
+    }
+    #forms-list div {
+      margin : 0.2em 0 ;
+    }
+    
+    #form-iframe {
+      width : 100% ;
+      height : 100% ;
+      border : none
+    }
+  </style>
+</head>
+<body onload="Editing.onLoad();">
+<table width="100%" height="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td colspan="2" id="top-pane">
+      <div id="top">
+          <div class="path"><a href="../../">[Semantic Bank]</a></div>
+          <h1><a class="lw_link" href="../../">Conference Semantic Bank</a></h1>
+          <h2>share your information wealth</h2>
+      </div>
+      <div id="uri-box">
+        Item's URI: 
+        <input type="text" id="uri-textbox" onchange="Editing.onURITextboxChange();" />
+      </div>
+      <p id="tagging">To tag this item, please download and install <a href="http://simile.mit.edu/piggy-bank/">Piggy Bank</a> and <a href="http://simile.mit.edu/piggy-bank/share.html">create an account</a> on this bank.</p>
+    </td>
+  </tr>
+  <tr height="100%">
+    <td id="left-pane" width="20%">
+      <div id="loading-ui">
+        Loading...
+      </div>
+      <div id="type-ui" style="display: none">
+        Choose the type of the item:
+        <div id="types-list"></div>
+      </div>
+      <div id="form-ui" style="display: none">
+        <p style="display: none">Item Type: 
+          <select id="type-select" onchange="Editing.onTypeSelectChange();"></select>
+        </p>
+        <p>
+          Forms available for this type of item:
+          <div id="forms-list"></div>
+        </p>
+      </div>
+    </td>
+    <td id="right-pane">
+      <iframe id="form-iframe" name="form-iframe" onload="Editing.onIFrameLoad();"/>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

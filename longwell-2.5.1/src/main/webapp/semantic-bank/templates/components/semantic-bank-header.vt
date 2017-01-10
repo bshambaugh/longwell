@@ -1,0 +1,7 @@
+<div id="top">
+	#if ($url.getCommand() && "browse" == $url.getCommand())
+		<div class="path"><a href="$contextPath">[Semantic Bank]</a></div>
+	#end
+    <h1><a class="lw_link" href="$contextPath">Semantic Bank</a></h1>
+    <h2>share your information wealth</h2>
+</div>

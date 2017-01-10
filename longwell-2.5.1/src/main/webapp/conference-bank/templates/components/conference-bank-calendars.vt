@@ -1,0 +1,53 @@
+<div id="lw_calendars" class="lw_box">
+  <div class="lw_title">Calendars</div>
+    
+  <ul id="lw_facades_body">
+      
+    #set($commonEventURL = $url.changeCommandQuery("browse", ""))
+    $commonEventURL.getQuery().setParameter("resultsView", "calendar")
+    #set($param = "http://simile.mit.edu/2005/11/ontologies/conference#")
+    #set($param = $param.concat("start-time,"))
+    #set($param = $param.concat("http://simile.mit.edu/2005/11/ontologies/conference#"))
+    #set($param = $param.concat("end-time,"))
+    #set($param = $param.concat("http://simile.mit.edu/2005/11/ontologies/conference#"))
+    #set($param = $param.concat("abstract"))
+    $commonEventURL.getQuery().setParameter("resultsViewParam", $param)
+    
+    #set($param = "rhttp://simile.mit.edu/2005/11/ontologies/conference#Tutorial,")
+    #set($param = $param.concat("rhttp://simile.mit.edu/2005/11/ontologies/conference#Workshop"))
+    #set($url = $commonEventURL.dup())
+    $url.getQuery().addRestriction("edu.mit.simile.longwell.query.project.PropertyProjector", "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "edu.mit.simile.longwell.query.bucket.DistinctValueBucketer", $param)
+    
+    <li><a href="$utilities.escape($url.toURLString())">Pre-conference events</a></li>
+    
+    #set($param = "rhttp://simile.mit.edu/2005/11/ontologies/conference#CoffeeBreak,")
+    #set($param = $param.concat("rhttp://simile.mit.edu/2005/11/ontologies/conference#InvitedTalk,"))
+    #set($param = $param.concat("rhttp://simile.mit.edu/2005/11/ontologies/conference#LunchBreak,"))
+    #set($param = $param.concat("rhttp://simile.mit.edu/2005/11/ontologies/conference#AdministrativeEvent,"))
+    #set($param = $param.concat("rhttp://simile.mit.edu/2005/11/ontologies/conference#PaperSession,"))
+    #set($param = $param.concat("rhttp://simile.mit.edu/2005/11/ontologies/conference#PaperTalk,"))
+    #set($param = $param.concat("rhttp://simile.mit.edu/2005/11/ontologies/conference#PlenarySession,"))
+    #set($param = $param.concat("rhttp://simile.mit.edu/2005/11/ontologies/conference#PosterTalk"))
+    #set($url = $commonEventURL.dup())
+    $url.getQuery().addRestriction("edu.mit.simile.longwell.query.project.PropertyProjector", "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "edu.mit.simile.longwell.query.bucket.DistinctValueBucketer", $param)
+    
+    <li><a href="$utilities.escape($url.toURLString())">Conference events</a></li>
+    
+    #set($param = "rhttp://simile.mit.edu/2005/11/ontologies/conference#PaperTalk")
+    #set($url = $commonEventURL.dup())
+    $url.getQuery().addRestriction("edu.mit.simile.longwell.query.project.PropertyProjector", "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "edu.mit.simile.longwell.query.bucket.DistinctValueBucketer", $param)
+    
+    <li><a href="$utilities.escape($url.toURLString())">Paper talks</a></li>
+    
+    #set($param = "rhttp://simile.mit.edu/2005/11/ontologies/conference#CoffeeBreak,")
+    #set($param = $param.concat("rhttp://simile.mit.edu/2005/11/ontologies/conference#InvitedTalk,"))
+    #set($param = $param.concat("rhttp://simile.mit.edu/2005/11/ontologies/conference#LunchBreak,"))
+    #set($param = $param.concat("rhttp://simile.mit.edu/2005/11/ontologies/conference#AdministrativeEvent,"))
+    #set($param = $param.concat("rhttp://simile.mit.edu/2005/11/ontologies/conference#PlenarySession"))
+    #set($url = $commonEventURL.dup())
+    $url.getQuery().addRestriction("edu.mit.simile.longwell.query.project.PropertyProjector", "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "edu.mit.simile.longwell.query.bucket.DistinctValueBucketer", $param)
+    
+    <li><a href="$utilities.escape($url.toURLString())">All conference events except paper and poster talks</a></li>
+    
+  </ul>
+</div>

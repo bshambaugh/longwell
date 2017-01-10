@@ -1,0 +1,95 @@
+#set($dqModel = $profile.getStructuredModel("edu.mit.simile.longwell.dq.DynamicQueryModel"))
+#set($schemaModel = $profile.getSchemaModel())
+
+#set($fq = $dqModel.createFacetedQuery($xmlRoot.getElementsByTagName("query").item(0)))
+#set($answer = $dqModel.getAnswer($fq))
+#set($objects = $answer.getObjects())
+#set($totalCount = $objects.size())
+
+#if ($totalCount == 0)
+    {   totalItemCount: 0,
+        items: []
+    }
+#else
+    #set($propertiesElmt = $xmlRoot.getElementsByTagName("properties").item(0))
+    
+    #set($startPropertyURI = $propertiesElmt.getAttribute("startPropertyURI"))
+    #if ($propertiesElmt.hasAttribute("endPropertyURI"))
+        #set($endPropertyURI = $propertiesElmt.getAttribute("endPropertyURI"))
+        #set($endFlag = 1)
+    #else
+        #set($endFlag = 2)
+    #end
+    #macro(addTime $obj)
+        #if($utilities.isResource($obj))
+            #addStringFieldIfNotNull("start" $utilities.getLiteralProperty($obj, $startPropertyURI, $profile))
+            #if ($endFlag == 1)
+                #addStringFieldIfNotNull("end" $utilities.getLiteralProperty($obj, $endPropertyURI, $profile))
+            #end
+        #end
+    #end
+    
+    
+    #if ($propertiesElmt.hasAttribute("timeIndirectPropertyURI"))
+        #set($timeIndirectPropertyURI = $propertiesElmt.getAttribute("timeIndirectPropertyURI"))    
+        #set($timeIndirectFlag = 1)
+    #else
+        #set($timeIndirectFlag = 2)
+    #end
+    #macro(addTimeForItem $item)
+        #if ($timeIndirectFlag == 1)
+            #addTime($utilities.getResourceProperty($item, $timeIndirectPropertyURI, $profile))
+        #else
+            #addTime($item)
+        #end
+    #end
+    
+    
+    #if ($propertiesElmt.hasAttribute("colorPropertyURI"))
+        #set($colorPropertyURI = $propertiesElmt.getAttribute("colorPropertyURI"))
+        #set($colorFlag = 1)
+    #else
+        #set($colorFlag = 2)
+    #end
+    #macro(addColor $obj)
+        #if($utilities.isResource($obj))
+            #if($colorFlag == 1)
+                #addStringFieldIfNotNull("colorKey" $utilities.getPropertyValueLabel($obj, $colorPropertyURI, $profile, $locale))
+            #else
+            #end
+        #end
+    #end
+    
+    #if ($propertiesElmt.hasAttribute("colorIndirectPropertyURI"))
+        #set($colorIndirectPropertyURI = $propertiesElmt.getAttribute("colorIndirectPropertyURI"))
+        #set($colorIndirectFlag = 1)
+    #else
+        #set($colorIndirectFlag = 2)
+    #end
+    #macro(addColorForItem $item)
+        #if ($colorIndirectFlag == 1)
+            #addColor($utilities.getResourceProperty($item, $colorIndirectPropertyURI, $profile))
+        #else
+            #addColor($item)
+        #end
+    #end
+    
+    
+    {   totalItemCount: $totalCount,
+        items: [
+        #set($first = true)
+        #foreach($item in $objects)
+            #if($first) #set($first = false) #else , #end {
+                #if ($utilities.isResource($item))
+                    uri: "$item.toString()"
+                    ,label: "$utilities.escapeForJavascript($schemaModel.getLabel($item, $locale))"
+                    #addTimeForItem($item)
+                    #addColorForItem($item)
+                #else
+                    label: "$item.getLabel()"
+                #end
+            }
+        #end    
+        ]
+    }
+#end

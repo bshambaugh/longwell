@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- 
+	The following code has been adapted from the information from
+		http://stuff.rancidbacon.com/gmaps-standalone/
+		http://libgmail.sourceforge.net/googlemaps.html
+		http://www.chicagocrime.org/m/maps.js
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+	<title>Longwell2</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="../../../styles/common.css" type="text/css"/>
+	<link rel="stylesheet" href="../../../styles/colors.css" type="text/css"/>
+	<style type="text/css">
+    #map { 
+      border: 1px solid #979797; height: 500px; 
+    }
+    #help-text {
+      display: block; border: 1px solid #999; background: #FFFFA0; padding: 10px; width: 15em; position: absolute; bottom: 50px; right: 5px;  cursor: pointer;
+    }
+        
+    .lw_map_new_marker_bubble {
+      display: block;
+      width: 20em;
+    }
+    
+    .lw_map_new_marker_title {
+      width: 100%;
+      margin: 2px; 
+    }
+    .lw_map_new_marker_title input {
+      width: 100%;
+    }
+    
+    .lw_map_new_marker_completion {
+      position: absolute; display: none;
+    }
+    .lw_map_new_marker_completion select {
+      width: 100%;
+    }
+    
+    .lw_map_new_marker_controls {
+      display: block;
+      text-align: right;
+    }
+	</style>
+        <script src="../../../scripts/utilities/http.js" type="text/javascript"></script>
+        <script src="../../../scripts/utilities/debug.js" type="text/javascript"></script>
+        <script src="../../../scripts/panes/map/name-completion.js" type="text/javascript"></script>
+	<script type="text/javascript">
+        //<![CDATA[
+        var key;
+        function postLoad() {
+           var keyOffset = document.location.search.indexOf("key=") + "key=".length;
+	   var endOffset = document.location.search.substring(keyOffset).indexOf("&")
+           key = document.location.search.substring(keyOffset, endOffset+keyOffset);
+           document.write("<"+"script src='http://maps.google.com/maps?file=api&v=2.x&key=" + key + "' type='text/javascript'></"+"script>");
+        }
+        //]]>
+        </script>
+</head>
+<body onload="_initGMap();" onunload="GUnload();">
+ <div id="mapcontainer">
+  <div id="map">
+   <div id="loading" style="margin: 10px">Loading...</div>
+   <div id="maptoggle"></div>
+ </div>
+    <div style="background-color: #CEDFEF ; border: 1px solid #949694 ; padding : 2px">
+      <table style="width: 100%"><tr><td>Find&nbsp;Location:</td><td width="100%">
+        <input id="find-location-textbox" type="text" style="width: 100%" onkeypress="if (event.keyCode == 13) locate(this.value, key, recenter);" value="" />
+      </td>
+      <td><button onclick="locate(document.getElementById('find-location-textbox').value, key, recenter);">Find</button></td>
+      <td><button onclick="locate(document.getElementById('find-location-textbox').value, key, addPointFromLatLong);">Add</button></td>
+      </tr></table>
+    </div>
+ <script type="text/javascript">postLoad();</script>
+ <script type="text/javascript" src="../../../scripts/panes/map/people-map.js"></script>
+</body>
+</html>

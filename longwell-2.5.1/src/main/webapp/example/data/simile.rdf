@@ -1,0 +1,72 @@
+<rdf:RDF xmlns="http://xmlns.com/foaf/0.1/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:s="http://www.w3.org/2000/01/rdf-schema#">
+
+    <Organization>
+        <name>SIMILE</name>
+        <homepage rdf:resource="http://simile.mit.edu/"/>
+        <logo rdf:resource="http://simile.mit.edu/images/logo.png"/>
+	<member rdf:resource="http://www.w3.org/People/EM/contact#me"/>
+	<member>
+          <Person>
+            <name>David Karger</name>
+            <givenname>David</givenname>
+            <family_name>Karger</family_name>
+            <mbox_sha1sum>1192ccf2698e2122ed342719927b0f6e70c46269</mbox_sha1sum>
+            <homepage rdf:resource="http://theory.csail.mit.edu/~karger"/>
+            <depiction rdf:resource="http://www.csail.mit.edu/biographies/PI/72dpi/karger.jpg"/>
+            <workplaceHomepage rdf:resource="http://theory.csail.mit.edu/~karger"/>
+            <workInfoHomepage rdf:resource="http://theory.csail.mit.edu/~karger"/>
+            <schoolHomepage rdf:resource="http://www.harvard.edu/"/>
+            <s:seeAlso rdf:resource="http://theory.csail.mit.edu/~karger/foaf.rdf"/>
+          </Person>
+        </member>
+	<member>
+          <Person>
+            <name>MacKenzie Smith</name>
+          </Person>
+        </member>
+	<member>
+          <Person>
+            <name>Ben Hyde</name>
+            <gender>male</gender>
+            <firstName>Ben</firstName>
+            <aimChatID>axezephyr</aimChatID>
+            <jabberID>bhyde@cozy.org</jabberID>
+            <surname>Hyde</surname>
+            <nick>bhyde</nick>
+            <mbox_sha1sum>a53d5f3c81e9601b9778767d246e94a28d88831a</mbox_sha1sum>
+            <homepage rdf:resource="http://enthusiasm.cozy.org/"/>
+            <depiction rdf:resource="http://www.cozy.org/ben/bhyde.jpg"/>
+            <s:seeAlso rdf:resource="http://www.cozy.org/ben/foaf.rdf"/>
+          </Person>
+        </member>
+	<member rdf:resource="http://people.csail.mit.edu/ryanlee/about#ryanlee"/>
+	<member>
+          <Person>
+            <name>Stefano Mazzocchi</name>
+          </Person>
+        </member>
+	<member>
+          <Person>
+            <name>David Huynh</name>
+          </Person>
+        </member>
+	<member>
+          <Person>
+            <name>Richard Rodgers</name>
+          </Person>
+        </member>
+	<member>
+          <Person>
+            <name>Alex Brennen</name>
+          </Person>
+        </member>
+	<member>
+          <Person>
+            <name>Punyashloka Biswal</name>
+          </Person>
+        </member>
+    </Organization>
+</rdf:RDF>

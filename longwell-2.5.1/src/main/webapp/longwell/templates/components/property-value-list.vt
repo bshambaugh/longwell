@@ -1,0 +1,48 @@
+<table width="100%" cellspacing="0" cellpadding="0">
+    #set($firstPair = true)
+    #foreach($pair in $pairs)
+        #set($property = $pair.getProperty())
+        #set($values = $pair.getValues())
+
+        #if ($firstPair)
+            #set($position = "lw_first")
+        #else
+            #set($position = "")
+        #end
+        #set($firstPair = false)
+
+        #if($linkDirection == "forward")
+            #set($forward = true)
+        #else
+            #set($forward = false)
+        #end
+
+        <tr class="lw_property">
+            <td class="lw_label $position" valign="top" nowrap="true">
+                $property.getLabel()
+                #if(!$pair.isLikelyLiteral())
+                    #if("$!outerURL.getCommand()" == "browse")
+                        #if($forward)
+                            #set($slideImage = "hop-forward.png")
+                        #else
+                            #set($slideImage = "hop-backward.png")
+                        #end
+                        <img src="$resourcePath/images/$slideImage" class="lw_link lw_icon"
+                            title="Find items related to these search results through this relationship"
+                            onclick="slide('$property.getValue().toString()', $forward);" />
+                    #end
+
+                #end
+            </td>
+            <td class="lw_value $position" width="100%">
+                #foreach($value in $values)
+                    #inject('value')
+                #end
+                #if ($values.size() > 1)
+                    #set($objectURI = $utilities.escape($object.toString()))
+                    <div class="lw_link lw_slider" onclick="hop('$objectURI', '$property.getValue().toString()', $forward);">focus on these values</div>
+                #end
+            </td>
+        </tr>
+    #end
+</table>

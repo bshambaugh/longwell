@@ -1,0 +1,45 @@
+<table width="100%" cellspacing="0" cellpadding="0">
+    #set($firstPair = true)
+    #foreach($pair in $pairs)
+        #set($property = $pair.getProperty())
+        #set($values = $pair.getValues())
+
+        #if ($firstPair)
+            #set($position = "lw_first")
+        #else
+            #set($position = "")
+        #end
+        #set($firstPair = false)
+
+		#if($format == "xml")
+			<property label="$property.getLabel()">
+                #foreach($value in $values)
+					<value>$value.getLabel()</value>
+                #end
+			</property>
+		#else
+            <tr class="lw_property">
+                <td class="lw_forward_label $position" valign="top" nowrap="true">
+					<span title="$property.getValue()">$property.getLabel()</span>
+                </td>
+    			
+                <td class="lw_value $position" width="100%">
+                    #foreach($value in $values)
+                    <div>
+                    	#set($objURL = $utilities.escape($msg.getURL($value.getValue())))
+                        #if($objURL == "")
+                            $value.getLabel()
+                        #else
+                            #if ($utilities.isImageURL($objURL))
+                                <img src="$objURL" title="$objURL" alt="$value.getLabel()" class="image-value" />
+                            #else
+								<span title="$value.getValue()">$value.getLabel()</span>
+                            #end
+                        #end
+                    </div>
+                    #end
+                </td>
+            </tr>
+		#end
+    #end
+</table>

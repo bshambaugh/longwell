@@ -1,0 +1,94 @@
+#* Expecting $facet, $facetID, $showCount
+ * Possibly $outerQuery, $phase
+*#
+#set($projectorName = $facet.getProjectorName())
+#set($projectorParameter = $facet.getProjectorParameter())
+
+#macro(makeBucketThemeBody $bucketTheme $bucketThemeID)
+	<div class="lw_filter"><input
+		onkeyup="restrict(event, 'lw_facet_pane_${bucketThemeID}_values')"
+		onfocus="if(this.value=='Type here to filter')this.value=''"
+		onblur="if(this.value=='')this.value='Type here to filter'"
+		type="text"
+		value="Type here to filter"/></div>
+
+	<div class="lw_values" id="lw_facet_pane_${bucketThemeID}_values">
+		#set($buckets = $bucketTheme.getBuckets())
+		#set($limit = 0)
+		#if ($phase)
+			#if ($phase == "initial")
+				#set($limit = 10)
+			#end
+		#end
+		#set($odd = 1)
+		#set($count = 1)
+		#foreach($bucket in $buckets)
+		   #if($limit <= 0 || $count <= $limit)
+			#set($bucketURL = $url.dup())
+			#if ($outerQuery)
+			  #set($bucketURL = $bucketURL.changeCommandQuery("browse", $outerQuery))
+			#end
+			#if ($removeOldRestriction)
+				$bucketURL.getQuery().removeRestriction($facet.getRestrictionID())
+			#end
+			$bucketURL.getQuery().addRestriction($projectorName, $projectorParameter, $bucket.getBucketerName(), $bucket.getBucketerParameter())
+			$bucketURL.getQuery().removeParameter("page")
+			#set($bucketURLString = $bucketURL.toURLString())
+
+			#if($odd == 1)
+				#set($valueClass = "lw_odd")
+			#else
+				#set($valueClass = "lw_even")
+			#end
+
+			<div class="$valueClass"><span class="lw_value" onclick="browseTo('$bucketURLString');">$bucket.getLabel()</span>
+				#if($showCount)
+					<span class="lw_count">$bucket.getCount()</span>
+				#end
+			</div>
+
+			#set($odd = 1 - $odd)
+                    #end
+		    #set($count = $count + 1)
+		#end
+                #if ($count > $limit && $limit > 0)
+                        <div class="lw_more_values"><span class="lw_value" onclick="loadFacetData('$profile.getID()', '$facetID', 'more', 'lw_facet_body_', 'lw_facet_pane_', true);">show all $count facet values...</span></div>
+                #end
+	</div>
+#end
+
+#* The div that was here got booted up a level for easier AJAX compliance.
+ * Whatever that means.
+ *#
+
+#set($bucketThemes = $facet.getBucketThemes())
+
+#if($bucketThemes.size() == 0)
+	<div class="lw_empty">
+		No suggestion for narrowing your search results.
+	</div>
+#else
+       	#if($bucketThemes.size() > 1)
+       		<div class="lw_flavors">
+       		  <select onchange="selectBucketTheme(this, 'lw_${facetID}_bucketTheme');">
+       			#foreach($bucketTheme in $bucketThemes)
+       				<option>$bucketTheme.getLabel()</option>
+       			#end
+       		  </select>
+       		</div>
+       	#end
+
+       	#set($bucketThemeIndex = 1)
+       	#set($bucketThemeBlockStyle = "")
+
+       	<div style="position: relative">
+       	#foreach($bucketTheme in $bucketThemes)
+       		#set($bucketThemeID = $facetID.concat(".").concat($bucketThemeIndex.toString()))
+       		<div style="$bucketThemeBlockStyle" name="lw_${facetID}_bucketTheme">
+       			#makeBucketThemeBody($bucketTheme $bucketThemeID)
+       		</div>
+       		#set($bucketThemeIndex = $bucketThemeIndex + 1)
+       		#set($bucketThemeBlockStyle = "position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; visibility: hidden")
+       	#end
+       	</div>
+#end

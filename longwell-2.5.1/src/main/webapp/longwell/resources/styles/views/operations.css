@@ -1,0 +1,13 @@
+.lw_tags_input {
+	border: 1px solid #ddd;
+	margin-left: 0.2em 0.4em 0.2em 0.4em;
+	width: 100%;
+	padding: 2px;
+}
+
+.lw_tags_completion {
+}
+
+.lw_tags_completion select {
+	border-color: gray;
+}

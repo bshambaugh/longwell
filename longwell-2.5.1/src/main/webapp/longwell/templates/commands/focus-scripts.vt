@@ -1,0 +1,2 @@
+#inject("common-scripts")
+<script src="$resourcePath/scripts/components/view.js" type="text/javascript"></script>

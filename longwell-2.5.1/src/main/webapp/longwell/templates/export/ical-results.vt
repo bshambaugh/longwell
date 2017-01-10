@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+PRODID:-//simile.mit.edu//Longwell Query-based iCalendar//EN
+VERSION:2.0
+#foreach($event in $events)
+BEGIN:VEVENT
+DTSTART:$event.getStart()
+DTEND:$event.getEnd()
+URL;VALUE=URI:$event.getURL()
+CLASS:PUBLIC
+SEQUENCE:0
+SUMMARY:$event.getSummary()
+END:VEVENT
+#end
+END:VCALENDAR

@@ -1,0 +1,26 @@
+<div id="lw_sidebar_layer">
+    <div id="lw_sidebar_top">
+            #inject("search-box")
+
+            <div id="lw_sidebar_facet_panes">
+             #inject("facets")
+            </div>
+
+            <div id="lw_sidebar_facet_progress">
+              <p>Loading facets...</p>
+              <div id="progress_meter"><img src="$resourcePath/images/meter.gif" width="1" height="15" /></div>
+            </div>
+
+        <div id="lw_sidebar_top_bottom"></div>
+    </div>
+    <div id="lw_sidebar_drawer_shadow">
+        <table cellspacing="0" cellpadding="0"><tr><td><div class="lw_corner">&nbsp;</div></td><td width="100%"><div class="lw_background">&nbsp;</div></td></tr></table>
+    </div>
+</div>
+
+<div id="lw_sidebar_slider">
+    <div id="lw_sidebar_bottom">
+        <table cellspacing="0" cellpadding="0" id="lw_sidebar_bottom_shadow"><tr><td><div class="lw_corner">&nbsp;</div></td><td width="100%"><div class="lw_background">&nbsp;</div></td></tr></table>
+        <a href="http://simile.mit.edu/" title="The SIMILE Project"><img src="$resourcePath/images/simile_logo.png" title="The SIMILE Project"/></a>
+    </div>
+</div>

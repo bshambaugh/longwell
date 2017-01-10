@@ -1,0 +1,63 @@
+@prefix ocw:	    <http://simile.mit.edu/2006/01/ontologies/ocw#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix lomEdu:  <http://www.imsproject.org/rdf/imsmd_educationalv1p2#> .
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+@prefix owl:       <http://www.w3.org/2002/07/owl#> .
+
+<http://simile.mit.edu/2004/01/ontologies/ocw#>
+    rdf:type         owl:Ontology ;
+    dc:title         "Ontology for OCW Metadata" ;
+    dc:creator       "Mark H. Butler" ;
+    dc:publisher     "The SIMILE Project" ;
+    dc:date          "2004-01-15" ;
+    dc:format        "RDFS" .
+
+# --------------------- Classes ----------------------
+
+ocw:Laboratory
+	rdfs:subClassOf lomEdu:LearningResourceType ;
+	rdfs:label "Laboratory"@en .
+
+ocw:Lecture
+	rdfs:subClassOf lomEdu:LearningResourceType ;
+	rdfs:label "Lecture"@en .
+	
+ocw:Bibliography
+	rdfs:subClassOf lomEdu:LearningResourceType ;
+	rdfs:label "Bibliography"@en .
+	
+ocw:Calendar
+	rdfs:subClassOf lomEdu:LearningResourceType ;
+	rdfs:label "Calendar"@en .
+
+ocw:LectureNotes
+	rdfs:subClassOf lomEdu:LearningResourceType ;
+	rdfs:label "Lecture Notes"@en .
+
+ocw:Syllabus
+	rdfs:subClassOf lomEdu:LearningResourceType ;
+	rdfs:label "Syllabus"@en .	
+
+ocw:SelectResource
+	rdfs:subClassOf lomEdu:LearningResourceType ;
+	rdfs:label "Select Resource"@en .
+	
+ocw:ProblemSet
+	rdfs:subClassOf lomEdu:LearningResourceType ;
+	rdfs:label "Problem Set"@en .
+
+# ----------------- Properties -----------------------
+
+ocw:linkToImage a rdf:Property ;
+    rdfs:label "link to image"@en .
+    
+ocw:location a rdf:Property ;
+    rdfs:label "Location"@en .
+
+ocw:level a rdf:Property ;
+    rdfs:label "Level"@en .
+
+ocw:Graduate rdfs:label "Graduate"@en .
+ocw:Undergraduate rdfs:label "Undergraduate"@en .
+ocw:UnderGraduate rdfs:label "Under/Graduate"@en .

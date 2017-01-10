@@ -1,0 +1,53 @@
+div.longwell-mapView-header {
+    margin-bottom:  2em;
+    clear:          none;
+}
+
+div.longwell-mapView-header-notConfigured {
+    background:     #FFFFE0;
+    padding:        1em;
+}
+
+.longwell-mapView-header .item-count {
+    font-size:      200%;
+    font-weight:    bold;
+}
+
+div.longwell-mapView-footer {
+    margin-top:     1em;
+}
+
+div.longwell-mapView-colorPanel {
+    border:         1px solid #99B3CC;
+    padding:        1em;
+}
+
+div.longwell-mapView-colorLegend {
+}
+
+.longwell-mapView-colorLegend .entry {
+    float:          left;
+    width:          10em;
+    padding:        0.25em;
+    padding-left:   30px;
+    height:         28px;
+}
+
+div.longwell-mapView-map {
+    border:     1px solid #99B3CC;
+    width:      100%;
+    clear:      both;
+}
+
+div.longwell-mapView-errorMessage {
+    border:     1px solid #99B3CC;
+    padding:    10em;
+    text-align: center;
+    clear:      both;
+}
+
+div.longwell-mapView-resizer {
+    height:     10px;
+    background: #eee url(../../images/down-arrow.png) center center no-repeat;
+    cursor:     n-resize;
+}

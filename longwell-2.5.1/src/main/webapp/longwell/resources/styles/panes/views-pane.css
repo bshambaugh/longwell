@@ -1,0 +1,29 @@
+#lw_timeline_dialog {
+    position: absolute;
+    top: 10em;
+    left: 25%;
+    right: 25%;
+    z-index: 1000;
+    background: #FFFFE0;
+    border: 1px solid #008;
+}
+
+#lw_timeline_dialog_title {
+    background: #008;
+    color: white;
+    font-weight: bold;
+    padding: 0.25em;
+}
+
+#lw_timeline_dialog_body {
+    padding: 1em;
+}
+
+#lw_timeline_dialog_body select {
+    width: 100%;
+}
+
+#lw_timeline_dialog_buttons {
+    text-align: right;
+    margin-top: 1em;
+}

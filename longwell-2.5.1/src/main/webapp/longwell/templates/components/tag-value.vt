@@ -1,0 +1,57 @@
+#set($propertyResource = $property.getValue())
+#if ($propertyResource.toString() == "http://simile.mit.edu/2005/04/ontologies/tags#tag" && $linkDirection == "forward")
+    #set($tagModel = $profile.getStructuredModel("edu.mit.simile.longwell.TagModel"))
+    #set($label = $tagModel.getTagLabel($value.getValue()))
+
+    #set($lwqpT = "edu.mit.simile.longwell.query.project.TagProjector")
+    #set($lwqbT = "edu.mit.simile.longwell.query.bucket.DistinctValueBucketer")
+    #set($param = "l")
+    #set($param = $param.concat($label))
+
+    <div>
+        #if($outerURL.getCommand() == "browse")
+            #set($randomKey = $utilities.randomString())
+            <img class="lw_popup_menu_button"
+                id="lw_search_popup_button_${randomKey}"
+                src="$resourcePath/images/tag.gif"
+                onclick="Menu.show('lw_search_popup_button_${randomKey}', 'lw_search_popup_${randomKey}')"
+                title="Click for choices to search by this tag"
+                />
+            <div class="lw_popup_menu" id="lw_search_popup_${randomKey}">
+                <div class="lw_popup_menu_header">Search for items with this tag:</div>
+
+                #set($tagUrl = $outerURL.dup())
+                $tagUrl.getQuery().addRestriction($lwqpT, "", $lwqbT, $param)
+                <div class="lw_popup_menu_item">
+                    <a href="$utilities.escape($tagUrl.toURLString())">
+                      <img class="narrowing-image" src="$resourcePath/images/zoom-in.png" />
+                      In these search results
+                    </a>
+                </div>
+
+                #set($tagUrl = $url.changeCommandQuery("browse", ""))
+                $tagUrl.getQuery().addRestriction($lwqpT, "", $lwqbT, $param)
+                <div class="lw_popup_menu_item">
+                    <a href="$utilities.escape($tagUrl.toURLString())">
+                      <img class="lw_narrowing_image" src="$resourcePath/images/zoom-out.png" />
+                      In the whole database
+                    </a>
+                </div>
+            </div>
+        #else
+           #set($tagUrl = $url.changeCommandQuery("browse", ""))
+           $tagUrl.getQuery().addRestriction($lwqpT, "", $lwqbT, $param)
+            <a href="$utilities.escape($tagUrl.toURLString())" title="Find all items with this tag">
+                <img class="lw_popup_menu_button"
+                 src="$resourcePath/images/tag.gif"
+                 />
+            </a>
+        #end
+        
+        #set($tagFocusUrl = $url.changeCommandQuery("focus", ""))
+        $tagFocusUrl.getQuery().setParameter("objectURI", $value.getValue().toString())
+        <a href="$utilities.escape($tagFocusUrl.toURLString())">$label</a>
+    </div>
+#else
+    #inject()
+#end

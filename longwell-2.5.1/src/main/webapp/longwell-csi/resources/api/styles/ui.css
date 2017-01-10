@@ -1,0 +1,113 @@
+/*
+ *  Actions
+ */
+
+/*
+.longwell-ui-protection div {
+    margin: 0;
+    padding: 0;
+}*/
+
+/*
+ *  Actions
+ */
+a.action {
+    text-decoration:    none;
+    color:              #000080;
+    padding:            2px;
+}
+a.action:visited {
+    text-decoration:    none;
+    color:              #000080;
+    padding:            2px;
+}
+a.action:hover {
+    text-decoration:    none;
+    background:         #FFFFE0;
+    padding:            2px;
+}
+a.action[disabled="true"] {
+    text-decoration:    none;
+    color:              #ccc;
+    padding:            2px;
+}
+
+/*
+ *  URIs and Literals
+ */
+a.longwell-uri {
+    text-decoration: none;
+}
+
+a.longwell-uri:hover {
+    color: #008;
+    text-decoration: underline;
+    border-bottom: 0;
+}
+
+span.longwell-literal {
+}
+
+/*
+ *  Menu Popup
+ */
+.longwell-menu-popup {
+    position:       absolute;
+    z-index:        1000;
+    background:     #FFFFE0;
+    border:         1px solid #aaa;
+}
+
+a.longwell-menu-item {
+    text-decoration:    none;
+}
+
+a.longwell-menu-item div {
+    padding:            0.25em;
+}
+
+a.longwell-menu-item div img {
+    vertical-align:     middle;
+    margin-right:       4px;
+}
+
+a:hover.longwell-menu-item div {
+    background:         #DFDFC8;
+}
+
+/*
+ *  Dialog
+ */
+.longwell-dialog {
+    position:       absolute;
+    z-index:        100;
+    background:     #FFFFE0;
+    border:         1px solid #606054;
+}
+
+.longwell-dialog .title {
+    padding:        0.25em;
+    font-weight:    bold;
+    background:     #606054;
+    color:          #FFFFE0;
+}
+
+.longwell-dialog .body {
+    padding:        1em;
+}
+
+.longwell-dialog .controls {
+    padding:        0.5em;
+    text-align:     center;
+}
+
+.longwell-dialog .controls button {
+    margin:         0 0.25em;
+    width:          5em;
+}
+
+.longwell-dialog .section {
+    border:     1px solid #ddd;
+    padding:    1em;
+    margin:     0 0 1em 0;
+}

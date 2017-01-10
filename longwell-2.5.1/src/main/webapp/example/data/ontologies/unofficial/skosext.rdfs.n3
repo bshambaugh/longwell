@@ -1,0 +1,50 @@
+@prefix skosext: <http://simile.mit.edu/2004/04/ontologies/skosext#> .
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix owl:       <http://www.w3.org/2002/07/owl#> .
+@prefix owl:       <http://www.w3.org/2002/07/owl#> .
+
+<http://simile.mit.edu/2004/04/ontologies/skosext#>
+    rdf:type         owl:Ontology ;
+    dc:title         "Extension to the SKOS Ontology for URI dereferenceable terms" ;
+    dc:creator       "Mark H. Butler" ;
+    dc:creator       "Stefano Mazzocchi" ;
+    dc:publisher     "The SIMILE Project" ;
+    dc:date          "2004-04-16" ;
+    dc:format        "RDFS" .
+
+# -------------- classes ------------------------
+
+skosext:Term a rdfs:Class ;
+	rdfs:label	"Term"@en ;
+	rdfs:comment "A term is a URI-referenceable instance of a concept"@en .
+
+# -------------- properties ---------------------
+
+skosext:preferredTerm a rdf:Property ;
+	rdfs:label	"preferred term"@en ;
+	rdfs:comment "The preferred term between all the possible alternates available"@en ;
+	rdfs:domain skos:Concept ;
+	rdfs:range skosext:Term ;
+	owl:inverseOf skosext:definedByConcept .
+	
+skosext:alternativeTerm a rdf:Property ;
+	rdfs:label	"alternative term"@en ;
+	rdfs:comment "A term that is not authorized for indexing but they may help searchers by clarifying the scope or meaning of a term"@en ;
+	rdfs:domain skos:Concept ;
+	rdfs:range skosext:Term ;
+	owl:inverseOf skosext:definedByConcept .
+
+skosext:definedByConcept a rdf:Property ;
+	rdfs:label	"concept used"@en ;
+	rdfs:comment "The concept that defines this term"@en ;
+	rdfs:domain skos:Term ;
+	rdfs:range skos:Concept ;
+	owl:inverseOf skosext:alternativeTerm ;	
+	owl:inverseOf skosext:preferredTerm .	
+
+skosext:historicalNote a rdf:Property ;
+	rdfs:label	"historical note"@en ;
+	rdfs:comment "An historical note on a term"@en .

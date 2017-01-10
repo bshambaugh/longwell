@@ -1,0 +1,185 @@
+@prefix fresnel:    <http://www.w3.org/2004/09/fresnel#> .
+@prefix rdf:        <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix facets:     <http://simile.mit.edu/2006/01/ontologies/fresnel-facets#> .
+
+@prefix foaf:       <http://xmlns.com/foaf/0.1/> .
+@prefix con:        <http://www.w3.org/2000/10/swap/pim/contact#> .
+
+@prefix :           <#> .
+
+:foafFacets rdf:type facets:FacetSet ;
+	facets:types facets:allTypes ;
+	facets:facets ( foaf:knows ) .
+
+:personLens rdf:type fresnel:Lens ;
+	fresnel:purpose fresnel:defaultLens ;
+	fresnel:classLensDomain foaf:Person ;
+	fresnel:showProperties
+	 (
+		foaf:img
+		foaf:depiction
+		foaf:name
+		foaf:nick
+		foaf:homepage
+		foaf:workInfoHomepage
+		foaf:workplaceHomepage
+		foaf:mbox
+		foaf:phone
+		[ fresnel:property con:office ; fresnel:sublens :officeSublens ]
+	 ) ;
+	fresnel:group :gr .
+
+:personSublens rdf:type fresnel:Lens ;
+	fresnel:classLensDomain foaf:Person ;
+	fresnel:showProperties
+	(
+		foaf:nick
+	) ;
+	fresnel:group :gr .
+
+:personLabelLens rdf:type fresnel:Lens ;
+	fresnel:purpose fresnel:labelLens ;
+	fresnel:classLensDomain foaf:Person ;
+	fresnel:showProperties
+	 (
+		foaf:name
+	 ) ;
+	fresnel:group :gr .
+
+:officeSublens rdf:type fresnel:Lens ;
+	fresnel:classLensDomain con:Office ;
+	fresnel:classLensDomain con:contactLocation ;
+	fresnel:showProperties
+	 (
+		con:phone
+		con:homePage
+		[ fresnel:property con:address ; fresnel:sublens :addressSublens ]
+	 ) ;
+	fresnel:group :gr .
+
+:addressSublens rdf:type fresnel:Lens ;
+	fresnel:classLensDomain con:Address ;
+	fresnel:showProperties
+	 (
+		con:street
+		con:street2
+		con:city
+		con:postalCode
+		con:country
+	 ) ;
+	fresnel:group :gr .
+
+:projectLens rdf:type fresnel:Lens ;
+	fresnel:purpose fresnel:defaultLens ;
+	fresnel:classLensDomain foaf:Project ;
+	fresnel:showProperties
+	 (
+		foaf:name
+		foaf:homepage
+	 ) ;
+	fresnel:group :gr .
+
+:organizationLens rdf:type fresnel:Lens ;
+	fresnel:purpose fresnel:defaultLens ;
+	fresnel:classLensDomain foaf:Organization ;
+	fresnel:showProperties
+	 (
+		foaf:logo
+		foaf:name
+		foaf:homepage
+		[ fresnel:property foaf:member ; fresnel:sublens :personSublens ]
+	 ) ;
+	fresnel:group :gr .
+
+:organizationLabelLens rdf:type fresnel:Lens ;
+	fresnel:purpose fresnel:labelLens ;
+	fresnel:classLensDomain foaf:Organization ;
+	fresnel:showProperties
+	 (
+		foaf:name
+	 ) ;
+	fresnel:group :gr .
+
+:gr rdf:type fresnel:Group ;
+	fresnel:resourceStyle "foaf-resource" ;
+	fresnel:propertyStyle "foaf-property" ;
+	fresnel:stylesheetLink "styles/foaf.css" .
+
+:linkFormat rdf:type fresnel:Forat ;
+	fresnel:propertyFormatDomain foaf:homepage ;
+	fresnel:propertyFormatDomain foaf:workInfoHomepage ;
+	fresnel:propertyFormatDomain foaf:workplaceHomepage ;
+	fresnel:propertyFormatDomain con:homePage ;
+	fresnel:propertyStyle "foaf-link" ;
+	fresnel:value fresnel:externalLink ;
+	fresnel:group :gr .
+
+:imgFormat rdf:type fresnel:Format ;
+	fresnel:propertyFormatDomain foaf:img ;
+	fresnel:propertyFormatDomain foaf:depiction ;
+	fresnel:propertyFormatDomain foaf:logo ;
+	fresnel:propertyStyle "foaf-image" ;
+	fresnel:value fresnel:image ;
+	fresnel:label fresnel:none ;
+	fresnel:group :gr .
+
+:memberFormat rdf:type fresnel:Format ;
+	fresnel:propertyFormatDomain foaf:member ;
+	fresnel:propertyStyle "foaf-member" ;
+	fresnel:label "Members: " ;
+	fresnel:group :gr .
+
+:organizationFormat rdf:type fresnel:Format ;
+	fresnel:classFormatDomain foaf:Organization ;
+	fresnel:resourceStyle "foaf-organization" ;
+	fresnel:group :gr .
+
+:personFormat rdf:type fresnel:Format ;
+	fresnel:classFormatDomain foaf:Person ;
+	fresnel:resourceStyle "foaf-person" ;
+	fresnel:group :gr .
+
+:nameFormat rdf:type fresnel:Format ;
+	fresnel:propertyFormatDomain foaf:name ;
+	fresnel:propertyStyle "foaf-name" ;
+	fresnel:label fresnel:none ;
+	fresnel:group :gr .
+
+:nicknameFormat rdf:type fresnel:Format ;
+	fresnel:propertyFormatDomain foaf:nick ;
+	fresnel:propertyStyle "foaf-nickname" ;
+	fresnel:label fresnel:none ;
+	fresnel:valueFormat [ fresnel:contentFirst "aka: " ; fresnel:contentAfter ", " ; fresnel:contentLast " " ] ;
+	fresnel:group :gr .
+
+:mboxFormat rdf:type fresnel:Format ;
+	fresnel:propertyFormatDomain foaf:mbox ;
+	fresnel:propertyStyle "foaf-mbox" ;
+	fresnel:value fresnel:externalLink ;
+	fresnel:group :gr .
+
+:phoneFormat rdf:type fresnel:Format ;
+	fresnel:propertyFormatDomain foaf:phone ;
+	fresnel:propertyFormatDomain con:phone ;
+	fresnel:propertyStyle "foaf-phone" ;
+	fresnel:group :gr .
+
+:officeFormat rdf:type fresnel:Format ;
+	fresnel:propertyFormatDomain con:office ;
+	fresnel:propertyStyle "con-office" ;
+	fresnel:group :gr .
+
+:officeAddressFormat rdf:type fresnel:Format ;
+	fresnel:propertyFormatDomain con:address ;
+	fresnel:propertyStyle "con-address" ;
+	fresnel:group :gr .
+
+:addressComponentFormat rdf:type fresnel:Format ;
+	fresnel:propertyFormatDomain con:street ;
+	fresnel:propertyFormatDomain con:street2 ;
+	fresnel:propertyFormatDomain con:city ;
+	fresnel:propertyFormatDomain con:postalCode ;
+	fresnel:propertyFormatDomain con:country ;
+	fresnel:propertyStyle "con-address-part" ;
+	fresnel:label fresnel:none ;
+	fresnel:group :gr .

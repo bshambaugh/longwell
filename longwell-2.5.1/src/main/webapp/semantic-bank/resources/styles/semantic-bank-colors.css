@@ -1,0 +1,56 @@
+/*
+
+  backgrounds:
+   light blue ............ #F0F2FC;
+   blue .................. #E6F1F7;
+   saturated blue ........ #E0EBF8;
+   darker blue ........... #CDDCEB;
+
+  foregrounds:
+   dark red .............. #6a0F00;
+
+*/
+
+body {
+    color: black;
+    background-image: url(../images/bank.png);
+    background-attachment: fixed;
+    background-position: 100% 100%;
+    background-repeat: no-repeat;	
+}
+
+a:link    {  }
+a:visited {  }
+a:hover   { color: #6a0F00; }
+a:focus   {  }
+a:active  {  }
+
+#top .path {  }
+#top { background-color: #fff }
+
+#lw_query { background-color: #F0F2FC; }
+#lw_query > .lw_title { }
+#lw_query .lw_criteria { }
+
+.lw_top_tabs { background-color: #E6F1F7; }
+.lw_top_tabs li { background-color: #E6F1F7; }
+.lw_tab_body { background-color: #E6F1F7; }
+.lw_bottom_tabs { }
+.lw_bottom_tabs li { background-color: #E6F1F7; }
+
+#lw_sidebar_top { background-color: #E0EBF8; }
+#lw_sidebar_drawer { background-color: #F0F2FC; }
+
+.lw_facet_pane { }
+.lw_facet_pane > .lw_title { background-color: #CDDCEB; color: #222; }
+.lw_facet_pane .lw_filter input { background-color: #F0F2FC; }
+
+.lw_items_count span {  }
+.lw_items_sorting { }
+.lw_items_sort_property {  }
+.lw_items_paging .lw_current { }
+
+.lw_box .lw_title { background-color: #CDDCEB; }
+.lw_item .lw_title { background-color: #CDDCEB; }
+.lw_item .lw_tools { background-color: #F0F2FC; }
+

@@ -1,0 +1,37 @@
+<div id="lw_content">
+    #set($pages = $answer.getPages())
+    #if($pages.size() > 0)
+        #if ($answer.getObjects().size() > 1000)
+           <div class="lw_message">
+                <div class="lw_items_count lw_title"><span>$answer.getObjects().size()</span> items</div>
+                <div>Narrow down further<br/>by clicking on more filtering criteria ---></div>
+           </div>
+        #else
+            #set($page = $pages.get($pageIndex))
+            <table width="100%">
+             <tr>
+              <td valign="top" nowrap="true">
+                #if($answer.getObjects().size() > 1)
+                    #set($items = "items")
+                #else
+                    #set($items = "item")
+                #end
+                <div class="lw_items_count"><span>$answer.getObjects().size()</span> $items</div>
+                #inject("items-sorting")
+              </td>
+              <td width="100%" valign="top">
+                #inject("items-index")
+                #inject("items-paging")
+              </td>
+             </tr>
+            </table>
+            #set($objects = $page.getObjects())
+            #foreach($object in $objects)
+                #inject("item-view")
+            #end
+            #inject("items-paging")
+        #end
+    #else
+       <div class="lw_message">No item found.</div>
+    #end
+</div>

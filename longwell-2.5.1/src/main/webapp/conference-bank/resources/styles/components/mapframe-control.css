@@ -1,0 +1,39 @@
+#lw_map_feature {
+    border: 0;
+    background: transparent;
+}
+
+ul#mapframe-control {
+    float: left;
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 10px;
+}
+
+#lw_map_feature>ul#mapframe-control {
+    float: none;
+}
+
+ul#mapframe-control li {
+    display: block;
+    float: left;
+    width: 30%;
+    text-align: center;
+    margin: 0px 10px;
+    padding: 2px;
+    border-width: 1px;
+    border-color: #999;
+    border-style: solid solid none solid;
+    background: #fff;
+}
+
+ul#mapframe-control li.active {
+    background-color: #F0F2FC;
+}
+
+#mapframe {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    clear: both;
+}

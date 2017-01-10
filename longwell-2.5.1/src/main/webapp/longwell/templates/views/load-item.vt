@@ -1,0 +1,14 @@
+#if ($utilities.isURI($object))
+    #set($objectURI = $object.toString())
+    #set($title = $schemaModel.getLabel($object, $locale))
+    
+    #set($itemURL = $url.changeCommandQuery("focus", ""))
+    $itemURL.getQuery().setParameter("objectURI", $objectURI)
+
+    <div class="lw_item" id="lw_item_${objectURI}">
+     <p class="load_buffer">Loading...</p>
+    </div>
+    <script type="text/javascript">loadView("${objectURI}", "$profile.getID()", "lw_item_", false, false, true, "${fresnelGroup}");</script>
+#else
+    #inject("literal-view")
+#end

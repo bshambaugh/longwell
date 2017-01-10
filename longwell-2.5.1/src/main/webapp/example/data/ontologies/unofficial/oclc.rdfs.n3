@@ -1,0 +1,24 @@
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+@prefix oclc:    <http://simile.mit.edu/2004/04/ontologies/oclc#> .
+@prefix owl:       <http://www.w3.org/2002/07/owl#> .
+
+<http://simile.mit.edu/2004/04/ontologies/oclc#>
+    rdf:type         owl:Ontology ;
+    dc:title         "Ontology for the OCLC Authority Metadata" ;
+    dc:creator       "Mark H. Butler" ;
+    dc:creator       "Stefano Mazzocchi" ;
+    dc:publisher     "The SIMILE Project" ;
+    dc:date          "2004-04-16" ;
+    dc:format        "RDFS" .
+
+# -------------- properties ------------------------
+
+oclc:name a rdf:Property ;
+	rdfs:label "name"@en ;
+	rdfs:comment "The authoritative name"@en .
+
+oclc:citation a rdf:Property ;
+	rdfs:label "citation"@en ;
+	rdfs:comment "The origin of this authoritative source"@en .

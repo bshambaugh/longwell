@@ -1,0 +1,17 @@
+<div>
+#if(!$value.isLiteral() || $value.getLabel().length() < 30)
+    #makeSearchPopupMenu($value $property.getValue() $forward)
+#end
+    #set($objURL = $utilities.escape($msg.getURL($value.getValue())))
+    #if($objURL == "")
+        $value.getLabel()
+    #else
+        #if ($utilities.isImageURL($objURL))
+            <a href="$objURL">
+                <img src="$objURL" title="$objURL" alt="$value.getLabel()" class="image-value" />
+            </a>
+        #else
+            <a href="$objURL" title="$objURL">$utilities.softHyphenate($value.getLabel())</a>
+        #end
+    #end
+</div>

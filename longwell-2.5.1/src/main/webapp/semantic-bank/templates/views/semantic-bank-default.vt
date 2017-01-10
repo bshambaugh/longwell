@@ -1,0 +1,33 @@
+#if ($utilities.isURI($object))
+    #set($objectURI = $object.toString())
+    #if($objectURI.startsWith("urn:tag:"))
+        #set($tagModel = $profile.getStructuredModel("edu.mit.simile.longwell.TagModel"))
+        #set($title = "Tag: ")
+        #set($title = $title.concat($tagModel.getTagLabel($object)))
+    #else
+        #set($title = $schemaModel.getLabel($object, $locale))
+    #end
+    #set($escapedTitle = $utilities.escape($title))
+    
+    #set($itemURL = $url.changeCommandQuery("focus", ""))
+    $itemURL.getQuery().setParameter("objectURI", $objectURI)
+    
+    <div class="lw_item" id="lw_item_${objectURI}">
+      <div class="lw_title">
+        <a href="$utilities.escape($itemURL.toURLString())" title="Browse to this item"><span class="lw_text">$title</span></a>
+        #set($accountID = $longwell.retrieveAccountID($object))
+        #if($accountID != "")
+            #set($bankAccountURL = $url.changeQuery("").changeCommandProfile("start", $accountID))
+            &raquo; <a href="$utilities.escape($bankAccountURL.toURLString())">view account</a>
+        #end
+      </div>
+    
+      #inject("properties-and-references")
+    
+      <div class="lw_tools">
+        <button class="lw_button" onclick="Operations.remove('$objectURI', '$escapedTitle'); event.cancelBubble = true;" title="Delete this item from the semantic bank">Delete</button>
+      </div>
+    </div>
+#else
+    #inject("literal-view")
+#end

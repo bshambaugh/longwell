@@ -1,0 +1,3 @@
+#inject()
+<link rel="stylesheet" href="$resourcePath/styles/views/semantic-bank-default.css" type="text/css"/>
+<link rel="stylesheet" href="$resourcePath/styles/semantic-bank-colors.css" type="text/css"/>

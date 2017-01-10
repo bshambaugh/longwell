@@ -1,0 +1,75 @@
+#set($pages = $answer.getPages())
+#if ($pages.size() > 1)
+    <div class="lw_items_paging">
+            #set($currentPageNumber = $page.getPageNumber())
+
+        #macro(makePageLink $p)
+            #set($pageNumber = $p.getPageNumber())
+            #if ($pageNumber == $currentPageNumber)
+                <span class="lw_page_number lw_current">$currentPageNumber</span>
+            #else
+                #set($pageURL = $url.changeQuery($p.getQuery()).toURLString())
+                #if($pageNumber == $currentPageNumber - 1)
+                    #set($class = "lw_page_number lw_neighbor")
+                #elseif($pageNumber == $currentPageNumber + 1)
+                    #set($class = "lw_page_number lw_neighbor")
+                #else
+                    #set($class = "lw_page_number")
+                #end
+                <span class="$class lw_link"><a href="$utilities.escape($pageURL)">$pageNumber</a></span>
+            #end
+        #end
+
+        #if ($currentPageNumber > 1)
+            #set($previousPage = $currentPageNumber - 2)
+            #set($pageURL = $url.changeQuery($pages.get($previousPage).getQuery()).toURLString())
+            <span class="lw_page_pointer lw_link" onclick="browseTo('$pageURL');">&laquo; previous</span>
+        #else
+            <span class="lw_page_pointer lw_inactive">&laquo; previous</span>
+        #end
+        #set($pageCount = $pages.size())
+            #if ($pages.size() <= 20)
+            #foreach($p in $pages)
+                #makePageLink($p)
+            #end
+        #else
+            #if($currentPageNumber > 7)
+                #makePageLink($pages.get(0))
+                ...
+                #set($leftPageIndex = $currentPageNumber - 6)
+            #else
+                #set($leftPageIndex = 0)
+            #end
+            #if($currentPageNumber < $pageCount - 6)
+                #set($rightPageIndex = $currentPageNumber + 5)
+                #if($rightPageIndex < $leftPageIndex + 10)
+                    #set($rightPageIndex = $leftPageIndex + 10)
+                #end
+            #else
+                #set($rightPageIndex = $pageCount)
+                #if($rightPageIndex < $leftPageIndex + 10)
+                    #set($leftPageIndex = $rightPageIndex - 10)
+                #end
+            #end
+
+            #set($pages2 = $pages.subList($leftPageIndex, $rightPageIndex))
+            #foreach($p in $pages2)
+                #makePageLink($p)
+            #end
+
+            #if($rightPageIndex < $pageCount)
+                ...
+                #set($lastPageIndex = $pageCount - 1)
+                #makePageLink($pages.get($lastPageIndex))
+            #end
+        #end
+        #if ($currentPageNumber < $pageCount)
+            #set($nextPage = $currentPageNumber)
+            #set($nextPageQuery = $pages.get($nextPage).getQuery())
+            #set($nextPageURL = $url.changeQuery($nextPageQuery).toURLString())
+            <span class="lw_page_pointer lw_link" onclick="browseTo('$nextPageURL');">next &raquo;</span>
+        #else
+            <span class="lw_page_pointer lw_inactive">next &raquo;</span>
+        #end
+    </div>
+#end

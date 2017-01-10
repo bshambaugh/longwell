@@ -1,0 +1,160 @@
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix disp:    <http://simile.mit.edu/2004/02/ontologies/display#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+<http://simile.mit.edu/2004/02/ontology/display#>
+    rdf:type        owl:Ontology ;
+    dc:title        "Display Configuration Ontology" ;
+    dc:creator      "Mark H. Butler" ;
+    dc:creator      "Ryan Lee" ;
+    dc:publisher    "The SIMILE Project" ;
+    dc:date         "2004-02-17" ;
+    dc:format       "RDFS" .
+
+# ------------------- Classes -----------------------
+
+disp:BrowserConfiguration a rdfs:Class ;
+    rdfs:label   "Browser Configuration"@en ;
+    rdfs:comment "A centralising root object for configuration"@en .
+
+disp:DisplayType a rdfs:Class ;
+    rdfs:label   "Display Type"@en ;
+    rdfs:comment "How to display the value of a property."@en .
+
+disp:DisplayTypeWithOptions a rdfs:Class ;
+    rdfs:subClassOf disp:DisplayType ;
+    rdfs:label   "Display Type With Options"@en ;
+    rdfs:comment "How to display the value of a property, with explicit options for given values."@en .
+
+disp:RequiredIcon a disp:DisplayTypeWithOptions ;
+    rdfs:label   "Required Icon"@en ;
+    rdfs:comment "An icon is required for this property; it will show a default even if the property doesn't exist."@en .
+
+disp:OptionalIcon a disp:DisplayTypeWithOptions ;
+    rdfs:label   "Optional Icon"@en ;
+    rdfs:comment "An icon may be displayed for this property."@en .
+
+disp:GetImage a disp:DisplayType ;
+    rdfs:label   "Get Image"@en ;
+    rdfs:comment "Display the resource as an image instead of writing out the string representation of its URI."@en .
+
+disp:SelfValueLink a disp:DisplayType ;
+    rdfs:label   "Self Value Link"@en ;
+    rdfs:comment "Displays the subject's resource as a link."@en .
+
+disp:Link a disp:DisplayType ;
+    rdfs:label   "Link"@en ;
+    rdfs:comment "Displays the resource as a link."@en .
+
+disp:URI a disp:DisplayType ;
+    rdfs:label   "URI"@en ;
+    rdfs:comment "Displays the resource as a URI instead of its label."@en .
+
+disp:AlternateType a rdfs:Class ;
+    rdfs:label   "Alternate Type"@en ;
+    rdfs:comment "Any way to display a resource other than the application's default."@en .
+
+disp:Image a disp:AlternateType ;
+    rdfs:label   "Image"@en ;
+    rdfs:comment "Displays a resource as an image."@en .
+
+disp:Option a rdfs:Class ;
+    rdfs:label   "Option"@en ;
+    rdfs:comment "For a display type with options, an option."@en .
+
+disp:DefaultOption a rdfs:Class ;
+    rdfs:label   "Default Option"@en ;
+    rdfs:comment "For a required display type with options, the default option."@en .
+
+disp:PreferredTerm a rdfs:Class ;
+    rdfs:label   "Preferred Term"@en ;
+    rdfs:comment "Identifies a term as preferred for display in the case of equivalent resources.  Applications should infer that a non-preferred term should not be displayed."@en .
+
+disp:FacetValueOrganization a rdfs:Class ;
+    rdfs:label   "Facet Value Organization"@en ;
+    rdfs:comment "The class of methods for organizing facet values."@en .
+
+disp:FlatOrganization a disp:FacetValueOrganization ;
+    rdfs:label   "Flat Organization"@en ;
+    rdfs:comment "Display all the facet values with no consideration for class structure."@en .
+
+disp:HierarchicalOrganization a disp:FacetValueOrganization ;
+    rdfs:label   "Hierarchical Organization"@en ;
+    rdfs:comment "Display facet values in class hierarchical fashion.  WARNING: this method will only display correctly for datasets where only two levels of class hierarchy exist; any more, and facet value frequency counts (and the rest of the display) will be thrown off."@en .
+
+# --------------------- Properties ----------------------------
+
+disp:displayProperties a rdf:Property ;
+    rdfs:label   "display proerties"@en ;
+    rdfs:comment "Indicates a sequence of proerties to be displayed."@en ;
+    rdfs:domain  disp:BrowserConfiguration ;
+    rdfs:range   rdf:Seq .
+
+disp:displayFacets a rdf:Property ;
+    rdfs:label   "display facets"@en ;
+    rdfs:comment "Indicates a sequence of facets to be displayed."@en ;
+    rdfs:domain  disp:BrowserConfiguration ;
+    rdfs:range   rdf:Seq .
+
+disp:displayClasses a rdf:Property ;
+    rdfs:label   "display classes"@en ;
+    rdfs:comment "Indicates a sequence of classes to be displayed."@en ;
+    rdfs:domain  disp:BrowserConfiguration ;
+    rdfs:range   rdf:Seq .
+
+disp:propertyObjectDisplay a rdf:Property ;
+    rdfs:label   "property object display"@en ;
+    rdfs:comment "Indicates a sequence of properties whose object values should be displayed in an alternate form."@en ;
+    rdfs:domain  disp:BrowserConfiguration ;
+    rdfs:range   rdf:Seq .
+
+disp:choices a rdf:Property ;
+    rdfs:label   "choices"@en ;
+    rdfs:comment "Indicates a sequence of choices for a display type with options."@en ;
+    rdfs:domain  rdf:Property ;
+    rdfs:range   rdf:Seq .
+
+disp:displayAs a rdf:Property ;
+    rdfs:label   "display as"@en ;
+    rdfs:comment "Indicates how to display an option."@en ;
+    rdfs:domain  rdfs:Resource ;
+    rdfs:range   disp:AlternateType .
+
+disp:mimeType a rdf:Property ;
+    rdfs:label   "mime type"@en ;
+    rdfs:comment "Specifies the MIME type for an alternate type."@en ;
+    rdfs:domain  disp:AlternateType ;
+    rdfs:range   rdfs:Literal .
+
+disp:imageSrc a rdf:Property ;
+    rdfs:label   "image source"@en ;
+    rdfs:comment "Specifies the location of an image as accessed over HTTP."@en ;
+    rdfs:domain  disp:Image ;
+    rdfs:range   rdfs:Literal .
+
+disp:imageWidth a rdf:Property ;
+    rdfs:label   "image width"@en ;
+    rdfs:comment "Specifies the width of an image in pixels."@en ;
+    rdfs:domain  disp:Image ;
+    rdfs:range   rdfs:Literal .
+
+disp:imageHeight a rdf:Property ;
+    rdfs:label   "image height"@en ;
+    rdfs:comment "Specifies the height of an image in pixels."@en ;
+    rdfs:domain  disp:Image ;
+    rdfs:range   rdfs:Literal .
+
+disp:facetValueOrganizeAs a rdf:Property ;
+    rdfs:label   "facet value organize as"@en ;
+    rdfs:comment "Specifies which organization of facet values to use.  If left out, the :FlatOrganization will be assumed."@en ;
+    rdfs:domain  disp:BrowserConfiguration ;
+    rdfs:range   disp:FacetValueOrganization .
+
+disp:lang a rdf:Property ;
+    rdfs:label   "Language"@en ;
+    rdfs:comment "Specifies which ISO-639 language to use as the default when displaying system-like labels, along with a ISO-3166 country code for localization if needed."@en ;
+    rdfs:domain  disp:BrowserConfiguration ;
+    rdfs:range   xsd:string .

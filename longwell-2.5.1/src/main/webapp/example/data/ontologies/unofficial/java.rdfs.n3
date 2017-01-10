@@ -1,0 +1,46 @@
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+@prefix java:    <http://simile.mit.edu/2004/09/ontologies/java#> .
+
+<http://simile.mit.edu/2004/09/ontologies/java#>
+    rdf:type         owl:Ontology ;
+    dc:title         "Simple Java Ontology" ;
+    dc:creator       "Stefano Mazzocchi" ;
+    dc:publisher     "The SIMILE Project" ;
+    dc:date          "2004-9-30" ;
+    dc:format        "RDFS" .
+
+# ----------- Classes ---------------
+
+java:Package
+    a	rdfs:Class ;
+    rdfs:label "Package"@en .
+
+java:Class
+    a	rdfs:Class ;
+    rdfs:label "Class"@en .
+
+java:Abstract_Class
+    a	rdfs:Class ;
+    rdfs:label "Abstract Class"@en .
+
+java:Interface
+    a	rdfs:Interface ;
+    rdfs:label "Interface"@en .
+
+# ----------- Properties ---------------
+
+java:contained
+	a	rdf:Property;
+	rdfs:label "contained in package"@en .
+
+java:uses
+	a	rdf:Property;
+	rdfs:label "depends on"@en .
+
+java:located
+	a	rdf:Property;
+	rdfs:label "located in file" .
+

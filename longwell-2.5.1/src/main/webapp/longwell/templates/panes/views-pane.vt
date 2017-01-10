@@ -1,0 +1,68 @@
+<div id="lw_views" class="lw_tabs">
+    <ul>
+        #set($groups = $longwell.getFresnelConfiguration().groups())
+        #if($groups.size() > 1)
+        <li>
+            <select name="fresnel-group" onchange="setFresnelGroup(this)">
+            #foreach($group in $groups)
+              #if($group.getIdentifier().toString().equals($fresnelGroup))
+               <option value="$group.getIdentifier()" selected="selected">$group.getTitle()</option>
+              #else
+               <option value="$group.getIdentifier()">$group.getTitle()</option>
+              #end
+            #end
+            </select>
+        </li>
+        #end
+        <li>
+            #set($listURL = $url.dup())
+            $listURL.getQuery().removeParameter("resultsView")
+            $listURL.getQuery().removeParameter("resultsViewParam")
+            <a href="$listURL.toURLString()">List View</a>
+        </li>
+        <li>
+            #set($calendarURL = $url.dup())
+            $calendarURL.getQuery().setParameter("resultsView","calendar")
+            #set($param = "http://simile.mit.edu/2005/11/ontologies/conference#")
+            #set($param = $param.concat("start-time,"))
+            #set($param = $param.concat("http://simile.mit.edu/2005/11/ontologies/conference#"))
+            #set($param = $param.concat("end-time,"))
+            #set($param = $param.concat("http://simile.mit.edu/2005/11/ontologies/conference#"))
+            #set($param = $param.concat("abstract"))
+            $calendarURL.getQuery().setParameter("resultsViewParam", $param)
+            <a href="$calendarURL.toURLString()">Calendar View</a>
+        </li>
+        <li>
+            #set($mapURL = $url.dup())
+            $mapURL.getQuery().setParameter("resultsView","map")
+            #set($param = "http://simile.mit.edu/2005/05/ontologies/location#coordinates")            
+            $mapURL.getQuery().setParameter("resultsViewParam", $param)
+            <a href="$mapURL.toURLString()">Map View</a>
+        </li>
+        <li>
+            #set($graphURL = $url.dup())
+            $graphURL.getQuery().setParameter("resultsView","graph")
+            $graphURL.getQuery().setParameter("resultsViewParam","")
+            <a href="$graphURL.toURLString()">Graph View</a>
+        </li>
+        <li>
+            <script>
+                var commonProperties = [
+                    {   label:  "type",
+                        uri:    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+                    }
+                    #foreach($property in $commonProperties)
+                        ,{    label: "$property.getLabel($locale)",
+                            uri: "$property.getURI().toString()"
+                        }
+                    #end
+                ];
+            </script>
+        
+            #set($timelineURL = $url.dup())
+            $timelineURL.getQuery().setParameter("resultsView","timeline")
+            $timelineURL.getQuery().removeParameter("resultsViewParam")
+            <a href="javascript:promptForTimelineParameters('$timelineURL.toURLStringEncoded()');">Timeline View</a>
+        </li>
+    </ul>
+</div>

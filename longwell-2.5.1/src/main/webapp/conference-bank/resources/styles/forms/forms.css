@@ -1,0 +1,32 @@
+body {
+	margin : 2em ;
+}
+
+.form-section {
+	margin : 0 0 1.5em 0 ;
+	background-color : #eee ;
+}
+
+.labeled-field {
+	margin : 0.5em 0
+}
+
+.form-section-title {
+	font-weight : bold ;
+	background-color : #ccc ;
+	padding : 0.2em
+}
+
+.form-section-body {
+	border : 1px solid #ccc ;
+	padding : 1em ;
+}
+
+#form-controls {
+	width : 10em ;
+	margin : 0 1em ;
+}
+
+#form-controls button {
+	width : 100% ;
+}

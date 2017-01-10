@@ -1,0 +1,5 @@
+<link rel="stylesheet" href="$resourcePath/styles/views/tag.css" type="text/css"/>
+<link rel="stylesheet" href="$resourcePath/styles/components/menu.css" type="text/css"/>
+<link rel="stylesheet" href="$resourcePath/styles/views/default.css" type="text/css"/>
+<link rel="stylesheet" href="$resourcePath/styles/components/fresnel-common.css" type="text/css"/>
+#inject("common-stylesheets")

@@ -1,0 +1,45 @@
+@prefix rdf:			<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:		<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     	<http://www.w3.org/2002/07/owl#> .
+@prefix dc:      	<http://purl.org/dc/elements/1.1/> .
+@prefix web:         <http://simile.mit.edu/2005/04/ontologies/web#> .
+
+<http://simile.mit.edu/2005/04/ontologies/web#>
+    rdf:type         owl:Ontology ;
+    dc:title         "Minimalistic Web Ontology" ;
+    dc:creator       "David Huynh" ;
+    dc:creator       "Stefano Mazzocchi" ;
+    dc:publisher     "The SIMILE Project" ;
+    dc:date          "2005-4-15" ;
+    dc:format        "RDFS" .
+
+# ---------- Classes ------------
+
+web:Page
+	rdf:type rdfs:Class ;
+	rdfs:label "Web Page"@en ;
+	rdfs:comment "A web page"@en
+.
+
+# ---------- Properties ----------
+
+web:url
+	rdf:type rdf:Property ;
+	rdfs:label "URL"@en ;
+	rdfs:comment "The uniform locator of a web page."@en ;
+	rdfs:domain web:Page;
+.
+
+web:domain
+	rdf:type rdf:Property ;
+	rdfs:label "domain"@en ;
+	rdfs:comment "The domain root of a web page."@en ;
+	rdfs:domain web:Page;
+.
+
+web:domainRoot
+	rdf:type rdf:Property ;
+	rdfs:label "domain Root"@en ;
+	rdfs:comment "The domain root of a web page."@en ;
+	rdfs:domain web:Page;
+.
